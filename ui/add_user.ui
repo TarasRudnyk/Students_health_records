@@ -1,80 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Students_health_records_registration_ui</class>
- <widget class="QWidget" name="Students_health_records_registration_ui">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>347</width>
-    <height>300</height>
+    <width>415</width>
+    <height>409</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Students_health_records</string>
+   <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="label_6">
      <property name="text">
-      <string>First name</string>
+      <string>Medical card*</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="1" colspan="2">
-    <widget class="QLineEdit" name="lineEdit"/>
+   <item row="0" column="1">
+    <widget class="QLineEdit" name="lineEdit_6"/>
    </item>
    <item row="1" column="0">
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>Last name</string>
+      <string>First name*</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2">
-    <widget class="QLineEdit" name="lineEdit_2"/>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="lineEdit"/>
    </item>
    <item row="2" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Last name*</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="lineEdit_2"/>
+   </item>
+   <item row="3" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>Username*</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2">
+   <item row="3" column="1">
     <widget class="QLineEdit" name="lineEdit_3"/>
    </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Password*</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2">
+   <item row="4" column="1">
     <widget class="QLineEdit" name="lineEdit_4"/>
    </item>
-   <item row="4" column="0">
+   <item row="5" column="0">
     <widget class="QLabel" name="label_5">
      <property name="text">
       <string>Email*</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1" colspan="2">
+   <item row="5" column="1">
     <widget class="QLineEdit" name="lineEdit_5"/>
    </item>
-   <item row="5" column="1">
-    <widget class="QPushButton" name="sign_up_button">
-     <property name="text">
-      <string>Sign up</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2">
-    <widget class="QPushButton" name="sign_in_button">
-     <property name="text">
-      <string>Sign in</string>
+   <item row="6" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
