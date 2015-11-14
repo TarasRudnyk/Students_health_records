@@ -35,7 +35,7 @@ class Ui_Students_health_records_authorization(object):
         self.show_pass.setGeometry(QtCore.QRect(315, 69, 20, 20))
         self.show_pass.setText("")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(r"D:\PyCharm\workspace\DB\Students_health_records\ui\eye.png"), QtGui.QIcon.Selected, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(r"./ui/eye.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.show_pass.setIcon(icon)
         self.show_pass.setObjectName("show_pass")
 
@@ -50,4 +50,4 @@ class Ui_Students_health_records_authorization(object):
         self.log_in_button.setText(_translate("Students_health_records_authorization", "Log in"))
         self.sign_up_button.setText(_translate("Students_health_records_authorization", "Sign up"))
 
-#import eye_qrc
+
