@@ -31,6 +31,13 @@ class Ui_Students_health_records_authorization(object):
         self.sign_up_button = QtWidgets.QPushButton(Students_health_records_authorization)
         self.sign_up_button.setGeometry(QtCore.QRect(256, 112, 75, 23))
         self.sign_up_button.setObjectName("sign_up_button")
+        self.show_pass = QtWidgets.QToolButton(Students_health_records_authorization)
+        self.show_pass.setGeometry(QtCore.QRect(315, 69, 20, 20))
+        self.show_pass.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(r"D:\PyCharm\workspace\DB\Students_health_records\ui\eye.png"), QtGui.QIcon.Selected, QtGui.QIcon.On)
+        self.show_pass.setIcon(icon)
+        self.show_pass.setObjectName("show_pass")
 
         self.retranslateUi(Students_health_records_authorization)
         QtCore.QMetaObject.connectSlotsByName(Students_health_records_authorization)
@@ -43,3 +50,4 @@ class Ui_Students_health_records_authorization(object):
         self.log_in_button.setText(_translate("Students_health_records_authorization", "Log in"))
         self.sign_up_button.setText(_translate("Students_health_records_authorization", "Sign up"))
 
+#import eye_qrc
