@@ -30,7 +30,7 @@ class Ui_Students_health_records_registration_ui(object):
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
         self.lineEdit_username = QtWidgets.QLineEdit(Students_health_records_registration_ui)
-        self.lineEdit_username.setObjectName("lineEdit_UserName")
+        self.lineEdit_username.setObjectName("lineEdit_username")
         self.gridLayout.addWidget(self.lineEdit_username, 2, 1, 1, 2)
         self.label_4 = QtWidgets.QLabel(Students_health_records_registration_ui)
         self.label_4.setObjectName("label_4")
@@ -62,6 +62,6 @@ class Ui_Students_health_records_registration_ui(object):
         self.label_3.setText(_translate("Students_health_records_registration_ui", "Username*"))
         self.label_4.setText(_translate("Students_health_records_registration_ui", "Password*"))
         self.label_5.setText(_translate("Students_health_records_registration_ui", "Email*"))
-        self.sign_up_button.setText(_translate("Students_health_records_registration_ui", "Sign up"))
-        self.sign_in_button.setText(_translate("Students_health_records_registration_ui", "Sign in"))
+        self.sign_up_button.setText(_translate("Students_health_records_registration_ui", "Confirm"))
+        self.sign_in_button.setText(_translate("Students_health_records_registration_ui", "Back"))
 
