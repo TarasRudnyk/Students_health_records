@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>347</width>
-    <height>300</height>
+    <width>404</width>
+    <height>333</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,54 +28,89 @@
    <item row="0" column="1" colspan="2">
     <widget class="QLineEdit" name="lineEdit_first_name"/>
    </item>
-   <item row="1" column="0">
+   <item row="1" column="1" colspan="2">
+    <widget class="QLabel" name="First_name_error">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
     <widget class="QLabel" name="label_2">
      <property name="text">
       <string>Last name</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1" colspan="2">
+   <item row="2" column="1" colspan="2">
     <widget class="QLineEdit" name="lineEdit_last_name"/>
    </item>
-   <item row="2" column="0">
+   <item row="3" column="1" colspan="2">
+    <widget class="QLabel" name="Last_name_error">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
     <widget class="QLabel" name="label_3">
      <property name="text">
       <string>Username*</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="1" colspan="2">
+   <item row="4" column="1" colspan="2">
     <widget class="QLineEdit" name="lineEdit_username"/>
    </item>
-   <item row="3" column="0">
+   <item row="5" column="1" colspan="2">
+    <widget class="QLabel" name="User_name_error">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Password*</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="1" colspan="2">
+   <item row="6" column="1" colspan="2">
     <widget class="QLineEdit" name="lineEdit_password"/>
    </item>
-   <item row="4" column="0">
+   <item row="7" column="1" colspan="2">
+    <widget class="QLabel" name="Password_error">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0">
     <widget class="QLabel" name="label_5">
      <property name="text">
       <string>Email*</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1" colspan="2">
+   <item row="8" column="1" colspan="2">
     <widget class="QLineEdit" name="lineEdit_Email"/>
    </item>
-   <item row="5" column="1">
+   <item row="9" column="1" colspan="2">
+    <widget class="QLabel" name="Emai_error">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
     <widget class="QPushButton" name="sign_up_button">
      <property name="text">
       <string>Confirm</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="2">
+   <item row="10" column="2">
     <widget class="QPushButton" name="sign_in_button">
      <property name="text">
       <string>Back</string>
@@ -84,8 +119,6 @@
    </item>
   </layout>
  </widget>
- <resources>
-  <include location="../Students_health_records/ui/eye.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
