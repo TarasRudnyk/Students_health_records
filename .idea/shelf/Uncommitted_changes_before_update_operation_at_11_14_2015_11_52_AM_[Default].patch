@@ -1,0 +1,17 @@
+Index: ui/authorization_ui.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- ui/authorization_ui.py	(revision c5287b73bf8ea44ebd0d4d35fb42ae182cd12b4d)
++++ ui/authorization_ui.py	(revision )
+@@ -35,7 +35,8 @@
+         self.show_pass.setGeometry(QtCore.QRect(315, 69, 20, 20))
+         self.show_pass.setText("")
+         icon = QtGui.QIcon()
+-        icon.addPixmap(QtGui.QPixmap(r"D:\PyCharm\workspace\DB\Students_health_records\ui\eye.png"), QtGui.QIcon.Selected, QtGui.QIcon.On)
++        icon.addPixmap(QtGui.QPixmap("../eye.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
++        #icon.addPixmap(QtGui.QPixmap("D:/PyCharm/workspace/MostWanted/khong/khong/eye.png"), QtGui.QIcon.Selected, QtGui.QIcon.On)
+         self.show_pass.setIcon(icon)
+         self.show_pass.setObjectName("show_pass")
+ 
