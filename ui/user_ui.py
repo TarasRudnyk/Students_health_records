@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'user.ui'
+# Form implementation generated from reading ui file 'user2.ui'
 #
 # Created by: PyQt5 UI code generator 5.5
 #
@@ -8,37 +8,62 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_Student_health_records(object):
-    def setupUi(self, Student_health_records):
-        Student_health_records.setObjectName("Student_health_records")
-        Student_health_records.resize(584, 427)
-        self.pushButton_2 = QtWidgets.QPushButton(Student_health_records)
-        self.pushButton_2.setGeometry(QtCore.QRect(30, 12, 81, 23))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.tableView = QtWidgets.QTableView(Student_health_records)
-        self.tableView.setGeometry(QtCore.QRect(180, 10, 361, 401))
+class Ui_MainWindow(object):
+    def setupUi(self, MainWindow):
+        MainWindow.setObjectName("MainWindow")
+        MainWindow.resize(656, 484)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../Students_health_records/ui/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        MainWindow.setWindowIcon(icon)
+        self.centralwidget = QtWidgets.QWidget(MainWindow)
+        self.centralwidget.setObjectName("centralwidget")
+        self.tableView = QtWidgets.QTableView(self.centralwidget)
+        self.tableView.setGeometry(QtCore.QRect(180, 18, 411, 401))
         self.tableView.setObjectName("tableView")
-        self.pushButton_3 = QtWidgets.QPushButton(Student_health_records)
-        self.pushButton_3.setGeometry(QtCore.QRect(40, 390, 81, 23))
+        self.pushButton_3 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_3.setGeometry(QtCore.QRect(30, 398, 81, 23))
         self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(Student_health_records)
-        self.pushButton_4.setGeometry(QtCore.QRect(30, 41, 81, 23))
+        self.pushButton_4 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_4.setGeometry(QtCore.QRect(30, 49, 81, 23))
         self.pushButton_4.setObjectName("pushButton_4")
-        self.comboBox = QtWidgets.QComboBox(Student_health_records)
-        self.comboBox.setGeometry(QtCore.QRect(30, 70, 81, 21))
+        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
+        self.comboBox.setGeometry(QtCore.QRect(30, 78, 81, 21))
         self.comboBox.setObjectName("comboBox")
-        self.pushButton = QtWidgets.QPushButton(Student_health_records)
-        self.pushButton.setGeometry(QtCore.QRect(120, 70, 16, 21))
+        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_2.setGeometry(QtCore.QRect(30, 20, 81, 23))
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(110, 78, 16, 16))
         self.pushButton.setObjectName("pushButton")
+        MainWindow.setCentralWidget(self.centralwidget)
+        self.menubar = QtWidgets.QMenuBar(MainWindow)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 656, 21))
+        self.menubar.setObjectName("menubar")
+        self.menuFile = QtWidgets.QMenu(self.menubar)
+        self.menuFile.setObjectName("menuFile")
+        self.menuEdit = QtWidgets.QMenu(self.menubar)
+        self.menuEdit.setObjectName("menuEdit")
+        self.menuHelp = QtWidgets.QMenu(self.menubar)
+        self.menuHelp.setObjectName("menuHelp")
+        MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
+        self.menubar.addAction(self.menuFile.menuAction())
+        self.menubar.addAction(self.menuEdit.menuAction())
+        self.menubar.addAction(self.menuHelp.menuAction())
 
-        self.retranslateUi(Student_health_records)
-        QtCore.QMetaObject.connectSlotsByName(Student_health_records)
+        self.retranslateUi(MainWindow)
+        QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
-    def retranslateUi(self, Student_health_records):
+    def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        Student_health_records.setWindowTitle(_translate("Student_health_records", "Student_health_records"))
-        self.pushButton_2.setText(_translate("Student_health_records", "Show_my_info"))
-        self.pushButton_3.setText(_translate("Student_health_records", "Show_diseases"))
-        self.pushButton_4.setText(_translate("Student_health_records", "Add simptome"))
-        self.pushButton.setText(_translate("Student_health_records", "X"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.pushButton_3.setText(_translate("MainWindow", "Show_diseases"))
+        self.pushButton_4.setText(_translate("MainWindow", "Add simptome"))
+        self.pushButton_2.setText(_translate("MainWindow", "Show_my_info"))
+        self.pushButton.setText(_translate("MainWindow", "X"))
+        self.menuFile.setTitle(_translate("MainWindow", "File"))
+        self.menuEdit.setTitle(_translate("MainWindow", "Edit"))
+        self.menuHelp.setTitle(_translate("MainWindow", "Help"))
 

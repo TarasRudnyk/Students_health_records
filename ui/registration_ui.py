@@ -12,6 +12,9 @@ class Ui_Students_health_records_registration_ui(object):
     def setupUi(self, Students_health_records_registration_ui):
         Students_health_records_registration_ui.setObjectName("Students_health_records_registration_ui")
         Students_health_records_registration_ui.resize(347, 300)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../Students_health_records/ui/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Students_health_records_registration_ui.setWindowIcon(icon)
         self.gridLayout = QtWidgets.QGridLayout(Students_health_records_registration_ui)
         self.gridLayout.setObjectName("gridLayout")
         self.label = QtWidgets.QLabel(Students_health_records_registration_ui)
@@ -64,4 +67,3 @@ class Ui_Students_health_records_registration_ui(object):
         self.label_5.setText(_translate("Students_health_records_registration_ui", "Email*"))
         self.sign_up_button.setText(_translate("Students_health_records_registration_ui", "Confirm"))
         self.sign_in_button.setText(_translate("Students_health_records_registration_ui", "Back"))
-

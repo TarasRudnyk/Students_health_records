@@ -1,6 +1,6 @@
 import sys
 
-import registration_ui
+from ui import registration_ui
 
 from PyQt5.QtWidgets import QApplication, QWidget
 

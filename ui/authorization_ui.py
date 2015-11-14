@@ -12,6 +12,9 @@ class Ui_Students_health_records_authorization(object):
     def setupUi(self, Students_health_records_authorization):
         Students_health_records_authorization.setObjectName("Students_health_records_authorization")
         Students_health_records_authorization.resize(382, 161)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../Students_health_records/ui/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Students_health_records_authorization.setWindowIcon(icon)
         Students_health_records_authorization.setAccessibleName("")
         self.label = QtWidgets.QLabel(Students_health_records_authorization)
         self.label.setGeometry(QtCore.QRect(9, 26, 48, 16))
@@ -34,9 +37,9 @@ class Ui_Students_health_records_authorization(object):
         self.show_pass = QtWidgets.QToolButton(Students_health_records_authorization)
         self.show_pass.setGeometry(QtCore.QRect(315, 69, 20, 20))
         self.show_pass.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(r"./ui/eye.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.show_pass.setIcon(icon)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icon/eye.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.show_pass.setIcon(icon1)
         self.show_pass.setObjectName("show_pass")
 
         self.retranslateUi(Students_health_records_authorization)

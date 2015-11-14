@@ -12,6 +12,9 @@ class Ui_Student_health_records(object):
     def setupUi(self, Student_health_records):
         Student_health_records.setObjectName("Student_health_records")
         Student_health_records.resize(646, 375)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("../Students_health_records/ui/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        Student_health_records.setWindowIcon(icon)
         self.gridLayout = QtWidgets.QGridLayout(Student_health_records)
         self.gridLayout.setObjectName("gridLayout")
         self.select_user_2 = QtWidgets.QPushButton(Student_health_records)

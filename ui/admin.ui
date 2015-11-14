@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Student_health_records</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Students_health_records/ui/icon.jpg</normaloff>../Students_health_records/ui/icon.jpg</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QPushButton" name="select_user_2">
