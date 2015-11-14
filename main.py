@@ -32,7 +32,6 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
         self.u.setupUi(dialog)
         dialog.show()
         dialog.exec()
-        # registration_ui.Ui_Students_health_records_registration_ui.sign_in_button.connect()
 
 
     def log_in(self):
