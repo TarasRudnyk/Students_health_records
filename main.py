@@ -15,6 +15,8 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setupUi(self)
+        self.setFixedSize(self.width(), self.height())
+
 
         self.login_error = QtWidgets.QLabel(self)
         self.login_error.move(135, 47)
