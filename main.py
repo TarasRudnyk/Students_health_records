@@ -1,6 +1,7 @@
 import sys
 
 from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 from ui import authorization_ui
 from ui import registration_ui
@@ -15,12 +16,14 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
         super().__init__(parent)
         self.setupUi(self)
 
+        self.login_error = QtWidgets.QLabel(self)
+        self.login_error.move(135, 47)
 
-        #self.setFixedSize(self.width(), self.height())
+        self.password_error = QtWidgets.QLabel(self)
+        self.password_error.move(135, 90)
 
         self.sign_up_button.clicked.connect(self.sign_up)
-
-        self.log_in_button.clicked.connect(self.user)
+        self.log_in_button.clicked.connect(self.log_in)
 
 
     def sign_up(self):
@@ -30,6 +33,19 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
         dialog.show()
         dialog.exec()
         # registration_ui.Ui_Students_health_records_registration_ui.sign_in_button.connect()
+
+
+    def log_in(self):
+
+        login = self.lineEdit.text()
+        password = self.lineEdit_2.text()
+        self.login_error.setText(self.is_set_label(login))
+        self.login_error.adjustSize()
+
+        self.password_error.setText(self.is_set_label(password))
+        self.password_error.adjustSize()
+
+
 
     def user(self):
         self.u = user_ui.Ui_Student_health_records()
@@ -53,9 +69,14 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
         dialog.exec()
 
     def verification_sign_in(self):
-        pass
+        login = self.lineEdit.text()
+        password = self.lineEdit_2.text()
+        print(login, password)
 
     def verification_sign_up(self):
         pass
 
-
+    def is_set_label(self, label):
+        if len(label) == 0:
+            return "This label cannot be empty!"
+        return " "
