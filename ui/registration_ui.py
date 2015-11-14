@@ -30,7 +30,7 @@ class Ui_Students_health_records_registration_ui(object):
         self.label_3.setObjectName("label_3")
         self.gridLayout.addWidget(self.label_3, 2, 0, 1, 1)
         self.lineEdit_username = QtWidgets.QLineEdit(Students_health_records_registration_ui)
-        self.lineEdit_username.setObjectName("lineEdit_username")
+        self.lineEdit_username.setObjectName("lineEdit_UserName")
         self.gridLayout.addWidget(self.lineEdit_username, 2, 1, 1, 2)
         self.label_4 = QtWidgets.QLabel(Students_health_records_registration_ui)
         self.label_4.setObjectName("label_4")
