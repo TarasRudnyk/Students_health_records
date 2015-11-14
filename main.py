@@ -37,16 +37,11 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
 
 
     def log_in(self):
-
         login = self.lineEdit.text()
         password = self.lineEdit_2.text()
-        self.login_error.setText(self.is_set_label(login))
-        self.login_error.adjustSize()
 
-        self.password_error.setText(self.is_set_label(password))
-        self.password_error.adjustSize()
-
-
+        if self.verification_sign_in(login, password):
+            self.user()
 
     def user(self):
         self.u = user_ui.Ui_Student_health_records()
@@ -69,15 +64,30 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
         dialog.show()
         dialog.exec()
 
-    def verification_sign_in(self):
-        login = self.lineEdit.text()
-        password = self.lineEdit_2.text()
-        print(login, password)
+    def verification_sign_in(self, login, password):
 
-    def verification_sign_up(self):
-        pass
+        self.login_error.setText(" ")
+        self.password_error.setText(" ")
+
+        if self.is_set_label(login):
+            self.login_error.setText("This label cannot be empty!")
+
+        if self.check_length(password):
+            self.password_error.setText("Length must be between 8 and 20 symbols")
+
+        if self.is_set_label(password):
+            self.password_error.setText("This label cannot be empty!")
+
+        self.login_error.adjustSize()
+        self.password_error.adjustSize()
+
 
     def is_set_label(self, label):
         if len(label) == 0:
-            return "This label cannot be empty!"
-        return " "
+            return True
+        return False
+
+    def check_length(self, label):
+        if len(label) < 8 or len(label) > 20:
+            return True
+        return False
