@@ -26,7 +26,7 @@
     <string>Medical card*</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_6">
+  <widget class="QLineEdit" name="lineEdit_medical_card">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -49,7 +49,7 @@
     <string>First name*</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="lineEdit_first_name">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -62,8 +62,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>9</x>
-     <y>165</y>
+     <x>10</x>
+     <y>120</y>
      <width>55</width>
      <height>16</height>
     </rect>
@@ -72,7 +72,7 @@
     <string>Last name*</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
+  <widget class="QLineEdit" name="lineEdit_last_name">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -95,7 +95,7 @@
     <string>Username*</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_3">
+  <widget class="QLineEdit" name="lineEdit_username">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -118,7 +118,7 @@
     <string>Password*</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_4">
+  <widget class="QLineEdit" name="lineEdit_password">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -141,7 +141,7 @@
     <string>Email*</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_5">
+  <widget class="QLineEdit" name="lineEdit_email">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -164,7 +164,7 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_7">
+  <widget class="QLineEdit" name="lineEdit_phone_number">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -178,7 +178,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>120</y>
+     <y>165</y>
      <width>81</width>
      <height>16</height>
     </rect>
@@ -187,7 +187,7 @@
     <string>Phone number*</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
+  <widget class="QLabel" name="medical_card_error">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -200,7 +200,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_9">
+  <widget class="QLabel" name="fist_name_error">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -213,7 +213,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_10">
+  <widget class="QLabel" name="last_name_error_2">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -226,7 +226,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_11">
+  <widget class="QLabel" name="phone_number_error">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -239,7 +239,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_12">
+  <widget class="QLabel" name="user_name_error">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -252,7 +252,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_13">
+  <widget class="QLabel" name="password_error">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -265,7 +265,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_14">
+  <widget class="QLabel" name="email_error">
    <property name="geometry">
     <rect>
      <x>120</x>
