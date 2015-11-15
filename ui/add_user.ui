@@ -192,12 +192,12 @@
     <rect>
      <x>120</x>
      <y>47</y>
-     <width>47</width>
+     <width>210</width>
      <height>13</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_9">
@@ -205,12 +205,12 @@
     <rect>
      <x>120</x>
      <y>91</y>
-     <width>47</width>
+     <width>210</width>
      <height>13</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_10">
@@ -218,12 +218,12 @@
     <rect>
      <x>120</x>
      <y>139</y>
-     <width>47</width>
+     <width>210</width>
      <height>13</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_11">
@@ -231,12 +231,12 @@
     <rect>
      <x>120</x>
      <y>185</y>
-     <width>47</width>
+     <width>210</width>
      <height>13</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_12">
@@ -244,12 +244,12 @@
     <rect>
      <x>120</x>
      <y>230</y>
-     <width>47</width>
+     <width>210</width>
      <height>13</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_13">
@@ -257,12 +257,12 @@
     <rect>
      <x>120</x>
      <y>273</y>
-     <width>47</width>
+     <width>210</width>
      <height>13</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_14">
@@ -270,12 +270,12 @@
     <rect>
      <x>120</x>
      <y>320</y>
-     <width>47</width>
+     <width>210</width>
      <height>13</height>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
  </widget>
