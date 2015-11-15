@@ -53,7 +53,7 @@ class Ui_Students_health_records_registration_ui(object):
         self.lineEdit_password.setGeometry(QtCore.QRect(121, 144, 211, 20))
         self.lineEdit_password.setObjectName("lineEdit_password")
         self.Password_error = QtWidgets.QLabel(Students_health_records_registration_ui)
-        self.Password_error.setGeometry(QtCore.QRect(121, 159, 211, 16))
+        self.Password_error.setGeometry(QtCore.QRect(121, 163, 211, 16))
         self.Password_error.setText("")
         self.Password_error.setObjectName("Password_error")
         self.label_5 = QtWidgets.QLabel(Students_health_records_registration_ui)
