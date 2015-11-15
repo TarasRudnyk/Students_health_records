@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>348</width>
-    <height>333</height>
+    <height>266</height>
    </rect>
   </property>
   <property name="acceptDrops">
@@ -36,9 +36,9 @@
   <widget class="QLineEdit" name="lineEdit_first_name">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>8</y>
-     <width>210</width>
+     <x>121</x>
+     <y>9</y>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -46,8 +46,8 @@
   <widget class="QLabel" name="First_name_error">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>34</y>
+     <x>121</x>
+     <y>35</y>
      <width>211</width>
      <height>16</height>
     </rect>
@@ -60,7 +60,7 @@
    <property name="geometry">
     <rect>
      <x>9</x>
-     <y>67</y>
+     <y>54</y>
      <width>49</width>
      <height>16</height>
     </rect>
@@ -72,9 +72,9 @@
   <widget class="QLineEdit" name="lineEdit_last_name">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>66</y>
-     <width>210</width>
+     <x>121</x>
+     <y>54</y>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -82,8 +82,8 @@
   <widget class="QLabel" name="Last_name_error">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>92</y>
+     <x>121</x>
+     <y>80</y>
      <width>211</width>
      <height>16</height>
     </rect>
@@ -96,7 +96,7 @@
    <property name="geometry">
     <rect>
      <x>9</x>
-     <y>126</y>
+     <y>99</y>
      <width>54</width>
      <height>16</height>
     </rect>
@@ -108,9 +108,9 @@
   <widget class="QLineEdit" name="lineEdit_username">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>125</y>
-     <width>210</width>
+     <x>121</x>
+     <y>99</y>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -118,8 +118,8 @@
   <widget class="QLabel" name="User_name_error">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>151</y>
+     <x>121</x>
+     <y>125</y>
      <width>211</width>
      <height>16</height>
     </rect>
@@ -132,7 +132,7 @@
    <property name="geometry">
     <rect>
      <x>9</x>
-     <y>184</y>
+     <y>144</y>
      <width>52</width>
      <height>16</height>
     </rect>
@@ -144,9 +144,9 @@
   <widget class="QLineEdit" name="lineEdit_password">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>183</y>
-     <width>210</width>
+     <x>121</x>
+     <y>144</y>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -154,8 +154,8 @@
   <widget class="QLabel" name="Password_error">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>209</y>
+     <x>121</x>
+     <y>170</y>
      <width>211</width>
      <height>16</height>
     </rect>
@@ -168,7 +168,7 @@
    <property name="geometry">
     <rect>
      <x>9</x>
-     <y>243</y>
+     <y>189</y>
      <width>30</width>
      <height>16</height>
     </rect>
@@ -180,9 +180,9 @@
   <widget class="QLineEdit" name="lineEdit_Email">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>242</y>
-     <width>210</width>
+     <x>121</x>
+     <y>189</y>
+     <width>211</width>
      <height>20</height>
     </rect>
    </property>
@@ -190,9 +190,9 @@
   <widget class="QLabel" name="Emai_error">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>268</y>
-     <width>16</width>
+     <x>121</x>
+     <y>215</y>
+     <width>211</width>
      <height>16</height>
     </rect>
    </property>
@@ -203,8 +203,8 @@
   <widget class="QPushButton" name="sign_up_button">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>300</y>
+     <x>121</x>
+     <y>234</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -216,8 +216,8 @@
   <widget class="QPushButton" name="sign_in_button">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>300</y>
+     <x>233</x>
+     <y>234</y>
      <width>75</width>
      <height>23</height>
     </rect>
