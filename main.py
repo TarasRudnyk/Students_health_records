@@ -23,61 +23,19 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
         self.password_error = QtWidgets.QLabel(self)
         self.password_error.move(135, 90)
 
-        self.sign_up_button.clicked.connect(self.sign_up)
-        self.log_in_button.clicked.connect(self.sign_in)
+        self.sign_up_button.clicked.connect(self.sign_up_form)
+        self.log_in_button.clicked.connect(self.sign_in_button_clicked)
         self.show_pass.clicked.connect(self.show_hide_password)
 
-    def sign_in(self):
-        login = self.lineEdit.text()
-        password = self.lineEdit_2.text()
-        self.login_error.setText(" ")
-        self.password_error.setText(" ")
-
-        if self.verification_sign_in(login, password):
-            self.close()
-            self.user()
-            self.show()
-
-    def verification_sign_in(self, login, password):
-        success = True
-
-        if self.is_set_label(login):
-            self.login_error.setText("This label cannot be empty!")
-            success = False
-
-        if self.is_set_label(password):
-            self.password_error.setText("This label cannot be empty!")
-            success = False
-
-        self.login_error.adjustSize()
-        self.password_error.adjustSize()
-
-        return success
-
-    def is_set_label(self, label):
-        if len(label) == 0:
-            return True
-        return False
-
-    def check_length(self, label):
-        if len(label) < 5 or len(label) > 20:
-            return True
-        return False
-
-    def show_hide_password(self):
-        if self.lineEdit_2.echoMode() == 0:
-            self.lineEdit_2.setEchoMode(2)
-        else:
-            self.lineEdit_2.setEchoMode(0)
-
-    def user(self):
+#*********************************************** Forms functions ******************************************************#
+    def user_form(self):
         self.u = user_ui.Ui_Student_health_records()
         self.window = QtWidgets.QMainWindow()
         self.u.setupUi(self.window)
         self.window.show()
 
 
-    def sign_up(self):
+    def sign_up_form(self):
         self.u = registration_ui.Ui_Students_health_records_registration_ui()
         self.dialog = QtWidgets.QDialog()
         self.u.setupUi(self.dialog)
@@ -87,6 +45,32 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
         self.dialog.show()
         self.dialog.exec()
         self.show()
+
+    def admin(self):
+        self.admin = admin_ui.Ui_Student_health_records()
+        dialog = QtWidgets.QDialog()
+        self.admin.setupUi(dialog)
+        dialog.show()
+        dialog.exec()
+
+    def add_user(self):
+        self.new_user = add_user_ui.Ui_Form()
+        dialog = QtWidgets.QDialog()
+        self.new_user.setupUi(dialog)
+        dialog.show()
+        dialog.exec()
+
+#****************************************** Button-clicked functions **************************************************#
+    def sign_in_button_clicked(self):
+        login = self.lineEdit.text()
+        password = self.lineEdit_2.text()
+        self.login_error.setText(" ")
+        self.password_error.setText(" ")
+
+        if self.verification_sign_in(login, password):
+            self.close()
+            self.user_form()
+            self.show()
 
     def confirm_button_clicked(self):
         first_name = self.u.lineEdit_first_name.text()
@@ -103,6 +87,14 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
 
         if self.verification_sign_up(first_name, last_name, login, password, email):
             self.register_user()
+
+        def back_button_clicked(self):
+            pass
+
+    def back_button_clicked(self):
+        pass
+
+#******************************************** Verification functions **************************************************@
 
     def verification_sign_up(self, first_name, last_name, login, password, email):
         success = True
@@ -147,6 +139,23 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
 
         return success
 
+    def verification_sign_in(self, login, password):
+        success = True
+
+        if self.is_set_label(login):
+            self.login_error.setText("This label cannot be empty!")
+            success = False
+
+        if self.is_set_label(password):
+            self.password_error.setText("This label cannot be empty!")
+            success = False
+
+        self.login_error.adjustSize()
+        self.password_error.adjustSize()
+
+        return success
+
+#********************************************* Additional functions ***************************************************#
     def check_for_characters(self, label):
         if re.match("^[A-Za-z0-9@_-]*$", label):
             return True
@@ -157,27 +166,23 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
             return True
         return False
 
-    def back_button_clicked(self):
-        pass
+    def is_set_label(self, label):
+        if len(label) == 0:
+            return True
+        return False
 
+    def check_length(self, label):
+        if len(label) < 5 or len(label) > 20:
+            return True
+        return False
 
-    def admin(self):
-        self.admin = admin_ui.Ui_Student_health_records()
-        dialog = QtWidgets.QDialog()
-        self.admin.setupUi(dialog)
-        dialog.show()
-        dialog.exec()
-
-    def add_user(self):
-        self.new_user = add_user_ui.Ui_Form()
-        dialog = QtWidgets.QDialog()
-        self.new_user.setupUi(dialog)
-        dialog.show()
-        dialog.exec()
+    def show_hide_password(self):
+        if self.lineEdit_2.echoMode() == 0:
+            self.lineEdit_2.setEchoMode(2)
+        else:
+            self.lineEdit_2.setEchoMode(0)
 
     def register_user(self):
         QMessageBox.information(self, 'Success', "You have registered successfully")
         self.dialog.close()
         self.show()
-
-
