@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'admin3.ui'
+# Form implementation generated from reading ui file 'admin_edit_users.ui'
 #
 # Created by: PyQt5 UI code generator 5.5
 #
@@ -48,6 +48,7 @@ class Ui_Student_health_records(object):
         self.lineEdit_name.setEnabled(True)
         self.lineEdit_name.setGeometry(QtCore.QRect(51, 26, 210, 20))
         self.lineEdit_name.setInputMask("")
+        self.lineEdit_name.setText("")
         self.lineEdit_name.setFrame(True)
         self.lineEdit_name.setDragEnabled(False)
         self.lineEdit_name.setPlaceholderText("")
@@ -55,18 +56,22 @@ class Ui_Student_health_records(object):
         self.lineEdit_name.setObjectName("lineEdit_name")
         self.lineEdit_card_number = QtWidgets.QLineEdit(Student_health_records)
         self.lineEdit_card_number.setGeometry(QtCore.QRect(51, 77, 210, 20))
+        self.lineEdit_card_number.setText("")
         self.lineEdit_card_number.setClearButtonEnabled(True)
         self.lineEdit_card_number.setObjectName("lineEdit_card_number")
         self.lineEdit_group = QtWidgets.QLineEdit(Student_health_records)
         self.lineEdit_group.setGeometry(QtCore.QRect(51, 128, 210, 20))
+        self.lineEdit_group.setText("")
         self.lineEdit_group.setClearButtonEnabled(True)
         self.lineEdit_group.setObjectName("lineEdit_group")
         self.lineEdit_email = QtWidgets.QLineEdit(Student_health_records)
         self.lineEdit_email.setGeometry(QtCore.QRect(51, 179, 210, 20))
+        self.lineEdit_email.setText("")
         self.lineEdit_email.setClearButtonEnabled(True)
         self.lineEdit_email.setObjectName("lineEdit_email")
         self.lineEdit_phone_number = QtWidgets.QLineEdit(Student_health_records)
         self.lineEdit_phone_number.setGeometry(QtCore.QRect(51, 230, 210, 20))
+        self.lineEdit_phone_number.setText("")
         self.lineEdit_phone_number.setClearButtonEnabled(True)
         self.lineEdit_phone_number.setObjectName("lineEdit_phone_number")
 
@@ -75,13 +80,8 @@ class Ui_Student_health_records(object):
 
     def retranslateUi(self, Student_health_records):
         _translate = QtCore.QCoreApplication.translate
-        Student_health_records.setWindowTitle(_translate("Student_health_records", "Form"))
+        Student_health_records.setWindowTitle(_translate("Student_health_records", "Student_health_records"))
         self.pushButton.setText(_translate("Student_health_records", "Save"))
         self.label.setText(_translate("Student_health_records", "Diagnoses:"))
         self.pushButton_2.setText(_translate("Student_health_records", "Add new"))
-        self.lineEdit_name.setText(_translate("Student_health_records", "Name"))
-        self.lineEdit_card_number.setText(_translate("Student_health_records", "Card number"))
-        self.lineEdit_group.setText(_translate("Student_health_records", "Group"))
-        self.lineEdit_email.setText(_translate("Student_health_records", "Email"))
-        self.lineEdit_phone_number.setText(_translate("Student_health_records", "Phone number"))
 
