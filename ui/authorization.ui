@@ -71,25 +71,12 @@
     <rect>
      <x>132</x>
      <y>112</y>
-     <width>75</width>
+     <width>201</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Log in</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="sign_up_button">
-   <property name="geometry">
-    <rect>
-     <x>256</x>
-     <y>112</y>
-     <width>75</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Sign up</string>
    </property>
   </widget>
   <widget class="QToolButton" name="show_pass">
@@ -105,13 +92,11 @@
     <string/>
    </property>
    <property name="icon">
-    <iconset resource="../../MostWanted/khong/khong/eye.qrc">
+    <iconset>
      <normaloff>:/icon/eye.png</normaloff>:/icon/eye.png</iconset>
    </property>
   </widget>
  </widget>
- <resources>
-  <include location="../../MostWanted/khong/khong/eye.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

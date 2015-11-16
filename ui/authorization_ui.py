@@ -29,11 +29,8 @@ class Ui_Students_health_records_authorization(object):
         self.lineEdit_2.setGeometry(QtCore.QRect(132, 69, 201, 20))
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.log_in_button = QtWidgets.QPushButton(Students_health_records_authorization)
-        self.log_in_button.setGeometry(QtCore.QRect(132, 112, 75, 23))
+        self.log_in_button.setGeometry(QtCore.QRect(132, 112, 201, 23))
         self.log_in_button.setObjectName("log_in_button")
-        self.sign_up_button = QtWidgets.QPushButton(Students_health_records_authorization)
-        self.sign_up_button.setGeometry(QtCore.QRect(256, 112, 75, 23))
-        self.sign_up_button.setObjectName("sign_up_button")
         self.show_pass = QtWidgets.QToolButton(Students_health_records_authorization)
         self.show_pass.setGeometry(QtCore.QRect(315, 69, 20, 20))
         self.show_pass.setText("")
@@ -51,6 +48,4 @@ class Ui_Students_health_records_authorization(object):
         self.label.setText(_translate("Students_health_records_authorization", "Username"))
         self.label_2.setText(_translate("Students_health_records_authorization", "Password"))
         self.log_in_button.setText(_translate("Students_health_records_authorization", "Log in"))
-        self.sign_up_button.setText(_translate("Students_health_records_authorization", "Sign up"))
-
 
