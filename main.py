@@ -72,10 +72,10 @@ class Student_health_records_app(QtWidgets.QMainWindow, authorization_ui.Ui_Stud
 
     def user(self):
         self.u = user_ui.Ui_Student_health_records()
-        dialog = QtWidgets.QDialog()
-        self.u.setupUi(dialog)
-        dialog.show()
-        dialog.exec()
+        self.window = QtWidgets.QMainWindow()
+        self.u.setupUi(self.window)
+        self.window.show()
+
 
     def sign_up(self):
         self.u = registration_ui.Ui_Students_health_records_registration_ui()
