@@ -20,12 +20,12 @@ def show_window():
     authorization_window =QWidget()
     ui = authorization_ui.Ui_Students_health_records_authorization()
     ui.setupUi(authorization_window)
-    ui.sign_up_button.clicked.connect(sign_up_button_clicked)
+    ui.sign_up_button.clicked.connect(sign_up_form)
     authorization_window.show()
     sys.exit(app.exec_())
 
 
-def sign_up_button_clicked():
+def sign_up_form():
     #registration.show_window()
     print("test")
 '''

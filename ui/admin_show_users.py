@@ -8,7 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-class Ui_Student_health_records(object):
+class Ui_Student_health_records(QtWidgets.QMainWindow):
     def setupUi(self, Student_health_records):
         Student_health_records.setObjectName("Student_health_records")
         Student_health_records.resize(770, 497)
