@@ -1,101 +1,181 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Students_health_records_authorization</class>
- <widget class="QWidget" name="Students_health_records_authorization">
+ <class>AuthorizationWindow</class>
+ <widget class="QMainWindow" name="AuthorizationWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>382</width>
+    <width>355</width>
     <height>161</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>355</width>
+    <height>161</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>355</width>
+    <height>161</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>Students_health_records_authorization</string>
+   <string>Student health records</string>
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../Students_health_records/ui/icon.jpg</normaloff>../Students_health_records/ui/icon.jpg</iconset>
+    <normaloff>icon.jpg</normaloff>icon.jpg</iconset>
   </property>
-  <property name="accessibleName">
-   <string/>
-  </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>26</y>
-     <width>48</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Username</string>
-   </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="username_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>117</x>
+      <y>24</y>
+      <width>200</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>201</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="maxLength">
+     <number>24</number>
+    </property>
+    <property name="placeholderText">
+     <string>username</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="password_label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>67</y>
+      <width>46</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Password</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="password_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>117</x>
+      <y>67</y>
+      <width>201</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>201</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="maxLength">
+     <number>26</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
+    <property name="placeholderText">
+     <string>password</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="username_label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>24</y>
+      <width>48</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Username</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="log_in_button">
+    <property name="geometry">
+     <rect>
+      <x>117</x>
+      <y>110</y>
+      <width>201</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Log in</string>
+    </property>
+   </widget>
+   <widget class="QToolButton" name="show_pass_button">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>67</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>eye.png</normaloff>eye.png</iconset>
+    </property>
+   </widget>
+   <widget class="QLabel" name="username_error_label">
+    <property name="geometry">
+     <rect>
+      <x>117</x>
+      <y>43</y>
+      <width>400</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhNone</set>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="password_error_label">
+    <property name="geometry">
+     <rect>
+      <x>117</x>
+      <y>86</y>
+      <width>400</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>132</x>
-     <y>26</y>
-     <width>201</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>9</x>
-     <y>69</y>
-     <width>46</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Password</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_2">
-   <property name="geometry">
-    <rect>
-     <x>132</x>
-     <y>69</y>
-     <width>201</width>
-     <height>20</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="log_in_button">
-   <property name="geometry">
-    <rect>
-     <x>132</x>
-     <y>112</y>
-     <width>201</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Log in</string>
-   </property>
-  </widget>
-  <widget class="QToolButton" name="show_pass">
-   <property name="geometry">
-    <rect>
-     <x>315</x>
-     <y>69</y>
-     <width>20</width>
-     <height>20</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>:/icon/eye.png</normaloff>:/icon/eye.png</iconset>
-   </property>
-  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources/>
  <connections/>

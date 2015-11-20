@@ -26,9 +26,12 @@ class Student_health_records_app(QtWidgets.QMainWindow, user_ui.Ui_Student_healt
         #self.windows()
 
     def show_add_dialog(self):
+        self.setupUi(admin_edit_users)
+        """
         u = authorization_ui.Ui_Students_health_records_authorization()
         dialog = QtWidgets.QDialog()
         u.setupUi(dialog)
+        """
 
         #dialog.setFixedSize(dialog.size())
         #dialog.show()

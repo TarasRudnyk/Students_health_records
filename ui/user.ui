@@ -6,17 +6,21 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>704</width>
+    <width>710</width>
     <height>637</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Student health records</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icon.jpg</normaloff>icon.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QFormLayout" name="formLayout">
     <item row="0" column="0">
-     <widget class="QTableWidget" name="tableWidget">
+     <widget class="QTableWidget" name="user_info_tableWidget">
       <property name="enabled">
        <bool>true</bool>
       </property>
@@ -69,6 +73,9 @@
        <enum>Qt::IgnoreAction</enum>
       </property>
       <property name="showGrid">
+       <bool>true</bool>
+      </property>
+      <property name="sortingEnabled">
        <bool>true</bool>
       </property>
       <property name="cornerButtonEnabled">
@@ -209,7 +216,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>704</width>
+     <width>710</width>
      <height>21</height>
     </rect>
    </property>
@@ -217,8 +224,15 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actionOpen"/>
+    <addaction name="actionSave"/>
+    <addaction name="actionSave_as"/>
+    <addaction name="actionLog_out"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="title">
      <string>Help</string>
     </property>
@@ -233,6 +247,35 @@
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionOpen">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_as">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Save as...</string>
+   </property>
+  </action>
+  <action name="actionLog_out">
+   <property name="text">
+    <string>Log out</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
