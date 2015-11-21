@@ -10,6 +10,18 @@
     <height>483</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>704</width>
+    <height>483</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>704</width>
+    <height>483</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Student health records</string>
   </property>

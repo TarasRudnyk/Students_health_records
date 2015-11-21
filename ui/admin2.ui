@@ -296,11 +296,17 @@
    </property>
   </action>
   <action name="Curent_widget_help_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Curent widget help</string>
    </property>
   </action>
   <action name="Student_health_records_help_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Student health records help</string>
    </property>

@@ -12,6 +12,8 @@ class Ui_Student_health_records(object):
     def setupUi(self, Student_health_records):
         Student_health_records.setObjectName("Student_health_records")
         Student_health_records.resize(704, 483)
+        Student_health_records.setMinimumSize(QtCore.QSize(704, 483))
+        Student_health_records.setMaximumSize(QtCore.QSize(704, 483))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("views/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Student_health_records.setWindowIcon(icon)

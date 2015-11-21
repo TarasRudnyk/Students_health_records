@@ -278,6 +278,9 @@
    </property>
   </action>
   <action name="Help_Student_health_records_action">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Help Student health records</string>
    </property>
