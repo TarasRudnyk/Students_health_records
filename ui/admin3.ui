@@ -72,7 +72,7 @@
    <property name="geometry">
     <rect>
      <x>340</x>
-     <y>80</y>
+     <y>101</y>
      <width>431</width>
      <height>61</height>
     </rect>
@@ -357,6 +357,19 @@
    </property>
    <property name="text">
     <string>Confirm</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="diagnose_1_label">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>80</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Diagnose №1:</string>
    </property>
   </widget>
  </widget>

@@ -15,7 +15,7 @@ class Ui_Student_health_records(object):
         Student_health_records.setMinimumSize(QtCore.QSize(800, 483))
         Student_health_records.setMaximumSize(QtCore.QSize(800, 483))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("views/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Student_health_records.setWindowIcon(icon)
         self.save_button = QtWidgets.QPushButton(Student_health_records)
         self.save_button.setGeometry(QtCore.QRect(640, 20, 130, 23))
@@ -27,7 +27,7 @@ class Ui_Student_health_records(object):
         self.add_new_button.setGeometry(QtCore.QRect(490, 20, 130, 23))
         self.add_new_button.setObjectName("add_new_button")
         self.diagnose_textEdit = QtWidgets.QTextEdit(Student_health_records)
-        self.diagnose_textEdit.setGeometry(QtCore.QRect(340, 80, 431, 61))
+        self.diagnose_textEdit.setGeometry(QtCore.QRect(340, 101, 431, 61))
         self.diagnose_textEdit.setObjectName("diagnose_textEdit")
         self.name_error = QtWidgets.QLabel(Student_health_records)
         self.name_error.setGeometry(QtCore.QRect(29, 86, 211, 16))
@@ -97,6 +97,9 @@ class Ui_Student_health_records(object):
         self.confirm_pushButton = QtWidgets.QPushButton(Student_health_records)
         self.confirm_pushButton.setGeometry(QtCore.QRect(30, 310, 211, 23))
         self.confirm_pushButton.setObjectName("confirm_pushButton")
+        self.diagnose_1_label = QtWidgets.QLabel(Student_health_records)
+        self.diagnose_1_label.setGeometry(QtCore.QRect(340, 80, 71, 16))
+        self.diagnose_1_label.setObjectName("diagnose_1_label")
 
         self.retranslateUi(Student_health_records)
         QtCore.QMetaObject.connectSlotsByName(Student_health_records)
@@ -127,4 +130,5 @@ class Ui_Student_health_records(object):
         self.phone_number_label.setText(_translate("Student_health_records", "Phone number"))
         self.back_to_info_view_pushButton.setText(_translate("Student_health_records", "Back to information view"))
         self.confirm_pushButton.setText(_translate("Student_health_records", "Confirm"))
+        self.diagnose_1_label.setText(_translate("Student_health_records", "Diagnose №1:"))
 
