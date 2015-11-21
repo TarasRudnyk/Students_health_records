@@ -22,6 +22,91 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_3">
+    <item row="0" column="0">
+     <widget class="QComboBox" name="Card_number_comboBox">
+      <property name="maximumSize">
+       <size>
+        <width>238</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <strikeout>false</strikeout>
+       </font>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+      <property name="currentText">
+       <string>                           Card number</string>
+      </property>
+      <property name="minimumContentsLength">
+       <number>0</number>
+      </property>
+      <item>
+       <property name="text">
+        <string notr="true">                           Card number</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QComboBox" name="Group_ComboBox">
+      <property name="maximumSize">
+       <size>
+        <width>230</width>
+        <height>20</height>
+       </size>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+      <property name="currentText">
+       <string>                              Group</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>                              Group</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="add_user_pushButton">
+      <property name="text">
+       <string>Add new user</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="delete_selected_pushButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Delete selected users</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="2">
+     <widget class="QComboBox" name="Full_name_comboBox">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="editable">
+       <bool>true</bool>
+      </property>
+      <property name="currentText">
+       <string>                           Full name</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>                           Full name</string>
+       </property>
+      </item>
+     </widget>
+    </item>
     <item row="2" column="0" colspan="3">
      <widget class="QTableWidget" name="user_info_tableWidget">
       <property name="minimumSize">
@@ -137,88 +222,6 @@
         <string/>
        </property>
       </column>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QComboBox" name="Group_ComboBox">
-      <property name="maximumSize">
-       <size>
-        <width>230</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="editable">
-       <bool>true</bool>
-      </property>
-      <property name="currentText">
-       <string>                              Group</string>
-      </property>
-      <item>
-       <property name="text">
-        <string>                              Group</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QComboBox" name="Card_number_comboBox">
-      <property name="maximumSize">
-       <size>
-        <width>238</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="font">
-       <font>
-        <strikeout>false</strikeout>
-       </font>
-      </property>
-      <property name="editable">
-       <bool>true</bool>
-      </property>
-      <property name="currentText">
-       <string>                           Card number</string>
-      </property>
-      <property name="minimumContentsLength">
-       <number>0</number>
-      </property>
-      <item>
-       <property name="text">
-        <string notr="true">                           Card number</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="0" column="2">
-     <widget class="QComboBox" name="Full_name_comboBox">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="editable">
-       <bool>true</bool>
-      </property>
-      <property name="currentText">
-       <string>Full name </string>
-      </property>
-      <item>
-       <property name="text">
-        <string>                           Full name</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QPushButton" name="add_user_pushButton">
-      <property name="text">
-       <string>Add new user</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QPushButton" name="delete_selected_pushButton">
-      <property name="text">
-       <string>Delete selected users</string>
-      </property>
      </widget>
     </item>
    </layout>

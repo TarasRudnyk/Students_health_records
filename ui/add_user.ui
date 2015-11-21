@@ -55,7 +55,7 @@
     <string/>
    </property>
    <property name="maxLength">
-    <number>28</number>
+    <number>8</number>
    </property>
    <property name="placeholderText">
     <string>card number</string>
@@ -100,7 +100,7 @@
    <property name="geometry">
     <rect>
      <x>19</x>
-     <y>165</y>
+     <y>116</y>
      <width>55</width>
      <height>16</height>
     </rect>
@@ -113,7 +113,7 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>165</y>
+     <y>116</y>
      <width>210</width>
      <height>20</height>
     </rect>
@@ -185,6 +185,9 @@
    <property name="maxLength">
     <number>28</number>
    </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
+   </property>
    <property name="placeholderText">
     <string>password</string>
    </property>
@@ -241,13 +244,16 @@
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>120</y>
+     <y>159</y>
      <width>210</width>
      <height>20</height>
     </rect>
    </property>
+   <property name="inputMask">
+    <string>+38\0(00)-000-00-00</string>
+   </property>
    <property name="maxLength">
-    <number>28</number>
+    <number>18</number>
    </property>
    <property name="placeholderText">
     <string>phone number</string>
@@ -260,7 +266,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>120</y>
+     <y>159</y>
      <width>81</width>
      <height>16</height>
     </rect>
@@ -272,7 +278,7 @@
   <widget class="QLabel" name="card_number_error">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>131</x>
      <y>47</y>
      <width>210</width>
      <height>13</height>
@@ -285,7 +291,7 @@
   <widget class="QLabel" name="first_name_error">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>131</x>
      <y>91</y>
      <width>210</width>
      <height>13</height>
@@ -298,8 +304,8 @@
   <widget class="QLabel" name="phone_number_error_2">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>139</y>
+     <x>131</x>
+     <y>180</y>
      <width>210</width>
      <height>13</height>
     </rect>
@@ -311,8 +317,8 @@
   <widget class="QLabel" name="last_name_error">
    <property name="geometry">
     <rect>
-     <x>130</x>
-     <y>185</y>
+     <x>131</x>
+     <y>135</y>
      <width>210</width>
      <height>13</height>
     </rect>
@@ -324,7 +330,7 @@
   <widget class="QLabel" name="username_error">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>131</x>
      <y>230</y>
      <width>210</width>
      <height>13</height>
@@ -337,7 +343,7 @@
   <widget class="QLabel" name="password_error">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>131</x>
      <y>273</y>
      <width>210</width>
      <height>13</height>
@@ -350,7 +356,7 @@
   <widget class="QLabel" name="email_error">
    <property name="geometry">
     <rect>
-     <x>130</x>
+     <x>131</x>
      <y>320</y>
      <width>210</width>
      <height>13</height>
@@ -360,6 +366,28 @@
     <string/>
    </property>
   </widget>
+  <zorder>last_name_lineEdit</zorder>
+  <zorder>card_number_label</zorder>
+  <zorder>card_number_lineEdit</zorder>
+  <zorder>first_name_label</zorder>
+  <zorder>first_name_lineEdit</zorder>
+  <zorder>last_name_label</zorder>
+  <zorder>username_label</zorder>
+  <zorder>username_lineEdit</zorder>
+  <zorder>password_label</zorder>
+  <zorder>password_lineEdit</zorder>
+  <zorder>email_label</zorder>
+  <zorder>email_lineEdit</zorder>
+  <zorder>ok_cancel_buttonBox</zorder>
+  <zorder>phone_number_error</zorder>
+  <zorder>phone_number_label</zorder>
+  <zorder>card_number_error</zorder>
+  <zorder>first_name_error</zorder>
+  <zorder>phone_number_error_2</zorder>
+  <zorder>last_name_error</zorder>
+  <zorder>username_error</zorder>
+  <zorder>password_error</zorder>
+  <zorder>email_error</zorder>
  </widget>
  <resources/>
  <connections/>
