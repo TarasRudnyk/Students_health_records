@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a418476b-6cc0-4c93-8519-cd9acddc9679" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/admin2.ui" afterPath="$PROJECT_DIR$/ui/admin2.ui" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin_show_user_info.py" afterPath="$PROJECT_DIR$/views/admin_show_user_info.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/add_user.ui" afterPath="$PROJECT_DIR$/ui/add_user.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/add_user_ui.py" afterPath="$PROJECT_DIR$/views/add_user_ui.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Students_health_records.iws" />
@@ -48,8 +48,8 @@
       <file leaf-file-name="authorization_ui.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/authorization_ui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9453552">
-              <caret line="63" column="66" selection-start-line="63" selection-start-column="66" selection-end-line="63" selection-end-column="66" />
+            <state vertical-scroll-proportion="0.57377046">
+              <caret line="55" column="77" selection-start-line="55" selection-start-column="77" selection-end-line="55" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -671,7 +671,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448067415842</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="New admin show users info.">
+      <created>1448068715641</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1448068715641</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -750,7 +756,8 @@
     <MESSAGE value="view files." />
     <MESSAGE value="new authorization and user forms." />
     <MESSAGE value="Admin show users info." />
-    <option name="LAST_COMMIT_MESSAGE" value="Admin show users info." />
+    <MESSAGE value="New admin show users info." />
+    <option name="LAST_COMMIT_MESSAGE" value="New admin show users info." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -957,8 +964,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/authorization_ui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9453552">
-          <caret line="63" column="66" selection-start-line="63" selection-start-column="66" selection-end-line="63" selection-end-column="66" />
+        <state vertical-scroll-proportion="0.57377046">
+          <caret line="55" column="77" selection-start-line="55" selection-start-column="77" selection-end-line="55" selection-end-column="77" />
           <folding />
         </state>
       </provider>

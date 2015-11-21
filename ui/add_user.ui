@@ -60,6 +60,9 @@
    <property name="placeholderText">
     <string>card number</string>
    </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="first_name_label">
    <property name="geometry">
@@ -88,6 +91,9 @@
    </property>
    <property name="placeholderText">
     <string>first name</string>
+   </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="last_name_label">
@@ -118,6 +124,9 @@
    <property name="placeholderText">
     <string>last name</string>
    </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="username_label">
    <property name="geometry">
@@ -146,6 +155,9 @@
    </property>
    <property name="placeholderText">
     <string>username</string>
+   </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="password_label">
@@ -176,6 +188,9 @@
    <property name="placeholderText">
     <string>password</string>
    </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="email_label">
    <property name="geometry">
@@ -205,6 +220,9 @@
    <property name="placeholderText">
     <string>email</string>
    </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QDialogButtonBox" name="ok_cancel_buttonBox">
    <property name="geometry">
@@ -233,6 +251,9 @@
    </property>
    <property name="placeholderText">
     <string>phone number</string>
+   </property>
+   <property name="clearButtonEnabled">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="phone_number_label">
