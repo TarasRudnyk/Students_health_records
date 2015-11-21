@@ -96,8 +96,11 @@ class Ui_Student_health_records(object):
         self.phone_number_label.setGeometry(QtCore.QRect(50, 250, 141, 16))
         self.phone_number_label.setObjectName("phone_number_label")
         self.back_to_info_view_pushButton = QtWidgets.QPushButton(Student_health_records)
-        self.back_to_info_view_pushButton.setGeometry(QtCore.QRect(50, 320, 211, 31))
+        self.back_to_info_view_pushButton.setGeometry(QtCore.QRect(50, 390, 211, 23))
         self.back_to_info_view_pushButton.setObjectName("back_to_info_view_pushButton")
+        self.confirm_pushButton = QtWidgets.QPushButton(Student_health_records)
+        self.confirm_pushButton.setGeometry(QtCore.QRect(50, 310, 211, 23))
+        self.confirm_pushButton.setObjectName("confirm_pushButton")
 
         self.retranslateUi(Student_health_records)
         QtCore.QMetaObject.connectSlotsByName(Student_health_records)
@@ -110,7 +113,7 @@ class Ui_Student_health_records(object):
         self.add_new_button.setText(_translate("Student_health_records", "Add new"))
         self.diagnose_textEdit.setPlaceholderText(_translate("Student_health_records", "please write diagnose here."))
         self.name_error.setText(_translate("Student_health_records", "<html><head/><body><p><br/></p></body></html>"))
-        self.full_name_lineEdit.setPlaceholderText(_translate("Student_health_records", "Rudnyk Taras Petrovich"))
+        self.full_name_lineEdit.setPlaceholderText(_translate("Student_health_records", "Rudnyk Taras "))
         self.card_number_lineEdit.setPlaceholderText(_translate("Student_health_records", "12345678"))
         self.group_lineEdit.setPlaceholderText(_translate("Student_health_records", "km23"))
         self.email_lineEdit.setPlaceholderText(_translate("Student_health_records", "tarasrudnyk@gmail.com"))
@@ -123,4 +126,5 @@ class Ui_Student_health_records(object):
         self.email_label.setText(_translate("Student_health_records", "Email"))
         self.phone_number_label.setText(_translate("Student_health_records", "Phone number"))
         self.back_to_info_view_pushButton.setText(_translate("Student_health_records", "Back to information view"))
+        self.confirm_pushButton.setText(_translate("Student_health_records", "Confirm"))
 
