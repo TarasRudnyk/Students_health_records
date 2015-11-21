@@ -33,7 +33,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>icon.jpg</normaloff>icon.jpg</iconset>
+    <normaloff>../views/icon.jpg</normaloff>../views/icon.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="username_lineEdit">
@@ -139,7 +139,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>eye.png</normaloff>eye.png</iconset>
+      <normaloff>../views/eye.png</normaloff>../views/eye.png</iconset>
     </property>
    </widget>
    <widget class="QLabel" name="username_error_label">

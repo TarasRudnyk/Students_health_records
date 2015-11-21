@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>710</width>
+    <width>704</width>
     <height>637</height>
    </rect>
   </property>
@@ -15,10 +15,10 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>icon.jpg</normaloff>icon.jpg</iconset>
+    <normaloff>../views/icon.jpg</normaloff>../views/icon.jpg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QFormLayout" name="formLayout">
+   <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QTableWidget" name="user_info_tableWidget">
       <property name="enabled">
@@ -87,14 +87,20 @@
       <property name="columnCount">
        <number>3</number>
       </property>
+      <attribute name="horizontalHeaderVisible">
+       <bool>true</bool>
+      </attribute>
       <attribute name="horizontalHeaderCascadingSectionResizes">
        <bool>true</bool>
       </attribute>
       <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>150</number>
+       <number>100</number>
+      </attribute>
+      <attribute name="horizontalHeaderHighlightSections">
+       <bool>true</bool>
       </attribute>
       <attribute name="horizontalHeaderMinimumSectionSize">
-       <number>42</number>
+       <number>50</number>
       </attribute>
       <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
        <bool>true</bool>
@@ -179,7 +185,7 @@
       </row>
       <column>
        <property name="text">
-        <string>Diagnose</string>
+        <string>Doctor</string>
        </property>
       </column>
       <column>
@@ -189,7 +195,7 @@
       </column>
       <column>
        <property name="text">
-        <string>Doctor</string>
+        <string>Diagnose</string>
        </property>
       </column>
       <item row="9" column="1">
@@ -216,7 +222,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>710</width>
+     <width>704</width>
      <height>21</height>
     </rect>
    </property>
