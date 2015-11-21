@@ -122,7 +122,7 @@
     <number>28</number>
    </property>
    <property name="placeholderText">
-    <string>last name</string>
+    <string>group</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -292,7 +292,7 @@
    <property name="geometry">
     <rect>
      <x>131</x>
-     <y>91</y>
+     <y>93</y>
      <width>210</width>
      <height>13</height>
     </rect>
@@ -318,7 +318,7 @@
    <property name="geometry">
     <rect>
      <x>131</x>
-     <y>135</y>
+     <y>137</y>
      <width>210</width>
      <height>13</height>
     </rect>
@@ -344,7 +344,7 @@
    <property name="geometry">
     <rect>
      <x>131</x>
-     <y>273</y>
+     <y>275</y>
      <width>210</width>
      <height>13</height>
     </rect>
