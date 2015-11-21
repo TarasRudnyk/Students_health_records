@@ -3,35 +3,130 @@ import re
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
-from ui import authorization_ui
-from ui import registration_ui
-from ui import add_user_ui
-from ui import admin_edit_users, admin_show_users
-from ui import user_ui
+from views import authorization_ui
+from views import add_user_ui
+from views import admin_edit_user_info
+from views import admin_show_user_info
+from views import user_ui
 
 
-class Student_health_records_app(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
+class Authorization(QtWidgets.QMainWindow, authorization_ui.Ui_AuthorizationWindow):
 
-    def __init__(self, parent=None):
-        super().__init__(parent)
+    def __init__(self):
+        super().__init__()
         self.setupUi(self)
-        self.setFixedSize(self.width(), self.height())
-        """
+        self.show_pass_button.clicked.connect(self.show_hide_password)
+
+    def show_hide_password(self):
+        if self.password_lineEdit.echoMode() == 0:
+            self.password_lineEdit.setEchoMode(2)
+        else:
+            self.password_lineEdit.setEchoMode(0)
+
+
+class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
+
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+
+class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
+
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)
+
+app = QtWidgets.QApplication(sys.argv)
+form = Authorization()
+
+
+def show_auth():
+    global form
+    form.close()
+    form = Authorization()
+    form.log_in_button.clicked.connect(auth_data_verification)
+
+    form.show()
+
+
+def show_admin():
+    global form
+    form.close()
+    form = Admin()
+    form.show()
+
+
+def show_user():
+    global form
+    form.close()
+    form = User()
+    form.show()
+
+
+def auth_data_verification():
+    global form
+    success = True
+
+    login = form.username_lineEdit.text()
+    password = form.password_lineEdit.text()
+
+    form.username_error_label.setText("")
+    form.password_error_label.setText("")
+
+    if len(login) == 0:
+        form.username_error_label.setText("This field cannot be empty!")
+        success = False
+
+    if len(password) == 0:
+        form.password_error_label.setText("This field cannot be empty!")
+        success = False
+
+    if success:
+        if login == "admin" and password == "admin":
+            show_admin()
+        elif login == "user1" and password == "login1":
+            show_user()
+        else:
+            QMessageBox.information(form, 'Failed', "Incorrect login or password!")
+            form.show()
+
+
+
+
+
+def check_for_characters(label):
+    if re.match("^[A-Za-z0-9@_-]*$", label):
+        return True
+    return False
+
+
+def check_email(email):
+    if re.match("^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$", email):
+        return True
+    return False
+
+
+show_auth()
+
+sys.exit(app.exec())
+
+"""
+
 
 
         self.log_in_button.clicked.connect(self.sign_in_button_clicked)
         self.show_pass.clicked.connect(self.show_hide_password)
-        """
-        self.show_add_dialog()
-        #self.windows()
+
+        self.user_form()
 
     def show_add_dialog(self):
         self.setupUi(admin_edit_users)
-        """
+
         u = authorization_ui.Ui_Students_health_records_authorization()
         dialog = QtWidgets.QDialog()
         u.setupUi(dialog)
-        """
+
 
         #dialog.setFixedSize(dialog.size())
         #dialog.show()
@@ -46,7 +141,7 @@ class Student_health_records_app(QtWidgets.QMainWindow, user_ui.Ui_Student_healt
                 admin_dialog.show()
                 admin_window.show()
 
-                print(dir(admin_window))
+                # print(dir(admin_window))
             elif username == 'user':
                 self.show()
 
@@ -64,7 +159,8 @@ class Student_health_records_app(QtWidgets.QMainWindow, user_ui.Ui_Student_healt
         self.u = user_ui.Ui_Student_health_records()
         self.window = QtWidgets.QMainWindow()
         self.u.setupUi(self.window)
-        self.window.show()
+        self.u.button = QtWidgets.QPushButton(self)
+        self.u.button.clicked.connect(self.admin_form)
 
     def add_user_form(self):
         self.u = add_user_ui.Ui_Student_health_records()
@@ -233,4 +329,4 @@ class Student_health_records_app(QtWidgets.QMainWindow, user_ui.Ui_Student_healt
         QMessageBox.information(self, 'Success', "You have registered successfully")
         self.show()
 
-
+        """
