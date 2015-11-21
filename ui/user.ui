@@ -235,21 +235,16 @@
     <addaction name="actionSave_as"/>
     <addaction name="actionLog_out"/>
    </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="enabled">
-     <bool>false</bool>
-    </property>
+   <widget class="QMenu" name="menuAbout">
     <property name="title">
      <string>Help</string>
     </property>
-   </widget>
-   <widget class="QMenu" name="menuAbout">
-    <property name="title">
-     <string>About</string>
-    </property>
+    <addaction name="separator"/>
+    <addaction name="Help_Student_health_records_action"/>
+    <addaction name="separator"/>
+    <addaction name="About_Student_health_records_action"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuHelp"/>
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
@@ -280,6 +275,16 @@
   <action name="actionLog_out">
    <property name="text">
     <string>Log out</string>
+   </property>
+  </action>
+  <action name="Help_Student_health_records_action">
+   <property name="text">
+    <string>Help Student health records</string>
+   </property>
+  </action>
+  <action name="About_Student_health_records_action">
+   <property name="text">
+    <string>About Student health records</string>
    </property>
   </action>
  </widget>

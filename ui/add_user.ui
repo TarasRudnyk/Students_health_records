@@ -186,7 +186,7 @@
     <number>28</number>
    </property>
    <property name="echoMode">
-    <enum>QLineEdit::Password</enum>
+    <enum>QLineEdit::Normal</enum>
    </property>
    <property name="placeholderText">
     <string>password</string>
@@ -205,7 +205,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Email*</string>
+    <string>Email</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="email_lineEdit">
@@ -240,7 +240,7 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="phone_number_error">
+  <widget class="QLineEdit" name="phone_number_lineEdit">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -272,7 +272,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Phone number*</string>
+    <string>Phone number</string>
    </property>
   </widget>
   <widget class="QLabel" name="card_number_error">
@@ -301,7 +301,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="phone_number_error_2">
+  <widget class="QLabel" name="phone_number_error">
    <property name="geometry">
     <rect>
      <x>131</x>
@@ -379,11 +379,11 @@
   <zorder>email_label</zorder>
   <zorder>email_lineEdit</zorder>
   <zorder>ok_cancel_buttonBox</zorder>
-  <zorder>phone_number_error</zorder>
+  <zorder>phone_number_lineEdit</zorder>
   <zorder>phone_number_label</zorder>
   <zorder>card_number_error</zorder>
   <zorder>first_name_error</zorder>
-  <zorder>phone_number_error_2</zorder>
+  <zorder>phone_number_error</zorder>
   <zorder>last_name_error</zorder>
   <zorder>username_error</zorder>
   <zorder>password_error</zorder>

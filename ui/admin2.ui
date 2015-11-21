@@ -226,6 +226,7 @@
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusbar"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -245,24 +246,21 @@
     <addaction name="separator"/>
     <addaction name="actionLog_out"/>
    </widget>
-   <widget class="QMenu" name="menuHelp">
-    <property name="enabled">
+   <widget class="QMenu" name="menuAbout">
+    <property name="tearOffEnabled">
      <bool>false</bool>
     </property>
     <property name="title">
      <string>Help</string>
     </property>
-   </widget>
-   <widget class="QMenu" name="menuAbout">
-    <property name="title">
-     <string>About</string>
-    </property>
+    <addaction name="Curent_widget_help_action"/>
+    <addaction name="Student_health_records_help_action"/>
+    <addaction name="separator"/>
+    <addaction name="About_Student_health_records_action"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuHelp"/>
    <addaction name="menuAbout"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
   <action name="actionOpen">
    <property name="enabled">
     <bool>false</bool>
@@ -295,6 +293,21 @@
   <action name="actionAdd_new_user">
    <property name="text">
     <string>Add new user</string>
+   </property>
+  </action>
+  <action name="Curent_widget_help_action">
+   <property name="text">
+    <string>Curent widget help</string>
+   </property>
+  </action>
+  <action name="Student_health_records_help_action">
+   <property name="text">
+    <string>Student health records help</string>
+   </property>
+  </action>
+  <action name="About_Student_health_records_action">
+   <property name="text">
+    <string>About Student health records</string>
    </property>
   </action>
  </widget>
