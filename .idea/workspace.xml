@@ -48,8 +48,8 @@
       <file leaf-file-name="authorization_ui.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/authorization_ui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71311474">
-              <caret line="58" column="71" selection-start-line="58" selection-start-column="71" selection-end-line="58" selection-end-column="71" />
+            <state vertical-scroll-proportion="0.9453552">
+              <caret line="63" column="66" selection-start-line="63" selection-start-column="66" selection-end-line="63" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -665,7 +665,13 @@
       <option name="project" value="LOCAL" />
       <updated>1448065389557</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Admin show users info.">
+      <created>1448067415842</created>
+      <option name="number" value="00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1448067415842</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -743,7 +749,8 @@
     <MESSAGE value="New ui view." />
     <MESSAGE value="view files." />
     <MESSAGE value="new authorization and user forms." />
-    <option name="LAST_COMMIT_MESSAGE" value="new authorization and user forms." />
+    <MESSAGE value="Admin show users info." />
+    <option name="LAST_COMMIT_MESSAGE" value="Admin show users info." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -950,8 +957,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/authorization_ui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71311474">
-          <caret line="58" column="71" selection-start-line="58" selection-start-column="71" selection-end-line="58" selection-end-column="71" />
+        <state vertical-scroll-proportion="0.9453552">
+          <caret line="63" column="66" selection-start-line="63" selection-start-column="66" selection-end-line="63" selection-end-column="66" />
           <folding />
         </state>
       </provider>
