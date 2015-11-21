@@ -13,7 +13,7 @@ class Ui_Student_health_records(object):
         Student_health_records.setObjectName("Student_health_records")
         Student_health_records.resize(704, 483)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("views/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Student_health_records.setWindowIcon(icon)
         self.save_button = QtWidgets.QPushButton(Student_health_records)
         self.save_button.setGeometry(QtCore.QRect(580, 20, 75, 23))

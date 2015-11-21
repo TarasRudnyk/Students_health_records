@@ -14,7 +14,7 @@ class Ui_AdminShowUsersMenu(object):
         AdminShowUsersMenu.setEnabled(True)
         AdminShowUsersMenu.resize(772, 526)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("views/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         AdminShowUsersMenu.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(AdminShowUsersMenu)
         self.centralwidget.setObjectName("centralwidget")

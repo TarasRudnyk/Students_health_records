@@ -13,7 +13,7 @@ class Ui_Student_health_records(object):
         Student_health_records.setObjectName("Student_health_records")
         Student_health_records.resize(704, 637)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../views/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("views/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Student_health_records.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(Student_health_records)
         self.centralwidget.setObjectName("centralwidget")
