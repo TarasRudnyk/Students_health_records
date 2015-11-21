@@ -36,6 +36,11 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.actionLog_out.triggered.connect(self.show1)
+
+
+    def show1(self):
+        show_auth()
 
 app = QtWidgets.QApplication(sys.argv)
 form = Authorization()
@@ -83,6 +88,8 @@ def auth_data_verification():
         success = False
 
     if success:
+        show_user()
+        """
         if login == "admin" and password == "admin":
             show_admin()
         elif login == "user1" and password == "login1":
@@ -90,6 +97,7 @@ def auth_data_verification():
         else:
             QMessageBox.information(form, 'Failed', "Incorrect login or password!")
             form.show()
+        """
 
 
 
