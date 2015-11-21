@@ -39,8 +39,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
         self.dialog = QtWidgets.QDialog()
         self.edit_user.setupUi(self.dialog)
-        #self.edit_user.ok_cancel_buttonBox.accepted.connect(self.add_user_data_verification)
-        #self.edit_user.ok_cancel_buttonBox.rejected.connect(self.close_widget)
+        self.edit_user.confirm_pushButton.clicked.connect(self.edit_user_data_verification)
         self.close()
         self.dialog.show()
         self.dialog.exec()
@@ -60,6 +59,46 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
     def close_widget(self):
         self.dialog.destroy()
         self.show()
+
+    def edit_user_data_verification(self):
+        success = True
+        full_name = self.edit_user.full_name_lineEdit.text()
+        card_number = self.edit_user.card_number_lineEdit.text()
+        group = self.edit_user.group_lineEdit.text()
+        email = self.edit_user.email_lineEdit.text()
+        phone_number = self.edit_user.phone_number_lineEdit.text()
+
+        self.edit_user.name_error.setText("")
+        self.edit_user.card_number_error.setText("")
+        self.edit_user.group_error.setText("")
+        self.edit_user.email_error.setText("")
+        self.edit_user.phone_number_error.setText("")
+
+        if check_for_characters(full_name):
+            self.edit_user.name_error.setText("You entered incorrect symbol(s)!")
+            success = False
+        if len(full_name) < 5:
+            self.edit_user.name_error.setText("Please enter more than 1 symbol!")
+            success = False
+        if len(full_name) == 0:
+            self.edit_user.name_error.setText("This field cannot be empty!")
+            success = False
+
+        if len(card_number) < 8:
+            self.edit_user.card_number_error.setText("Card number must have 8 symbols!")
+
+        if not re.match("^[a-zA-Z]{2}[0-9]{2}", group):
+            self.edit_user.group_error.setText("Incorrect group name!")
+            success = False
+        if len(group) == 0:
+            self.edit_user.group_error.setText("This field cannot be empty!")
+            success = False
+
+        if len(email) > 0 and not check_email(email):
+            self.edit_user.email_error.setText("Incorrect email address!")
+            success = False
+
+
 
     def add_user_data_verification(self):
         success = True
@@ -127,6 +166,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         if success:
             QMessageBox.information(self, 'Success', "User has been added!!")
             self.show()
+
 
 
 class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
@@ -212,7 +252,10 @@ def check_email(email):
 
 def about_information():
     global form
-    QMessageBox.information(form, 'Student health records', "There will be information about program")
+    QMessageBox.information(form, 'Student health records', "Version 1.0\n"
+                                                            "Student health records is a "
+                                                            "program which manage user health.\n"
+                                                            "Copyright \u00A9 2015 Rudnyk Taras")
     form.show()
 
 
