@@ -32,6 +32,19 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.setupUi(self)
         self.actionLog_out.triggered.connect(log_out)
         self.add_user_pushButton.clicked.connect(self.adding_user)
+        self.About_Student_health_records_action.triggered.connect(about_information)
+        self.user_info_tableWidget.cellPressed.connect(self.editing_user)
+
+    def editing_user(self):
+        self.edit_user = admin_edit_user_info.Ui_Student_health_records()
+        self.dialog = QtWidgets.QDialog()
+        self.edit_user.setupUi(self.dialog)
+        #self.edit_user.ok_cancel_buttonBox.accepted.connect(self.add_user_data_verification)
+        #self.edit_user.ok_cancel_buttonBox.rejected.connect(self.close_widget)
+        self.close()
+        self.dialog.show()
+        self.dialog.exec()
+        self.show()
 
     def adding_user(self):
         self.add_user = add_user_ui.Ui_addUserWindow()
@@ -122,6 +135,7 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
         super().__init__()
         self.setupUi(self)
         self.actionLog_out.triggered.connect(log_out)
+        self.About_Student_health_records_action.triggered.connect(about_information)
 
 app = QtWidgets.QApplication(sys.argv)
 form = Authorization()
@@ -168,6 +182,8 @@ def auth_data_verification():
         success = False
 
     if success:
+        show_admin()
+        """
         if login == "admin" and password == "admin":
             show_admin()
         elif login == "user" and password == "user":
@@ -175,6 +191,7 @@ def auth_data_verification():
         else:
             QMessageBox.information(form, 'Failed', "Incorrect login or password!")
             form.show()
+        """
 
 
 def log_out():
@@ -191,6 +208,13 @@ def check_email(email):
     if re.match("^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$", email):
         return True
     return False
+
+
+def about_information():
+    global form
+    QMessageBox.information(form, 'Student health records', "There will be information about program")
+    form.show()
+
 
 show_auth()
 sys.exit(app.exec())
