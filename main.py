@@ -33,7 +33,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.actionLog_out.triggered.connect(log_out)
         self.add_user_pushButton.clicked.connect(self.adding_user)
         self.About_Student_health_records_action.triggered.connect(about_information)
-        self.user_info_tableWidget.cellPressed.connect(self.editing_user)
+        self.user_info_tableWidget.cellDoubleClicked.connect(self.editing_user)
 
     def editing_user(self):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
