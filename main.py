@@ -120,12 +120,15 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.add_user.password_error.setText("")
         self.add_user.email_error.setText("")
 
+        if not card_number.isdigit():
+            self.add_user.card_number_error.setText("Please enter only digits!")
+            success = False
         if len(card_number) < 8:
             self.add_user.card_number_error.setText("Card number must have 8 symbols!")
             success = False
 
-        if not check_for_characters(full_name):
-            self.add_user.first_name_error.setText("You entered incorrect symbol(s)!")
+        if not full_name.isalpha():
+            self.add_user.full_name_error.setText("Please enter only alphabetic symbols!")
             success = False
         if len(full_name) < 5:
             self.add_user.full_name_error.setText("Please enter more than 4 symbols!")
