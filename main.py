@@ -105,7 +105,11 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
     def add_user_data_verification(self):
         success = True
         card_number = self.add_user.card_number_lineEdit.text()
-        full_name = self.add_user.full_name_lineEdit.text()
+        full_name = self.add_user.full_name_lineEdit.text().split(" ")
+        try:
+            full_name[1]
+        except Exception:
+            full_name.append("")
         group = self.add_user.group_lineEdit.text()
         phone_number = self.add_user.phone_number_lineEdit.text()
         user_name = self.add_user.username_lineEdit.text()
@@ -127,13 +131,16 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.add_user.card_number_error.setText("Card number must have 8 symbols!")
             success = False
 
-        if not full_name.isalpha():
+        if not full_name[0].isalpha() or not full_name[1].isalpha():
             self.add_user.full_name_error.setText("Please enter only alphabetic symbols!")
             success = False
-        if len(full_name) < 5:
+        if len(full_name[0]) + len(full_name[1]) < 4:
             self.add_user.full_name_error.setText("Please enter more than 4 symbols!")
             success = False
-        if len(full_name) == 0:
+        if len(full_name[1]) == 0:
+            self.add_user.full_name_error.setText("Please enter first and last name!")
+            success = False
+        if len(full_name[0]) == 0:
             self.add_user.full_name_error.setText("This field cannot be empty!")
             success = False
 
