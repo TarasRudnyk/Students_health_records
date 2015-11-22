@@ -32,9 +32,9 @@
   <widget class="QPushButton" name="save_button">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>570</x>
      <y>20</y>
-     <width>130</width>
+     <width>211</width>
      <height>23</height>
     </rect>
    </property>
@@ -45,14 +45,14 @@
   <widget class="QPushButton" name="add_new_button">
    <property name="geometry">
     <rect>
-     <x>490</x>
+     <x>340</x>
      <y>20</y>
-     <width>130</width>
+     <width>211</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
-    <string>Add new</string>
+    <string>Add new row</string>
    </property>
   </widget>
   <widget class="QLabel" name="name_error">
@@ -189,7 +189,7 @@
     <string>km23</string>
    </property>
    <property name="maxLength">
-    <number>6</number>
+    <number>4</number>
    </property>
    <property name="placeholderText">
     <string>km23</string>
@@ -310,9 +310,9 @@
   <widget class="QPushButton" name="back_to_info_view_pushButton">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>20</y>
-     <width>130</width>
+     <x>30</x>
+     <y>360</y>
+     <width>211</width>
      <height>23</height>
     </rect>
    </property>

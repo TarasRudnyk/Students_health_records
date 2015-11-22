@@ -26,7 +26,7 @@
    </size>
   </property>
   <property name="contextMenuPolicy">
-   <enum>Qt::NoContextMenu</enum>
+   <enum>Qt::DefaultContextMenu</enum>
   </property>
   <property name="windowTitle">
    <string>Student health records </string>
@@ -64,7 +64,7 @@
     <number>8</number>
    </property>
    <property name="placeholderText">
-    <string>card number</string>
+    <string>12345678</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -96,7 +96,7 @@
     <number>28</number>
    </property>
    <property name="placeholderText">
-    <string>first name</string>
+    <string>Taras Rudnyk</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -125,10 +125,10 @@
     </rect>
    </property>
    <property name="maxLength">
-    <number>28</number>
+    <number>4</number>
    </property>
    <property name="placeholderText">
-    <string>group</string>
+    <string>km23</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -160,7 +160,7 @@
     <number>28</number>
    </property>
    <property name="placeholderText">
-    <string>username</string>
+    <string>TarasRudnyk</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -188,6 +188,9 @@
      <height>20</height>
     </rect>
    </property>
+   <property name="text">
+    <string/>
+   </property>
    <property name="maxLength">
     <number>28</number>
    </property>
@@ -195,7 +198,7 @@
     <enum>QLineEdit::Normal</enum>
    </property>
    <property name="placeholderText">
-    <string>password</string>
+    <string>my_password</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
@@ -227,7 +230,7 @@
     <number>28</number>
    </property>
    <property name="placeholderText">
-    <string>email</string>
+    <string>TarasRudnyk@gmail.com</string>
    </property>
    <property name="clearButtonEnabled">
     <bool>true</bool>
