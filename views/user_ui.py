@@ -118,6 +118,7 @@ class Ui_Student_health_records(object):
         self.actionLog_out = QtWidgets.QAction(Student_health_records)
         self.actionLog_out.setObjectName("actionLog_out")
         self.Help_Student_health_records_action = QtWidgets.QAction(Student_health_records)
+        self.Help_Student_health_records_action.setEnabled(False)
         self.Help_Student_health_records_action.setObjectName("Help_Student_health_records_action")
         self.About_Student_health_records_action = QtWidgets.QAction(Student_health_records)
         self.About_Student_health_records_action.setObjectName("About_Student_health_records_action")
