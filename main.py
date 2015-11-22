@@ -43,6 +43,11 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.edit_user.setupUi(self.dialog)
         self.edit_user.confirm_pushButton.clicked.connect(self.edit_user_data_verification)
         self.edit_user.back_to_info_view_pushButton.clicked.connect(self.close_widget)
+        self.edit_user.card_number_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
+        self.edit_user.full_name_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
+        self.edit_user.group_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
+        self.edit_user.email_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
+        self.edit_user.phone_number_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
         self.close()
         self.dialog.show()
         self.dialog.exec()
@@ -65,7 +70,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
     def edit_user_data_verification(self):
         success = True
-        full_name = self.edit_user.full_name_lineEdit.text().split()
+        full_name = self.edit_user.full_name_lineEdit.text().split(" ")
         try:
             full_name[1]
         except Exception:
@@ -81,9 +86,12 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.edit_user.email_error.setText("")
         self.edit_user.phone_number_error.setText("")
 
-        if not full_name[0].isalpha() or not full_name[1].isalpha():
-            self.edit_user.name_error.setText("Please enter only alphabetic symbols!")
-            success = False
+        try:
+            if not full_name[0].isalpha() or not full_name[1].isalpha():
+                self.edit_user.name_error.setText("Please enter only alphabetic symbols!")
+                success = False
+        except:
+            pass
         if len(full_name[0]) + len(full_name[1]) < 4:
             self.edit_user.name_error.setText("Please enter more than 4 symbols!")
             success = False
@@ -94,6 +102,9 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.edit_user.name_error.setText("This field cannot be empty!")
             success = False
 
+        if not card_number.isdigit():
+            self.edit_user.card_number_error.setText("Please enter only digits!")
+            success = False
         if len(card_number) < 8:
             self.edit_user.card_number_error.setText("Card number must have 8 symbols!")
             success = False
