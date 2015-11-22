@@ -98,21 +98,22 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.edit_user.email_error.setText("Incorrect email address!")
             success = False
 
-
+        if success:
+            QMessageBox.information(self, 'Success', "User information has been updated!")
 
     def add_user_data_verification(self):
         success = True
         card_number = self.add_user.card_number_lineEdit.text()
-        first_name = self.add_user.first_name_lineEdit.text()
-        last_name = self.add_user.last_name_lineEdit.text()
+        full_name = self.add_user.full_name_lineEdit.text()
+        group = self.add_user.group_lineEdit.text()
         phone_number = self.add_user.phone_number_lineEdit.text()
         user_name = self.add_user.username_lineEdit.text()
         password = self.add_user.password_lineEdit.text()
         email = self.add_user.email_lineEdit.text()
 
         self.add_user.card_number_error.setText("")
-        self.add_user.first_name_error.setText("")
-        self.add_user.last_name_error.setText("")
+        self.add_user.full_name_error.setText("")
+        self.add_user.group_error.setText("")
         self.add_user.phone_number_error.setText("")
         self.add_user.username_error.setText("")
         self.add_user.password_error.setText("")
@@ -122,24 +123,21 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.add_user.card_number_error.setText("Card number must have 8 symbols!")
             success = False
 
-        if not check_for_characters(first_name):
+        if not check_for_characters(full_name):
             self.add_user.first_name_error.setText("You entered incorrect symbol(s)!")
             success = False
-        if len(first_name) < 2:
-            self.add_user.first_name_error.setText("Please enter more than 1 symbol!")
+        if len(full_name) < 5:
+            self.add_user.full_name_error.setText("Please enter more than 4 symbols!")
             success = False
-        if len(first_name) == 0:
-            self.add_user.first_name_error.setText("This field cannot be empty!")
+        if len(full_name) == 0:
+            self.add_user.full_name_error.setText("This field cannot be empty!")
             success = False
 
-        if not check_for_characters(last_name):
-            self.add_user.last_name_error.setText("You entered incorrect symbol(s)!")
+        if not re.match("^[a-zA-Z]{2}[0-9]{2}", group):
+            self.add_user.group_error.setText("Incorrect group name!")
             success = False
-        if len(last_name) < 2:
-            self.add_user.last_name_error.setText("Please enter more than 1 symbol!")
-            success = False
-        if len(last_name) == 0:
-            self.add_user.last_name_error.setText("This field cannot be empty!")
+        if len(group) == 0:
+            self.add_user.group_error.setText("This field cannot be empty!")
             success = False
 
         if not check_for_characters(user_name):
@@ -164,9 +162,8 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             success = False
 
         if success:
-            QMessageBox.information(self, 'Success', "User has been added!!")
+            QMessageBox.information(self, 'Success', "User has been added!")
             self.show()
-
 
 
 class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
@@ -222,8 +219,6 @@ def auth_data_verification():
         success = False
 
     if success:
-        show_admin()
-        """
         if login == "admin" and password == "admin":
             show_admin()
         elif login == "user" and password == "user":
@@ -231,7 +226,6 @@ def auth_data_verification():
         else:
             QMessageBox.information(form, 'Failed', "Incorrect login or password!")
             form.show()
-        """
 
 
 def log_out():
