@@ -48,7 +48,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
     def adding_user(self):
         self.add_user = add_user_ui.Ui_addUserWindow()
-        self.dialog = QtWidgets.QDialog()
+        self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.add_user.setupUi(self.dialog)
         self.add_user.ok_cancel_buttonBox.accepted.connect(self.add_user_data_verification)
         self.add_user.ok_cancel_buttonBox.rejected.connect(self.close_widget)
