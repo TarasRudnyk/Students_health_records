@@ -17,6 +17,8 @@ class Authorization(QtWidgets.QMainWindow, authorization_ui.Ui_AuthorizationWind
         super().__init__()
         self.setupUi(self)
         self.show_pass_button.clicked.connect(self.show_hide_password)
+        self.username_lineEdit.returnPressed.connect(self.log_in_button.click)
+        self.password_lineEdit.returnPressed.connect(self.log_in_button.click)
 
     def show_hide_password(self):
         if self.password_lineEdit.echoMode() == 0:
@@ -63,7 +65,11 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
     def edit_user_data_verification(self):
         success = True
-        full_name = self.edit_user.full_name_lineEdit.text()
+        full_name = self.edit_user.full_name_lineEdit.text().split()
+        try:
+            full_name[1]
+        except Exception:
+            full_name.append("")
         card_number = self.edit_user.card_number_lineEdit.text()
         group = self.edit_user.group_lineEdit.text()
         email = self.edit_user.email_lineEdit.text()
@@ -75,18 +81,22 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.edit_user.email_error.setText("")
         self.edit_user.phone_number_error.setText("")
 
-        if check_for_characters(full_name):
-            self.edit_user.name_error.setText("You entered incorrect symbol(s)!")
+        if not full_name[0].isalpha() or not full_name[1].isalpha():
+            self.edit_user.name_error.setText("Please enter only alphabetic symbols!")
             success = False
-        if len(full_name) < 5:
-            self.edit_user.name_error.setText("Please enter more than 1 symbol!")
+        if len(full_name[0]) + len(full_name[1]) < 4:
+            self.edit_user.name_error.setText("Please enter more than 4 symbols!")
             success = False
-        if len(full_name) == 0:
+        if len(full_name[1]) == 0:
+            self.edit_user.name_error.setText("Please enter first and last name!")
+            success = False
+        if len(full_name[0]) == 0:
             self.edit_user.name_error.setText("This field cannot be empty!")
             success = False
 
         if len(card_number) < 8:
             self.edit_user.card_number_error.setText("Card number must have 8 symbols!")
+            success = False
 
         if not re.match("^[a-zA-Z]{2}[0-9]{2}", group):
             self.edit_user.group_error.setText("Incorrect group name!")
