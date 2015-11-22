@@ -37,7 +37,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
     def editing_user(self):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
-        self.dialog = QtWidgets.QDialog()
+        self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.edit_user.setupUi(self.dialog)
         self.edit_user.confirm_pushButton.clicked.connect(self.edit_user_data_verification)
         self.edit_user.back_to_info_view_pushButton.clicked.connect(self.close_widget)

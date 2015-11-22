@@ -17,7 +17,7 @@ class Ui_addUserWindow(object):
         addUserWindow.setMaximumSize(QtCore.QSize(366, 385))
         addUserWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("views/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         addUserWindow.setWindowIcon(icon)
         self.card_number_label = QtWidgets.QLabel(addUserWindow)
         self.card_number_label.setGeometry(QtCore.QRect(19, 28, 71, 16))
