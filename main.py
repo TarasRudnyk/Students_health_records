@@ -93,7 +93,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         except:
             pass
         if len(full_name[0]) + len(full_name[1]) < 4:
-            self.edit_user.name_error.setText("Please enter more than 4 symbols!")
+            self.edit_user.name_error.setText("Please enter 5 or more symbols!")
             success = False
         if len(full_name[1]) == 0:
             self.edit_user.name_error.setText("Please enter first and last name!")
@@ -106,7 +106,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.edit_user.card_number_error.setText("Please enter only digits!")
             success = False
         if len(card_number) < 8:
-            self.edit_user.card_number_error.setText("Card number must have 8 symbols!")
+            self.edit_user.card_number_error.setText("Card number must have 8 digits!")
             success = False
 
         if not re.match("^[a-zA-Z]{2}[0-9]{2}", group):
@@ -149,14 +149,14 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.add_user.card_number_error.setText("Please enter only digits!")
             success = False
         if len(card_number) < 8:
-            self.add_user.card_number_error.setText("Card number must have 8 symbols!")
+            self.add_user.card_number_error.setText("Card number must have 8 digits!")
             success = False
 
         if not full_name[0].isalpha() or not full_name[1].isalpha():
             self.add_user.full_name_error.setText("Please enter only alphabetic symbols!")
             success = False
         if len(full_name[0]) + len(full_name[1]) < 4:
-            self.add_user.full_name_error.setText("Please enter more than 4 symbols!")
+            self.add_user.full_name_error.setText("Please enter 5 or more symbols!")
             success = False
         if len(full_name[1]) == 0:
             self.add_user.full_name_error.setText("Please enter first and last name!")
@@ -176,14 +176,14 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.add_user.username_error.setText("You entered incorrect symbol(s)!")
             success = False
         if len(user_name) < 5:
-            self.add_user.username_error.setText("Please enter more than 4 symbols!")
+            self.add_user.username_error.setText("Please enter 5 or more symbols!")
             success = False
         if len(user_name) == 0:
             self.add_user.username_error.setText("This field cannot be empty!")
             success = False
 
         if len(password) < 8:
-            self.add_user.password_error.setText("Please enter more than 7 symbols!")
+            self.add_user.password_error.setText("Please enter 8 or more symbols!")
             success = False
         if len(password) == 0:
             self.add_user.password_error.setText("This field cannot be empty!")
