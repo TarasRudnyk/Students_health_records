@@ -40,6 +40,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.dialog = QtWidgets.QDialog()
         self.edit_user.setupUi(self.dialog)
         self.edit_user.confirm_pushButton.clicked.connect(self.edit_user_data_verification)
+        self.edit_user.back_to_info_view_pushButton.clicked.connect(self.close_widget)
         self.close()
         self.dialog.show()
         self.dialog.exec()
