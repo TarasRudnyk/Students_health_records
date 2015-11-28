@@ -5,6 +5,7 @@ import json
 
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
+from PyQt5.QtWidgets import QTableWidgetItem
 from PyQt5.QtWidgets import QMessageBox
 
 from views import authorization_ui
@@ -12,7 +13,6 @@ from views import add_user_ui
 from views import admin_edit_user_info
 from views import admin_show_user_info
 from views import user_ui
-
 
 class Authorization(QtWidgets.QMainWindow, authorization_ui.Ui_AuthorizationWindow):
 
@@ -40,7 +40,32 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.actionLog_out.triggered.connect(log_out)
         self.add_user_pushButton.clicked.connect(self.adding_user)
         self.About_Student_health_records_action.triggered.connect(about_information)
+        self.user_info_tableWidget = QtWidgets.QTableWidget(self.centralwidget)
+        self.user_info_tableWidget.setMinimumSize(QtCore.QSize(754, 412))
+        self.user_info_tableWidget.setObjectName("user_info_tableWidget")
+        self.user_info_tableWidget.setColumnCount(3)
+        self.user_info_tableWidget.setRowCount(3)
+        item = QtWidgets.QTableWidgetItem()
+        self.user_info_tableWidget.setVerticalHeaderItem(0, item)
+        self.user_info_tableWidget.horizontalHeader().setVisible(False)
+        self.user_info_tableWidget.horizontalHeader().setCascadingSectionResizes(True)
+        self.user_info_tableWidget.horizontalHeader().setDefaultSectionSize(235)
+        self.user_info_tableWidget.horizontalHeader().setMinimumSectionSize(200)
+        self.user_info_tableWidget.horizontalHeader().setSortIndicatorShown(True)
+        self.user_info_tableWidget.horizontalHeader().setStretchLastSection(True)
+        self.user_info_tableWidget.verticalHeader().setCascadingSectionResizes(True)
+        self.user_info_tableWidget.verticalHeader().setSortIndicatorShown(True)
+        self.user_info_tableWidget.verticalHeader().setStretchLastSection(True)
+        self.gridLayout_3.addWidget(self.user_info_tableWidget, 2, 0, 1, 3)
+
+
         self.user_info_tableWidget.cellDoubleClicked.connect(self.editing_user)
+        combobox = QtWidgets.QComboBox()
+        combobox.addItem("1")
+        combobox.addItem("2")
+        self.user_info_tableWidget.setCellWidget(0, 1, combobox)
+        self.user_info_tableWidget.setItem(0, 0, QTableWidgetItem("erugi"))
+
 
     def editing_user(self):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
@@ -261,14 +286,10 @@ def auth_data_verification():
         success = False
 
     if success:
-        if login == "admin" and password == "admin":
+        if check["role"] == "admin":
             show_admin()
-        elif login == "limar" and password == "limar":
-            show_user()
         else:
-            #QMessageBox.information(form, 'Failed', "Incorrect login or password!")
-            form.show()
-
+            show_user()
 
 def check_login_and_password(login, password):
     sock = socket.socket()

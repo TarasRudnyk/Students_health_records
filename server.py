@@ -32,7 +32,7 @@ while True:
             server_answer = authorize_user(received_data["login"], received_data["password"])
             result = "Success" if server_answer["success"] else "Failed"
             print("Result:", result)
-            print(server_answer)
+            print("Role:", server_answer["role"])
 
     conn.sendall(json.dumps(server_answer).encode('utf-8'))
     print("Close connection")

@@ -11,6 +11,7 @@ def authorize_user(login, password):
         if (login == result[0] and password == result[1]):
             user_role = result[2]
             authorize_result["success"] = True
+            authorize_result["role"] = user_role
 
 
 

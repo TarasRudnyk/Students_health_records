@@ -50,6 +50,7 @@ class Ui_AdminShowUsersMenu(object):
         self.Full_name_comboBox.setObjectName("Full_name_comboBox")
         self.Full_name_comboBox.addItem("")
         self.gridLayout_3.addWidget(self.Full_name_comboBox, 0, 2, 1, 1)
+        """
         self.user_info_tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.user_info_tableWidget.setMinimumSize(QtCore.QSize(754, 412))
         self.user_info_tableWidget.setObjectName("user_info_tableWidget")
@@ -97,6 +98,7 @@ class Ui_AdminShowUsersMenu(object):
         self.user_info_tableWidget.verticalHeader().setSortIndicatorShown(True)
         self.user_info_tableWidget.verticalHeader().setStretchLastSection(True)
         self.gridLayout_3.addWidget(self.user_info_tableWidget, 2, 0, 1, 3)
+        """
         AdminShowUsersMenu.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(AdminShowUsersMenu)
         self.statusbar.setObjectName("statusbar")
