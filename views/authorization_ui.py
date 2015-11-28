@@ -70,7 +70,7 @@ class Ui_AuthorizationWindow(object):
 
     def retranslateUi(self, AuthorizationWindow):
         _translate = QtCore.QCoreApplication.translate
-        AuthorizationWindow.setWindowTitle(_translate("AuthorizationWindow", "Student health records"))
+        AuthorizationWindow.setWindowTitle(_translate("AuthorizationWindow", "Student health records - Sign in"))
         self.username_lineEdit.setPlaceholderText(_translate("AuthorizationWindow", "username"))
         self.password_label.setText(_translate("AuthorizationWindow", "Password"))
         self.password_lineEdit.setPlaceholderText(_translate("AuthorizationWindow", "password"))

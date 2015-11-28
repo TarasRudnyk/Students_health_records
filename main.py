@@ -1,5 +1,8 @@
 import sys
 import re
+import socket
+import json
+
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
 from PyQt5.QtWidgets import QMessageBox
@@ -19,6 +22,8 @@ class Authorization(QtWidgets.QMainWindow, authorization_ui.Ui_AuthorizationWind
         self.show_pass_button.clicked.connect(self.show_hide_password)
         self.username_lineEdit.returnPressed.connect(self.log_in_button.click)
         self.password_lineEdit.returnPressed.connect(self.log_in_button.click)
+
+
 
     def show_hide_password(self):
         if self.password_lineEdit.echoMode() == 0:
@@ -250,14 +255,38 @@ def auth_data_verification():
         form.password_error_label.setText("This field cannot be empty!")
         success = False
 
+    check = check_login_and_password(login, password)
+    if not check["success"]:
+        QMessageBox.information(form, 'Failed', "Incorrect login or password!")
+        success = False
+
     if success:
         if login == "admin" and password == "admin":
             show_admin()
-        elif login == "user" and password == "user":
+        elif login == "BoryaLimar" and password == "limar":
             show_user()
         else:
             QMessageBox.information(form, 'Failed', "Incorrect login or password!")
             form.show()
+
+
+def check_login_and_password(login, password):
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": True,
+                 "login": login,
+                 "password": password,
+                 "action": "authorization"
+                 }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+
+    data = sock.recv(1024)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    return data
 
 
 def log_out():

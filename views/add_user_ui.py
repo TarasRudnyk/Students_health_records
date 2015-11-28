@@ -137,7 +137,7 @@ class Ui_addUserWindow(object):
 
     def retranslateUi(self, addUserWindow):
         _translate = QtCore.QCoreApplication.translate
-        addUserWindow.setWindowTitle(_translate("addUserWindow", "Student health records "))
+        addUserWindow.setWindowTitle(_translate("addUserWindow", "Student health Add user - Admin"))
         self.card_number_label.setText(_translate("addUserWindow", "Card number*"))
         self.card_number_lineEdit.setPlaceholderText(_translate("addUserWindow", "12345678"))
         self.full_name_label.setText(_translate("addUserWindow", "Full name*"))

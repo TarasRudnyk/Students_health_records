@@ -148,7 +148,7 @@ class Ui_AdminShowUsersMenu(object):
 
     def retranslateUi(self, AdminShowUsersMenu):
         _translate = QtCore.QCoreApplication.translate
-        AdminShowUsersMenu.setWindowTitle(_translate("AdminShowUsersMenu", "Students health records"))
+        AdminShowUsersMenu.setWindowTitle(_translate("AdminShowUsersMenu", "Students health records User info - Admin"))
         self.Card_number_comboBox.setCurrentText(_translate("AdminShowUsersMenu", "                           Card number"))
         self.Group_ComboBox.setCurrentText(_translate("AdminShowUsersMenu", "                              Group"))
         self.Group_ComboBox.setItemText(0, _translate("AdminShowUsersMenu", "                              Group"))

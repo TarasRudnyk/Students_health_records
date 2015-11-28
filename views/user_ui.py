@@ -38,6 +38,7 @@ class Ui_Student_health_records(object):
         self.user_info_tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
         self.user_info_tableWidget.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
         self.user_info_tableWidget.setAutoScroll(False)
+        self.user_info_tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.user_info_tableWidget.setDefaultDropAction(QtCore.Qt.IgnoreAction)
         self.user_info_tableWidget.setShowGrid(True)
         self.user_info_tableWidget.setCornerButtonEnabled(True)
@@ -138,7 +139,7 @@ class Ui_Student_health_records(object):
 
     def retranslateUi(self, Student_health_records):
         _translate = QtCore.QCoreApplication.translate
-        Student_health_records.setWindowTitle(_translate("Student_health_records", "Student health records"))
+        Student_health_records.setWindowTitle(_translate("Student_health_records", "Student health records - User"))
         self.user_info_tableWidget.setSortingEnabled(True)
         item = self.user_info_tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("Student_health_records", "Doctor"))

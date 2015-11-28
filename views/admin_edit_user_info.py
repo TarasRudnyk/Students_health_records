@@ -121,7 +121,7 @@ class Ui_Student_health_records(object):
 
     def retranslateUi(self, Student_health_records):
         _translate = QtCore.QCoreApplication.translate
-        Student_health_records.setWindowTitle(_translate("Student_health_records", "Student health records"))
+        Student_health_records.setWindowTitle(_translate("Student_health_records", "Student health records Edit user info - Admin"))
         self.save_button.setText(_translate("Student_health_records", "Save"))
         self.add_new_button.setText(_translate("Student_health_records", "Add new row"))
         self.name_error.setText(_translate("Student_health_records", "<html><head/><body><p><br/></p></body></html>"))
