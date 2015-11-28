@@ -263,10 +263,10 @@ def auth_data_verification():
     if success:
         if login == "admin" and password == "admin":
             show_admin()
-        elif login == "BoryaLimar" and password == "limar":
+        elif login == "limar" and password == "limar":
             show_user()
         else:
-            QMessageBox.information(form, 'Failed', "Incorrect login or password!")
+            #QMessageBox.information(form, 'Failed', "Incorrect login or password!")
             form.show()
 
 
