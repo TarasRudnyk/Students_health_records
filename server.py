@@ -9,7 +9,7 @@ sock.bind(('127.0.0.1', 9090))
 while True:
     sock.listen(1)
     conn, address = sock.accept()
-    data = conn.recv(1024)
+    data = conn.recv(10000)
     server_answer = "{}"
     print("\nNew connection")
     if not data:

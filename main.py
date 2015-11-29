@@ -235,6 +235,7 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
         self.setupUi(self)
         self.actionLog_out.triggered.connect(log_out)
         self.About_Student_health_records_action.triggered.connect(about_information)
+        get_user_diagnoses('limar')
 
 app = QtWidgets.QApplication(sys.argv)
 form = Authorization()
@@ -308,6 +309,26 @@ def check_login_and_password(login, password):
 
     data = json.loads(data.decode('utf-8'))
     return data
+
+
+def get_user_diagnoses(login):
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": False,
+                 "login": login,
+                 "action": "get_my_diagnoses"
+                 }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+
+    data = sock.recv(10000)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    print(data)
+    return data
+
 
 
 def log_out():
