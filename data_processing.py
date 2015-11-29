@@ -28,7 +28,6 @@ def get_user_diagnoses(login):
     diagnose_date = []
     diagnose_doctor = []
     diagnose_number = []
-    diagnose_number_tuple = ()
 
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
@@ -41,7 +40,12 @@ def get_user_diagnoses(login):
     for result_diagnose_number in cur:
         diagnose_number.append(result_diagnose_number[0])
 
-    diagnose_number_tuple = tuple(diagnose_number)
+    if len(diagnose_number) > 1:
+        diagnose_number_tuple = tuple(diagnose_number)
+    elif len(diagnose_number) == 1:
+        diagnose_number_tuple = diagnose_number[0]
+    else:
+        diagnose_number_tuple = 0
 
     cur.execute('SELECT diagnose_name, diagnose_date, diagnose_doctor FROM DIAGNOSES WHERE diagnose_number IN {0}'.format(diagnose_number_tuple))
     for result_diagnose in cur:
@@ -55,5 +59,17 @@ def get_user_diagnoses(login):
 
     return diagnoses_result
 
+'''
+def get_users():
+    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    cur = con.cursor()
 
+    cur.execute('SELECT user_card_number, user_full_name, user_group FROM clients')
+    for result in cur:
 
+            user_role = result[2]
+            authorize_result["success"] = True
+            authorize_result["role"] = user_role
+
+    return authorize_result
+'''
