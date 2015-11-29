@@ -59,17 +59,30 @@ def get_user_diagnoses(login):
 
     return diagnoses_result
 
-'''
-def get_users():
+
+def get_all_users():
+    users_result = {"success": True,
+                        "users_card_numbers": '',
+                        "users_full_names": '',
+                        "users_groups": ''}
+
+
+    users_cards_numbers = []
+    users_full_names = []
+    users_groups = []
+
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
 
-    cur.execute('SELECT user_card_number, user_full_name, user_group FROM clients')
+    cur.execute('SELECT user_card_number, user_full_name, user_group FROM clients WHERE user_role != \'admin\'')
     for result in cur:
+        users_cards_numbers.append(result[0])
+        users_full_names.append(result[1])
+        users_groups.append(result[2])
 
-            user_role = result[2]
-            authorize_result["success"] = True
-            authorize_result["role"] = user_role
+        users_result["users_card_numbers"] = users_cards_numbers
+        users_result["users_full_names"] = users_full_names
+        users_result["users_groups"] = users_groups
 
-    return authorize_result
-'''
+    return users_result
+
