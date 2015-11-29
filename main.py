@@ -235,10 +235,61 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
         self.setupUi(self)
         self.actionLog_out.triggered.connect(log_out)
         self.About_Student_health_records_action.triggered.connect(about_information)
-        get_user_diagnoses('limar')
+        self.draw_table()
+
+
+    def draw_table(self):
+        global user_login
+        diagnoses = get_user_diagnoses(user_login)
+        count = len(diagnoses["diagnose_name"])
+        self.user_info_tableWidget = QtWidgets.QTableWidget(self.centralwidget)
+        self.user_info_tableWidget.setEnabled(True)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.user_info_tableWidget.sizePolicy().hasHeightForWidth())
+        self.user_info_tableWidget.setSizePolicy(sizePolicy)
+        self.user_info_tableWidget.setMinimumSize(QtCore.QSize(686, 578))
+        self.user_info_tableWidget.setMouseTracking(False)
+        self.user_info_tableWidget.setAcceptDrops(False)
+        self.user_info_tableWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.user_info_tableWidget.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.user_info_tableWidget.setFrameShadow(QtWidgets.QFrame.Sunken)
+        self.user_info_tableWidget.setLineWidth(1)
+        self.user_info_tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+        self.user_info_tableWidget.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
+        self.user_info_tableWidget.setAutoScroll(False)
+        self.user_info_tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.user_info_tableWidget.setDefaultDropAction(QtCore.Qt.IgnoreAction)
+        self.user_info_tableWidget.setShowGrid(True)
+        self.user_info_tableWidget.setCornerButtonEnabled(True)
+        self.user_info_tableWidget.setRowCount(count)
+        self.user_info_tableWidget.setColumnCount(3)
+        self.user_info_tableWidget.setObjectName("user_info_tableWidget")
+        for i in range(count):
+            self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(diagnoses["diagnose_date"][i]))
+            self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(diagnoses["diagnose_doctor"][i]))
+            self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(diagnoses["diagnose_name"][i]))
+
+        self.user_info_tableWidget.horizontalHeader().setVisible(True)
+        self.user_info_tableWidget.horizontalHeader().setCascadingSectionResizes(True)
+        self.user_info_tableWidget.horizontalHeader().setDefaultSectionSize(150)
+        self.user_info_tableWidget.horizontalHeader().setHighlightSections(True)
+        self.user_info_tableWidget.horizontalHeader().setMinimumSectionSize(50)
+        self.user_info_tableWidget.horizontalHeader().setSortIndicatorShown(True)
+        self.user_info_tableWidget.horizontalHeader().setStretchLastSection(True)
+        self.user_info_tableWidget.verticalHeader().setCascadingSectionResizes(True)
+        self.user_info_tableWidget.verticalHeader().setDefaultSectionSize(40)
+        self.user_info_tableWidget.verticalHeader().setMinimumSectionSize(24)
+        self.user_info_tableWidget.verticalHeader().setSortIndicatorShown(False)
+        self.user_info_tableWidget.verticalHeader().setStretchLastSection(False)
+
+
+        self.gridLayout.addWidget(self.user_info_tableWidget, 0, 0, 1, 1)
 
 app = QtWidgets.QApplication(sys.argv)
 form = Authorization()
+user_login = ""
 
 
 def show_auth():
@@ -287,10 +338,14 @@ def auth_data_verification():
         success = False
 
     if success:
+        global user_login
+        user_login = login
+
         if check["role"] == "admin":
             show_admin()
         else:
             show_user()
+
 
 def check_login_and_password(login, password):
     sock = socket.socket()
@@ -326,9 +381,7 @@ def get_user_diagnoses(login):
     sock.close()
 
     data = json.loads(data.decode('utf-8'))
-    print(data)
     return data
-
 
 
 def log_out():
