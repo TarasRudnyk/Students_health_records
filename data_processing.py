@@ -27,6 +27,8 @@ def get_user_diagnoses(login):
     diagnose_name = []
     diagnose_date = []
     diagnose_doctor = []
+    diagnose_number = []
+    diagnose_number_tuple = ()
 
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
@@ -37,9 +39,11 @@ def get_user_diagnoses(login):
 
     cur.execute('SELECT diagnose_number FROM MEDICALCARD WHERE user_card_number = \'{0}\''.format(user_card_number))
     for result_diagnose_number in cur:
-        diagnose_number = result_diagnose_number[0]
+        diagnose_number.append(result_diagnose_number[0])
 
-    cur.execute('SELECT diagnose_name, diagnose_date, diagnose_doctor FROM DIAGNOSES WHERE diagnose_number= \'{0}\''.format(diagnose_number))
+    diagnose_number_tuple = tuple(diagnose_number)
+
+    cur.execute('SELECT diagnose_name, diagnose_date, diagnose_doctor FROM DIAGNOSES WHERE diagnose_number IN {0}'.format(diagnose_number_tuple))
     for result_diagnose in cur:
         diagnose_name.append(result_diagnose[0])
         diagnose_date.append(str(result_diagnose[1]))
