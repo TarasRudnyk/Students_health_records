@@ -14,6 +14,7 @@ from views import admin_edit_user_info
 from views import admin_show_user_info
 from views import user_ui
 
+
 class Authorization(QtWidgets.QMainWindow, authorization_ui.Ui_AuthorizationWindow):
 
     def __init__(self):
@@ -22,8 +23,6 @@ class Authorization(QtWidgets.QMainWindow, authorization_ui.Ui_AuthorizationWind
         self.show_pass_button.clicked.connect(self.show_hide_password)
         self.username_lineEdit.returnPressed.connect(self.log_in_button.click)
         self.password_lineEdit.returnPressed.connect(self.log_in_button.click)
-
-
 
     def show_hide_password(self):
         if self.password_lineEdit.echoMode() == 0:
@@ -50,14 +49,18 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         """
 
     def draw_table(self):
-        info = get_all_users_info()
-        count = len(info["users_card_numbers"])
+        try:
+            info = get_all_users_info()
+            count = len(info["users_card_numbers"])
+        except:
+            QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+            count = 0
+
         self.user_info_tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.user_info_tableWidget.setMinimumSize(QtCore.QSize(754, 412))
         self.user_info_tableWidget.setObjectName("user_info_tableWidget")
         self.user_info_tableWidget.setColumnCount(3)
         self.user_info_tableWidget.setRowCount(count)
-
         self.user_info_tableWidget.horizontalHeader().setVisible(False)
         self.user_info_tableWidget.horizontalHeader().setCascadingSectionResizes(True)
         self.user_info_tableWidget.horizontalHeader().setDefaultSectionSize(235)
@@ -74,7 +77,6 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(str(info["users_groups"][i])))
 
         self.gridLayout_3.addWidget(self.user_info_tableWidget, 2, 0, 1, 3)
-
 
     def editing_user(self):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
@@ -246,11 +248,15 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
         self.About_Student_health_records_action.triggered.connect(about_information)
         self.draw_table()
 
-
     def draw_table(self):
         global user_login
-        diagnoses = get_user_diagnoses(user_login)
-        count = len(diagnoses["diagnose_name"])
+        try:
+            diagnoses = get_user_diagnoses(user_login)
+            count = len(diagnoses["diagnose_name"])
+        except:
+            QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+            count = 0
+
         self.user_info_tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.user_info_tableWidget.setEnabled(True)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
@@ -295,8 +301,6 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
         self.user_info_tableWidget.verticalHeader().setMinimumSectionSize(24)
         self.user_info_tableWidget.verticalHeader().setSortIndicatorShown(False)
         self.user_info_tableWidget.verticalHeader().setStretchLastSection(False)
-
-
         self.gridLayout.addWidget(self.user_info_tableWidget, 0, 0, 1, 1)
 
 app = QtWidgets.QApplication(sys.argv)
@@ -344,10 +348,15 @@ def auth_data_verification():
         form.password_error_label.setText("This field cannot be empty!")
         success = False
 
-    check = check_login_and_password(login, password)
-    if not check["success"]:
-        QMessageBox.information(form, 'Failed', "Incorrect login or password!")
-        success = False
+    if success:
+        try:
+            check = check_login_and_password(login, password)
+            if not check["success"]:
+                QMessageBox.information(form, 'Failed', "Incorrect login or password!")
+                success = False
+        except Exception:
+            QMessageBox.information(form, 'Failed', "There is some problem with server.\nPlease try later.")
+            success = False
 
     if success:
         global user_login
