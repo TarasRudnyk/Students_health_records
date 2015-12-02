@@ -85,3 +85,28 @@ def get_all_users():
 
     return users_result
 
+
+def add_new_user():
+    add_users_result = {"user_card_number": '77777777',
+                        "user_full_name": 'Anton Badovskiy',
+                        "user_group": 'kw11',
+                        "user_phone_number": '0951111111',
+                        "username": 'anton',
+                        "password": 'anton',
+                        "user_email": 'email@gmail.com',
+                        "user_role": 'user'}
+
+
+    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    cur = con.cursor()
+
+    cur.execute('INSERT INTO CLIENTS (USER_CARD_NUMBER, USER_FULL_NAME, USER_GROUP,'
+                ' USER_PHONE_NUMBER, USER_LOGIN, USER_PASSWORD, USER_EMAIL, USER_ROLE)'
+                'VALUES ({0},{1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(add_users_result['user_card_number'],
+                                                                        add_users_result['user_full_name'],
+                                                                        add_users_result['user_group'],
+                                                                        add_users_result['user_phone_number'],
+                                                                        add_users_result['username'],
+                                                                        add_users_result['password'],
+                                                                        add_users_result['user_email'],
+                                                                        add_users_result['user_role']))
