@@ -40,13 +40,24 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.actionLog_out.triggered.connect(log_out)
         self.add_user_pushButton.clicked.connect(self.adding_user)
         self.About_Student_health_records_action.triggered.connect(about_information)
+        self.draw_table()
+        """
+        combobox = QtWidgets.QComboBox()
+        combobox.addItem("1")
+        combobox.addItem("2")
+        self.user_info_tableWidget.setCellWidget(0, 1, combobox)
+        self.user_info_tableWidget.setItem(0, 0, QTableWidgetItem("erugi"))
+        """
+
+    def draw_table(self):
+        info = get_all_users_info()
+        count = len(info["users_card_numbers"])
         self.user_info_tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.user_info_tableWidget.setMinimumSize(QtCore.QSize(754, 412))
         self.user_info_tableWidget.setObjectName("user_info_tableWidget")
         self.user_info_tableWidget.setColumnCount(3)
-        self.user_info_tableWidget.setRowCount(3)
-        item = QtWidgets.QTableWidgetItem()
-        self.user_info_tableWidget.setVerticalHeaderItem(0, item)
+        self.user_info_tableWidget.setRowCount(count)
+
         self.user_info_tableWidget.horizontalHeader().setVisible(False)
         self.user_info_tableWidget.horizontalHeader().setCascadingSectionResizes(True)
         self.user_info_tableWidget.horizontalHeader().setDefaultSectionSize(235)
@@ -55,16 +66,14 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.user_info_tableWidget.horizontalHeader().setStretchLastSection(True)
         self.user_info_tableWidget.verticalHeader().setCascadingSectionResizes(True)
         self.user_info_tableWidget.verticalHeader().setSortIndicatorShown(True)
-        self.user_info_tableWidget.verticalHeader().setStretchLastSection(True)
+        self.user_info_tableWidget.verticalHeader().setStretchLastSection(False)
+        for i in range(count):
+            print(info["users_card_numbers"][i])
+            self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(str(info["users_card_numbers"][i])))
+            self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(str(info["users_full_names"][i])))
+            self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(str(info["users_groups"][i])))
+
         self.gridLayout_3.addWidget(self.user_info_tableWidget, 2, 0, 1, 3)
-
-
-        self.user_info_tableWidget.cellDoubleClicked.connect(self.editing_user)
-        combobox = QtWidgets.QComboBox()
-        combobox.addItem("1")
-        combobox.addItem("2")
-        self.user_info_tableWidget.setCellWidget(0, 1, combobox)
-        self.user_info_tableWidget.setItem(0, 0, QTableWidgetItem("erugi"))
 
 
     def editing_user(self):
@@ -266,6 +275,9 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
         self.user_info_tableWidget.setRowCount(count)
         self.user_info_tableWidget.setColumnCount(3)
         self.user_info_tableWidget.setObjectName("user_info_tableWidget")
+        self.user_info_tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Date"))
+        self.user_info_tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Doctor"))
+        self.user_info_tableWidget.setHorizontalHeaderItem(2, QTableWidgetItem("Diagnose"))
         for i in range(count):
             self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(diagnoses["diagnose_date"][i]))
             self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(diagnoses["diagnose_doctor"][i]))
@@ -382,6 +394,27 @@ def get_user_diagnoses(login):
 
     data = json.loads(data.decode('utf-8'))
     return data
+
+
+def get_all_users_info():
+    global user_login
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": False,
+                 "login": user_login,
+                 "action": "get_all_users"
+                 }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+
+    data = sock.recv(10000)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    print(data)
+    return data
+
 
 
 def log_out():

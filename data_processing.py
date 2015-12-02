@@ -62,10 +62,9 @@ def get_user_diagnoses(login):
 
 def get_all_users():
     users_result = {"success": True,
-                        "users_card_numbers": '',
-                        "users_full_names": '',
-                        "users_groups": ''}
-
+                    "users_card_numbers": '',
+                    "users_full_names": '',
+                    "users_groups": ''}
 
     users_cards_numbers = []
     users_full_names = []
