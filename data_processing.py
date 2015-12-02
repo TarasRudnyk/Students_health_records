@@ -102,7 +102,8 @@ def add_new_user():
 
     cur.execute('INSERT INTO CLIENTS (USER_CARD_NUMBER, USER_FULL_NAME, USER_GROUP,'
                 ' USER_PHONE_NUMBER, USER_LOGIN, USER_PASSWORD, USER_EMAIL, USER_ROLE)'
-                'VALUES ({0},{1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(add_users_result['user_card_number'],
+                'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\', \'{4}\', \'{5}\', \'{6}\', \'{7}\')'.format(
+                                                                        add_users_result['user_card_number'],
                                                                         add_users_result['user_full_name'],
                                                                         add_users_result['user_group'],
                                                                         add_users_result['user_phone_number'],
@@ -110,3 +111,61 @@ def add_new_user():
                                                                         add_users_result['password'],
                                                                         add_users_result['user_email'],
                                                                         add_users_result['user_role']))
+
+
+
+def edit_user_info():
+    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    cur = con.cursor()
+
+    user_card_number = '11111111'
+    user_diagnose_numbers = []
+    user_edited_data = {} #TODO recieve this dictionari from server
+
+    # Selecting card_number
+    cur.execute('SELECT user_full_name, user_group, user_email, user_phone_number'
+                'FROM CLIENTS WHERE user_card_number =\'{0}\''.format(user_card_number))
+
+    for result_user_data in cur:
+        user_full_name = result_user_data[0]
+        user_group = result_user_data[1]
+        user_email = result_user_data[2]
+        user_phone_number = result_user_data[3]
+
+    # Selecting diagnose_numbers to get all users diagnoses
+    cur.execute('SELECT diagnose_number FROM MEDICALCARD'
+                'WHERE user_card_number = \'{0}\''.format(user_card_number))
+
+    for result_user_diagnose_number in cur:
+        user_diagnose_numbers.append(result_user_diagnose_number[0])
+
+    if len(user_diagnose_numbers) > 1:
+        user_diagnose_numbers_tuple = tuple(user_diagnose_numbers)
+    elif len(user_diagnose_numbers) == 1:
+        user_diagnose_numbers_tuple = user_diagnose_numbers[0]
+    else:
+        user_diagnose_numbers_tuple = 0
+
+    # Selecting users diagnoses
+    cur.execute('SELECT diagnose_name FROM DIAGNOSES '
+                'WHERE diagnose_number IN {0}'.format(user_diagnose_numbers_tuple))
+
+    cur.execute('UPDATE CLIENTS '
+                'SET user_full_name = \'{0}\','
+                'user_group = \'{1}\','
+                'user_email = \'{2}\','
+                'user_phone_number = \'{3}\''
+                'WHERE user_card_number = \'{4}\''.format(user_edited_data['user_full_name'],
+                                                          user_edited_data['user_group'],
+                                                          user_edited_data['user_email'],
+                                                          user_edited_data['user_phone_number'],
+                                                          user_card_number))
+    # TODO  finish this function: add operations with updating and deleting diagnoses
+
+
+def delete_selected_users(user_card_number):
+    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    cur = con.cursor()
+
+    cur.execute('DELECTE * FROM CLIENTS'
+                'WHERE user_card_number IN {0}'.format(user_card_number))
