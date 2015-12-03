@@ -40,6 +40,9 @@ while True:
                     result = "Success" if server_answer["success"] else "Failed"
                     print("Result", result)
 
+                elif action == "add_new_user":
+                    print(received_data["user_data"])
+
 
             else:
                 server_answer = authorize_user(received_data["login"], received_data["password"])

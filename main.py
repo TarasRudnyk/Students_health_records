@@ -59,6 +59,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.user_info_tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.user_info_tableWidget.setMinimumSize(QtCore.QSize(754, 412))
         self.user_info_tableWidget.setObjectName("user_info_tableWidget")
+        self.user_info_tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.user_info_tableWidget.setColumnCount(3)
         self.user_info_tableWidget.setRowCount(count)
         self.user_info_tableWidget.horizontalHeader().setVisible(False)
@@ -70,8 +71,8 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.user_info_tableWidget.verticalHeader().setCascadingSectionResizes(True)
         self.user_info_tableWidget.verticalHeader().setSortIndicatorShown(True)
         self.user_info_tableWidget.verticalHeader().setStretchLastSection(False)
+
         for i in range(count):
-            print(info["users_card_numbers"][i])
             self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(str(info["users_card_numbers"][i])))
             self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(str(info["users_full_names"][i])))
             self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(str(info["users_groups"][i])))
@@ -165,6 +166,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             QMessageBox.information(self, 'Success', "User information has been updated!")
 
     def add_user_data_verification(self):
+        global user_login
         success = True
         card_number = self.add_user.card_number_lineEdit.text()
         full_name = self.add_user.full_name_lineEdit.text().split(" ")
@@ -235,8 +237,14 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             success = False
 
         if success:
+            try:
+                add_new_user(card_number, full_name, group, phone_number, user_name, password, email, user_login)
+            except:
+                QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+                success = False
+        if success:
             QMessageBox.information(self, 'Success', "User has been added!")
-            self.show()
+            self.dialog.close()
 
 
 class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
@@ -421,9 +429,34 @@ def get_all_users_info():
     sock.close()
 
     data = json.loads(data.decode('utf-8'))
-    print(data)
     return data
 
+
+def add_new_user(card_number, full_name, group, phone_number, username, password, email, login):
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": False,
+                 "login": login,
+                 "action": "add_new_user",
+                 "user_data": {
+                     "user_card_number": card_number,
+                     "user_full_name": full_name,
+                     "user_group": group,
+                     "user_phone_number": phone_number,
+                     "username": username,
+                     "password": password,
+                     "user_email": email,
+                     "user_role": "user"
+                 }
+                 }
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+
+    data = sock.recv(1024)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    return data
 
 
 def log_out():
