@@ -96,7 +96,6 @@ def add_new_user():
                         "user_email": 'email@gmail.com',
                         "user_role": 'user'}
 
-
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
 
@@ -120,7 +119,7 @@ def edit_user_info():
 
     user_card_number = '11111111'
     user_diagnose_numbers = []
-    user_edited_data = {} #TODO recieve this dictionari from server
+    user_edited_data = {} # TODO receive this dictionary from server
 
     # Selecting card_number
     cur.execute('SELECT user_full_name, user_group, user_email, user_phone_number'

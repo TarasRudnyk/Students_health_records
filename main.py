@@ -297,6 +297,8 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
             self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(diagnoses["diagnose_doctor"][i]))
             self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(diagnoses["diagnose_name"][i]))
 
+        self.user_info_tableWidget.setSortingEnabled(True)
+
         self.user_info_tableWidget.horizontalHeader().setVisible(True)
         self.user_info_tableWidget.horizontalHeader().setCascadingSectionResizes(True)
         self.user_info_tableWidget.horizontalHeader().setDefaultSectionSize(150)

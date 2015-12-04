@@ -41,7 +41,7 @@ class Ui_AdminShowUsersMenu(object):
         self.add_user_pushButton.setObjectName("add_user_pushButton")
         self.gridLayout_3.addWidget(self.add_user_pushButton, 3, 0, 1, 1)
         self.delete_selected_pushButton = QtWidgets.QPushButton(self.centralwidget)
-        self.delete_selected_pushButton.setEnabled(False)
+        self.delete_selected_pushButton.setEnabled(True)
         self.delete_selected_pushButton.setObjectName("delete_selected_pushButton")
         self.gridLayout_3.addWidget(self.delete_selected_pushButton, 3, 1, 1, 1)
         self.Full_name_comboBox = QtWidgets.QComboBox(self.centralwidget)
