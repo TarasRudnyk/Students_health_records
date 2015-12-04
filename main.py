@@ -40,6 +40,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.add_user_pushButton.clicked.connect(self.adding_user)
         self.About_Student_health_records_action.triggered.connect(about_information)
         self.draw_table()
+
         """
         combobox = QtWidgets.QComboBox()
         combobox.addItem("1")
@@ -77,7 +78,12 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(str(info["users_full_names"][i])))
             self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(str(info["users_groups"][i])))
 
+        self.user_info_tableWidget.cellDoubleClicked.connect(self.test)
+
         self.gridLayout_3.addWidget(self.user_info_tableWidget, 2, 0, 1, 3)
+
+    def test(self, row, col):
+        print(row, col)
 
     def editing_user(self):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
@@ -240,12 +246,15 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             try:
                 adding = add_new_user(card_number, full_name, group, phone_number, user_name, password, email,
                                       user_login)
-                print(adding)
+                success = adding["success"]
+                if not success:
+                    QMessageBox.information(self, 'Failed', "There is some problem.\nPlease check your data")
             except:
                 QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
                 success = False
         if success:
             QMessageBox.information(self, 'Success', "User has been added!")
+            self.draw_table()
             self.dialog.close()
 
 
