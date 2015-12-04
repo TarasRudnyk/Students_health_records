@@ -238,7 +238,9 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
         if success:
             try:
-                add_new_user(card_number, full_name, group, phone_number, user_name, password, email, user_login)
+                adding = add_new_user(card_number, full_name, group, phone_number, user_name, password, email,
+                                      user_login)
+                print(adding)
             except:
                 QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
                 success = False

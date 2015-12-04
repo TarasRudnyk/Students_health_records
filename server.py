@@ -41,8 +41,8 @@ while True:
                     print("Result", result)
 
                 elif action == "add_new_user":
-                    print(received_data["user_data"])
-
+                    server_answer = add_new_user(received_data["user_data"])
+                    print("Result", server_answer["success"])
 
             else:
                 server_answer = authorize_user(received_data["login"], received_data["password"])
