@@ -78,12 +78,16 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(str(info["users_full_names"][i])))
             self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(str(info["users_groups"][i])))
 
-        self.user_info_tableWidget.cellDoubleClicked.connect(self.test)
-
+        #self.user_info_tableWidget.cellPressed.connect(self.delete_user)
+        self.delete_selected_pushButton.clicked.connect(self.delete_user)
         self.gridLayout_3.addWidget(self.user_info_tableWidget, 2, 0, 1, 3)
 
-    def test(self, row, col):
-        print(row, col)
+    def delete_user(self):
+        global user_login
+        row = self.user_info_tableWidget.currentRow()
+        user_card_number = self.user_info_tableWidget.item(row, 0).text()
+        delete_user(user_login, user_card_number)
+        self.user_info_tableWidget.removeRow(row)
 
     def editing_user(self):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
@@ -466,6 +470,25 @@ def add_new_user(card_number, full_name, group, phone_number, username, password
     sock.sendall(json.dumps(send_data).encode('utf-8'))
 
     data = sock.recv(1024)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    return data
+
+
+def delete_user(login, card_number):
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": False,
+                 "login": login,
+                 "action": "delete_user",
+                 "user_card_number": card_number
+                 }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+
+    data = sock.recv(10000)
     sock.close()
 
     data = json.loads(data.decode('utf-8'))

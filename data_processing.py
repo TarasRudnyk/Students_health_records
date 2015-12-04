@@ -135,7 +135,7 @@ def edit_user_info():
 
     # Selecting diagnose_numbers to get all users diagnoses
     cur.execute('SELECT diagnose_number FROM MEDICALCARD'
-                'WHERE user_card_number = \'{0}\''.format(user_card_number))
+                ' WHERE user_card_number = \'{0}\''.format(user_card_number))
 
     for result_user_diagnose_number in cur:
         user_diagnose_numbers.append(result_user_diagnose_number[0])
@@ -165,8 +165,27 @@ def edit_user_info():
 
 
 def delete_selected_users(user_card_number):
+    result = {
+        "success": True
+    }
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
+    # if len(user_card_number) > 1:
+    #     user_card_number_tuple = tuple(user_card_number)
+    # elif len(user_card_number) == 1:
+    #     user_card_number_tuple = user_card_number[0]
+    # else:
+    #     user_card_number_tuple = 0
 
-    cur.execute('DELECTE * FROM CLIENTS'
-                'WHERE user_card_number IN {0}'.format(user_card_number))
+
+    # cur.execute('DELETE FROM CLIENTS '
+    #             ' WHERE user_card_number = \'88888888\'')
+    # con.commit()
+    try:
+        cur.execute('DELETE FROM CLIENTS '
+                    ' WHERE user_card_number = {0}'.format(user_card_number))
+        con.commit()
+    except:
+        result["success"] = False
+
+    return result

@@ -44,6 +44,11 @@ while True:
                     server_answer = add_new_user(received_data["user_data"])
                     print("Result", server_answer["success"])
 
+                elif action == "delete_user":
+                    print(received_data["user_card_number"])
+                    server_answer = delete_selected_users(received_data["user_card_number"])
+                    print(server_answer)
+
             else:
                 server_answer = authorize_user(received_data["login"], received_data["password"])
                 result = "Success" if server_answer["success"] else "Failed"
