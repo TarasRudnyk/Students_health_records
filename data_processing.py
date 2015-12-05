@@ -114,23 +114,35 @@ def add_new_user(add_users_result):
     return result
 
 
-def edit_user_info():
+def edit_user_info_select_data(user_card_number):
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
 
-    user_card_number = '11111111'
-    user_diagnose_numbers = []
-    user_edited_data = {} # TODO receive this dictionary from server
+    #user_card_number = '11111111'
+    user_data = {'user_full_name': '',
+                 'user_group': '',
+                 'user_email': '',
+                 'user_phone_number': ''}
 
-    # Selecting card_number
+    # Selecting user data
     cur.execute('SELECT user_full_name, user_group, user_email, user_phone_number'
-                'FROM CLIENTS WHERE user_card_number =\'{0}\''.format(user_card_number))
+                 'FROM CLIENTS WHERE user_card_number =\'{0}\''.format(user_card_number))
 
     for result_user_data in cur:
-        user_full_name = result_user_data[0]
-        user_group = result_user_data[1]
-        user_email = result_user_data[2]
-        user_phone_number = result_user_data[3]
+        user_data['user_full_name'] = result_user_data[0]
+        user_data['user_group'] = result_user_data[1]
+        user_data['user_email'] = result_user_data[2]
+        user_data['user_phone_number'] = result_user_data[3]
+
+    return user_data
+
+
+def edit_user_info_select_diagnoses(user_card_number):
+    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    cur = con.cursor()
+
+    user_diagnose_numbers = []
+    user_diagnose_names = []
 
     # Selecting diagnose_numbers to get all users diagnoses
     cur.execute('SELECT diagnose_number FROM MEDICALCARD'
@@ -150,7 +162,22 @@ def edit_user_info():
     cur.execute('SELECT diagnose_name FROM DIAGNOSES '
                 'WHERE diagnose_number IN {0}'.format(user_diagnose_numbers_tuple))
 
-    cur.execute('UPDATE CLIENTS '
+    for result_diagnose in cur:
+        user_diagnose_names.append(result_diagnose)
+
+    return user_diagnose_names
+
+
+def edit_user_info_update_data(user_edited_data):
+    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    cur = con.cursor()
+
+    result = {
+        "success": True
+    }
+
+    try:
+        cur.execute('UPDATE CLIENTS '
                 'SET user_full_name = \'{0}\','
                 'user_group = \'{1}\','
                 'user_email = \'{2}\','
@@ -159,8 +186,14 @@ def edit_user_info():
                                                           user_edited_data['user_group'],
                                                           user_edited_data['user_email'],
                                                           user_edited_data['user_phone_number'],
-                                                          user_card_number))
-    # TODO  finish this function: add operations with updating and deleting diagnoses
+                                                              user_edited_data['user_card_number']))
+    except:
+        result["success"] = False
+
+    return result
+
+
+def edit_user_info_add_diagnose(card_number, diagnose_number):
 
 
 def delete_selected_users(user_card_number):
