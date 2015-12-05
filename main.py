@@ -82,25 +82,40 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.delete_selected_pushButton.clicked.connect(self.delete_user)
         self.gridLayout_3.addWidget(self.user_info_tableWidget, 2, 0, 1, 3)
 
+    def update_table(self):
+        try:
+            info = get_all_users_info()
+            count = len(info["users_card_numbers"])
+        except:
+            QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+            count = 0
+        self.user_info_tableWidget.setColumnCount(3)
+        self.user_info_tableWidget.setRowCount(count)
+        for i in range(count):
+            self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(str(info["users_card_numbers"][i])))
+            self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(str(info["users_full_names"][i])))
+            self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(str(info["users_groups"][i])))
+
     def delete_user(self):
         global user_login
         set_row = True
-        showed = True
         try:
             row = self.user_info_tableWidget.selectedItems()[0].row()
-            print(row)
         except:
-            if showed:
-                QMessageBox.information(self, 'Failed', "Please select any user!")
-                set_row = False
-                showed = False
+            QMessageBox.information(self, 'Failed', "Please select any user!")
+            set_row = False
 
-        if set_row and showed:
-            user_card_number = self.user_info_tableWidget.item(row, 0).text()
-            if delete_user(user_login, user_card_number)["success"]:
-                self.user_info_tableWidget.removeRow(row)
-            print("a", row)
-            showed = False
+        if set_row:
+            user_name = self.user_info_tableWidget.item(row, 1).text()
+            reply = QMessageBox.question(self, 'Message',
+                                         "Are you sure to delete user {0}?".format(user_name),
+                                         QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                user_card_number = self.user_info_tableWidget.item(row, 0).text()
+                if delete_user(user_login, user_card_number)["success"]:
+                    self.user_info_tableWidget.removeRow(row)
+            else:
+                QMessageBox.information(self, 'Canceled', "Deleting canceled!")
 
     def editing_user(self):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
@@ -271,7 +286,8 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
                 success = False
         if success:
             QMessageBox.information(self, 'Success', "User has been added!")
-            self.draw_table()
+            self.user_info_tableWidget.clear()
+            self.update_table()
             self.dialog.close()
 
 
