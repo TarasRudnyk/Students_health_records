@@ -84,10 +84,23 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
     def delete_user(self):
         global user_login
-        row = self.user_info_tableWidget.currentRow()
-        user_card_number = self.user_info_tableWidget.item(row, 0).text()
-        delete_user(user_login, user_card_number)
-        self.user_info_tableWidget.removeRow(row)
+        set_row = True
+        showed = True
+        try:
+            row = self.user_info_tableWidget.selectedItems()[0].row()
+            print(row)
+        except:
+            if showed:
+                QMessageBox.information(self, 'Failed', "Please select any user!")
+                set_row = False
+                showed = False
+
+        if set_row and showed:
+            user_card_number = self.user_info_tableWidget.item(row, 0).text()
+            if delete_user(user_login, user_card_number)["success"]:
+                self.user_info_tableWidget.removeRow(row)
+            print("a", row)
+            showed = False
 
     def editing_user(self):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
