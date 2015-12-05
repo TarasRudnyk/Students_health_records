@@ -63,7 +63,8 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.user_info_tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
         self.user_info_tableWidget.setColumnCount(3)
         self.user_info_tableWidget.setRowCount(count)
-        self.user_info_tableWidget.horizontalHeader().setVisible(False)
+        self.user_info_tableWidget.setSortingEnabled(True)
+        self.user_info_tableWidget.horizontalHeader().setVisible(True)
         self.user_info_tableWidget.horizontalHeader().setCascadingSectionResizes(True)
         self.user_info_tableWidget.horizontalHeader().setDefaultSectionSize(235)
         self.user_info_tableWidget.horizontalHeader().setMinimumSectionSize(200)
@@ -72,6 +73,9 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.user_info_tableWidget.verticalHeader().setCascadingSectionResizes(True)
         self.user_info_tableWidget.verticalHeader().setSortIndicatorShown(True)
         self.user_info_tableWidget.verticalHeader().setStretchLastSection(False)
+        self.user_info_tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Date"))
+        self.user_info_tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Doctor"))
+        self.user_info_tableWidget.setHorizontalHeaderItem(2, QTableWidgetItem("Diagnose"))
 
         for i in range(count):
             self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(str(info["users_card_numbers"][i])))
