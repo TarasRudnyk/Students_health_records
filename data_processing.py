@@ -179,17 +179,20 @@ def edit_user_info_update_data(user_edited_data):
         "success": True
     }
 
+    if user_edited_data["user_phone_number"] == 'None':
+        user_edited_data["user_phone_number"] = ""
     try:
         cur.execute('UPDATE CLIENTS '
                 'SET user_full_name = \'{0}\','
                 'user_group = \'{1}\','
                 'user_email = \'{2}\','
-                'user_phone_number = \'{3}\''
+                'user_phone_number = \'{3}\' '
                 'WHERE user_card_number = \'{4}\''.format(user_edited_data['user_full_name'],
                                                           user_edited_data['user_group'],
                                                           user_edited_data['user_email'],
                                                           user_edited_data['user_phone_number'],
-                                                              user_edited_data['user_card_number']))
+                                                          user_edited_data['user_card_number']))
+        con.commit()
     except:
         result["success"] = False
 

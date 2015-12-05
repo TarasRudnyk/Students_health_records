@@ -136,13 +136,20 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
                     'user_group': '',
                     'user_email': '',
                     'user_phone_number': ''}
+        self.put_user_info(user_card_number, info)
 
-    def put_user_info(self, info):
 
+
+    def put_user_info(self, user_card_number, info):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
         self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.edit_user.setupUi(self.dialog)
+        self.edit_user.card_number_lineEdit.setEnabled(False)
         self.edit_user.card_number_lineEdit.setText(user_card_number)
+        self.edit_user.full_name_lineEdit.setText(info["user_full_name"])
+        self.edit_user.group_lineEdit.setText(info["user_group"])
+        self.edit_user.email_lineEdit.setText(info["user_email"])
+        self.edit_user.phone_number_lineEdit.setText(str(info["user_phone_number"]))
         self.edit_user.confirm_pushButton.clicked.connect(self.edit_user_data_verification)
         self.edit_user.back_to_info_view_pushButton.clicked.connect(self.close_widget)
         self.edit_user.card_number_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
@@ -222,8 +229,14 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.edit_user.email_error.setText("Incorrect email address!")
             success = False
 
+        full_name = full_name[0] + " " + full_name[1]
         if success:
-            QMessageBox.information(self, 'Success', "User information has been updated!")
+            try:
+                result = update_user_info(card_number, full_name, group, phone_number, email)
+
+                QMessageBox.information(self, 'Success', "User information has been updated!")
+            except:
+                pass
 
     def add_user_data_verification(self):
         global user_login
@@ -564,6 +577,33 @@ def get_all_user_info(card_number):
 
     data = json.loads(data.decode('utf-8'))
     return data
+
+
+def update_user_info(card_number, full_name, group, phone_number, email):
+    global user_login
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {
+        "auth": False,
+        "login": user_login,
+        "action": "update_user_info",
+        "user_data": {
+             "user_card_number": card_number,
+             "user_full_name": full_name,
+             "user_group": group,
+             "user_phone_number": phone_number,
+             "user_email": email
+        }
+    }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+    data = sock.recv(10000)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    return data
+
 
 
 def log_out():
