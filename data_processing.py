@@ -189,7 +189,8 @@ def edit_user_info_update_data(user_edited_data):
                                                           user_edited_data['user_group'],
                                                           user_edited_data['user_email'],
                                                           user_edited_data['user_phone_number'],
-                                                              user_edited_data['user_card_number']))
+                                                          user_edited_data['user_card_number']))
+        con.commit()
     except:
         result["success"] = False
 
@@ -226,6 +227,8 @@ def edit_user_info_add_diagnose(diagnose_data):
 
         cur.execute('INSERT INTO MEDICALCARD (DIAGNOSE_NUMBER) '
                     'VALUES (\'{0}\')'.format(diagnose_data['diagnose_number']))
+
+        con.commit()
 
     except:
         result["success"] = False
