@@ -184,7 +184,7 @@ def edit_user_info_update_data(user_edited_data):
                 'SET user_full_name = \'{0}\','
                 'user_group = \'{1}\','
                 'user_email = \'{2}\','
-                'user_phone_number = \'{3}\''
+                'user_phone_number = \'{3}\' '
                 'WHERE user_card_number = \'{4}\''.format(user_edited_data['user_full_name'],
                                                           user_edited_data['user_group'],
                                                           user_edited_data['user_email'],
@@ -196,8 +196,42 @@ def edit_user_info_update_data(user_edited_data):
     return result
 
 
-def edit_user_info_add_diagnose(card_number, diagnose_number):
-    pass
+def edit_user_select_all_diseases():
+    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    cur = con.cursor()
+    disease_names = []
+
+    cur.execute('SELECT disease_name FROM diseases ')
+
+    for result_diseases in cur:
+        disease_names.append(result_diseases[0])
+
+    return disease_names
+
+
+def edit_user_info_add_diagnose(diagnose_data):
+    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    cur = con.cursor()
+
+    result = {
+        "success": True
+    }
+    try:
+        cur.execute('INSERT INTO DIAGNOSES (DIAGNOSE_NUMBER, DISEASE_NAME, DIAGNOSE_DATE, DIAGNOSE_DOCTOR, '
+                    'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\')'.format(
+                                                                            diagnose_data['diagnose_number'],
+                                                                            diagnose_data['disease_name'],
+                                                                            diagnose_data['diagnose_date'],
+                                                                            diagnose_data['diagnose_doctor']))
+
+        cur.execute('INSERT INTO MEDICALCARD (DIAGNOSE_NUMBER) '
+                    'VALUES (\'{0}\')'.format(diagnose_data['diagnose_number']))
+
+    except:
+        result["success"] = False
+
+    return result
+
 
 def delete_selected_users(user_card_number):
     result = {
