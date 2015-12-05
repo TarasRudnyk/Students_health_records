@@ -52,7 +52,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Add new row</string>
+    <string>Add new diagnose</string>
    </property>
   </widget>
   <widget class="QLabel" name="name_error">
@@ -136,7 +136,7 @@
     <string/>
    </property>
    <property name="text">
-    <string>Rudnyk Taras</string>
+    <string/>
    </property>
    <property name="maxLength">
     <number>30</number>
@@ -164,7 +164,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>12345678</string>
+    <string/>
    </property>
    <property name="maxLength">
     <number>8</number>
@@ -186,7 +186,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>km23</string>
+    <string/>
    </property>
    <property name="maxLength">
     <number>4</number>
@@ -208,7 +208,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>tarasrudnyk@gmail.com</string>
+    <string/>
    </property>
    <property name="maxLength">
     <number>30</number>
@@ -230,10 +230,10 @@
     </rect>
    </property>
    <property name="inputMask">
-    <string>+38\0(00)-000-00-00</string>
+    <string/>
    </property>
    <property name="text">
-    <string>+380(95)-465-91-68</string>
+    <string/>
    </property>
    <property name="placeholderText">
     <string>+380954659168</string>

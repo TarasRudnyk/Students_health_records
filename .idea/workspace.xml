@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a418476b-6cc0-4c93-8519-cd9acddc9679" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/admin_show_user_info.py" afterPath="$PROJECT_DIR$/views/admin_show_user_info.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+    <list default="true" id="a418476b-6cc0-4c93-8519-cd9acddc9679" name="Default" comment="refactored desease name">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ui/admin3.ui" afterPath="$PROJECT_DIR$/ui/admin3.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_processing.py" afterPath="$PROJECT_DIR$/data_processing.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Students_health_records.iws" />
@@ -19,12 +19,12 @@
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Students_health_records$registration.coverage" NAME="registration Coverage Results" MODIFIED="1447511065924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Students_health_records$authorization_ui.coverage" NAME="authorization_ui Coverage Results" MODIFIED="1447178670861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Students_health_records$main.coverage" NAME="main Coverage Results" MODIFIED="1449327172282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Students_health_records$server.coverage" NAME="server Coverage Results" MODIFIED="1449327168644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Students_health_records$authorization.coverage" NAME="authorization Coverage Results" MODIFIED="1447441558006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Students_health_records$data_processing.coverage" NAME="data_processing Coverage Results" MODIFIED="1448654595250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Students_health_records$authorization_ui.coverage" NAME="authorization_ui Coverage Results" MODIFIED="1447178670861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Students_health_records$server.coverage" NAME="server Coverage Results" MODIFIED="1449312274583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Students_health_records$app.coverage" NAME="app Coverage Results" MODIFIED="1447880371650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Students_health_records$main.coverage" NAME="main Coverage Results" MODIFIED="1449319365929" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="D:\PyCharm 4.5.2\workspace\python\.idea" />
@@ -47,23 +47,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_processing.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="data_processing.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_processing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4135135">
+              <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
               <folding>
-                <marker date="1449317594786" expanded="true" signature="237:293" placeholder="SELECT user_..clients..." />
-                <marker date="1449317594786" expanded="true" signature="942:1005" placeholder="SELECT user_..clients..." />
-                <marker date="1449317594786" expanded="true" signature="1124:1196" placeholder="SELECT diagn..MEDICALCARD..." />
-                <marker date="1449317594786" expanded="true" signature="1559:1655" placeholder="SELECT diagn..DIAGNOSES..." />
-                <marker date="1449317594786" expanded="true" signature="2449:2542" placeholder="SELECT user_..clients..." />
-                <marker date="1449317594786" expanded="true" signature="3219:3477" placeholder="INSERT INTO ..." />
-                <marker date="1449317594786" expanded="true" signature="4735:4862" placeholder="SELECT user_..." />
-                <marker date="1449317594786" expanded="true" signature="5177:5268" placeholder="SELECT diagn..MEDICALCARD..." />
-                <marker date="1449317594786" expanded="true" signature="5722:5805" placeholder="SELECT diagn..DIAGNOSES..." />
-                <marker date="1449317594786" expanded="true" signature="5862:6102" placeholder="UPDATE CLIEN..." />
-                <marker date="1449317594786" expanded="true" signature="6789:6861" placeholder="DELETE FROM ..." />
+                <marker date="1449327168633" expanded="true" signature="237:293" placeholder="SELECT user_..clients..." />
+                <marker date="1449327168633" expanded="true" signature="942:1005" placeholder="SELECT user_..clients..." />
+                <marker date="1449327168633" expanded="true" signature="1124:1196" placeholder="SELECT diagn..MEDICALCARD..." />
+                <marker date="1449327168633" expanded="true" signature="1559:1654" placeholder="SELECT disea..DIAGNOSES..." />
+                <marker date="1449327168633" expanded="true" signature="2448:2541" placeholder="SELECT user_..clients..." />
+                <marker date="1449327168633" expanded="true" signature="3218:3476" placeholder="INSERT INTO ..." />
+                <marker date="1449327168633" expanded="true" signature="4812:4940" placeholder="SELECT user_..." />
+                <marker date="1449327168633" expanded="true" signature="5527:5618" placeholder="SELECT diagn..MEDICALCARD..." />
+                <marker date="1449327168633" expanded="true" signature="6072:6154" placeholder="SELECT diagn..DIAGNOSES..." />
+                <marker date="1449327168633" expanded="true" signature="6519:6759" placeholder="UPDATE CLIEN..." />
+                <marker date="1449327168633" expanded="true" signature="7612:7684" placeholder="DELETE FROM ..." />
               </folding>
             </state>
           </provider>
@@ -89,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35818475">
-              <caret line="77" column="56" selection-start-line="77" selection-start-column="56" selection-end-line="77" selection-end-column="56" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
                 <element signature="e#448#950#0" expanded="false" />
@@ -145,10 +145,10 @@
         <option value="$PROJECT_DIR$/views/admin_edit_user_info.py" />
         <option value="$PROJECT_DIR$/views/user_ui.py" />
         <option value="$PROJECT_DIR$/views/add_user_ui.py" />
-        <option value="$PROJECT_DIR$/data_processing.py" />
         <option value="$PROJECT_DIR$/server.py" />
         <option value="$PROJECT_DIR$/views/admin_show_user_info.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/data_processing.py" />
       </list>
     </option>
   </component>
@@ -188,6 +188,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -223,7 +224,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -798,7 +798,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449318279680</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Cleared default test in all lineEdits.">
+      <created>1449322989060</created>
+      <option name="number" value="00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1449322989060</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TodoView">
@@ -814,28 +820,28 @@
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1566618" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5030534" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21543409" sideWeight="0.49694657" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31832796" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24961832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5030534" order="13" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21543409" sideWeight="0.49694657" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31832796" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31350482" sideWeight="0.49389312" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15885022" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24961832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31472868" sideWeight="0.49389312" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32868218" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -850,7 +856,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Registration form finished" />
     <MESSAGE value="Functions sorted" />
     <MESSAGE value="New ui view." />
     <MESSAGE value="view files." />
@@ -875,7 +880,8 @@
     <MESSAGE value="fixed registration" />
     <MESSAGE value="added deleting user data" />
     <MESSAGE value="changed server messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed server messages" />
+    <MESSAGE value="Cleared default test in all lineEdits." />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleared default test in all lineEdits." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1357,26 +1363,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_processing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="171" column="0" selection-start-line="171" selection-start-column="0" selection-end-line="171" selection-end-column="0" />
-          <folding>
-            <marker date="1449317594786" expanded="true" signature="237:293" placeholder="SELECT user_..clients..." />
-            <marker date="1449317594786" expanded="true" signature="942:1005" placeholder="SELECT user_..clients..." />
-            <marker date="1449317594786" expanded="true" signature="1124:1196" placeholder="SELECT diagn..MEDICALCARD..." />
-            <marker date="1449317594786" expanded="true" signature="1559:1655" placeholder="SELECT diagn..DIAGNOSES..." />
-            <marker date="1449317594786" expanded="true" signature="2449:2542" placeholder="SELECT user_..clients..." />
-            <marker date="1449317594786" expanded="true" signature="3219:3477" placeholder="INSERT INTO ..." />
-            <marker date="1449317594786" expanded="true" signature="4735:4862" placeholder="SELECT user_..." />
-            <marker date="1449317594786" expanded="true" signature="5177:5268" placeholder="SELECT diagn..MEDICALCARD..." />
-            <marker date="1449317594786" expanded="true" signature="5722:5805" placeholder="SELECT diagn..DIAGNOSES..." />
-            <marker date="1449317594786" expanded="true" signature="5862:6102" placeholder="UPDATE CLIEN..." />
-            <marker date="1449317594786" expanded="true" signature="6789:6861" placeholder="DELETE FROM ..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1397,8 +1383,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35818475">
-          <caret line="77" column="56" selection-start-line="77" selection-start-column="56" selection-end-line="77" selection-end-column="56" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
             <element signature="e#448#950#0" expanded="false" />
@@ -1411,6 +1397,26 @@
             <element signature="e#17696#17759#0" expanded="false" />
             <element signature="e#17783#17845#0" expanded="false" />
             <element signature="e#17882#18915#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_processing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4135135">
+          <caret line="160" column="0" selection-start-line="160" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
+          <folding>
+            <marker date="1449327168633" expanded="true" signature="237:293" placeholder="SELECT user_..clients..." />
+            <marker date="1449327168633" expanded="true" signature="942:1005" placeholder="SELECT user_..clients..." />
+            <marker date="1449327168633" expanded="true" signature="1124:1196" placeholder="SELECT diagn..MEDICALCARD..." />
+            <marker date="1449327168633" expanded="true" signature="1559:1654" placeholder="SELECT disea..DIAGNOSES..." />
+            <marker date="1449327168633" expanded="true" signature="2448:2541" placeholder="SELECT user_..clients..." />
+            <marker date="1449327168633" expanded="true" signature="3218:3476" placeholder="INSERT INTO ..." />
+            <marker date="1449327168633" expanded="true" signature="4812:4940" placeholder="SELECT user_..." />
+            <marker date="1449327168633" expanded="true" signature="5527:5618" placeholder="SELECT diagn..MEDICALCARD..." />
+            <marker date="1449327168633" expanded="true" signature="6072:6154" placeholder="SELECT diagn..DIAGNOSES..." />
+            <marker date="1449327168633" expanded="true" signature="6519:6759" placeholder="UPDATE CLIEN..." />
+            <marker date="1449327168633" expanded="true" signature="7612:7684" placeholder="DELETE FROM ..." />
           </folding>
         </state>
       </provider>
