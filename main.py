@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 from views import authorization_ui
 from views import add_user_ui
-from views import admin_edit_user_info
+from ui import admin_edit_user_info
 from views import admin_show_user_info
 from views import user_ui
 
@@ -73,16 +73,16 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.user_info_tableWidget.verticalHeader().setCascadingSectionResizes(True)
         self.user_info_tableWidget.verticalHeader().setSortIndicatorShown(True)
         self.user_info_tableWidget.verticalHeader().setStretchLastSection(False)
-        self.user_info_tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Date"))
-        self.user_info_tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Doctor"))
-        self.user_info_tableWidget.setHorizontalHeaderItem(2, QTableWidgetItem("Diagnose"))
+        self.user_info_tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Card number"))
+        self.user_info_tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Full name"))
+        self.user_info_tableWidget.setHorizontalHeaderItem(2, QTableWidgetItem("Group"))
 
         for i in range(count):
             self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(str(info["users_card_numbers"][i])))
             self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(str(info["users_full_names"][i])))
             self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(str(info["users_groups"][i])))
 
-        #self.user_info_tableWidget.cellPressed.connect(self.delete_user)
+        self.user_info_tableWidget.cellDoubleClicked.connect(self.show_user_info)
         self.delete_selected_pushButton.clicked.connect(self.delete_user)
         self.gridLayout_3.addWidget(self.user_info_tableWidget, 2, 0, 1, 3)
 
@@ -99,6 +99,11 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(str(info["users_card_numbers"][i])))
             self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(str(info["users_full_names"][i])))
             self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(str(info["users_groups"][i])))
+
+    def show_user_info(self):
+        row = self.user_info_tableWidget.currentItem().row()
+        card_number = self.user_info_tableWidget.item(row, 0).text()
+        self.editing_user(card_number)
 
     def delete_user(self):
         global user_login
@@ -121,10 +126,23 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             else:
                 QMessageBox.information(self, 'Canceled', "Deleting canceled!")
 
-    def editing_user(self):
+    def editing_user(self, user_card_number):
+        try:
+            info = get_all_user_info(user_card_number)
+        except:
+            QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+            info = {'success': True,
+                    'user_full_name': '',
+                    'user_group': '',
+                    'user_email': '',
+                    'user_phone_number': ''}
+
+    def put_user_info(self, info):
+
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
         self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.edit_user.setupUi(self.dialog)
+        self.edit_user.card_number_lineEdit.setText(user_card_number)
         self.edit_user.confirm_pushButton.clicked.connect(self.edit_user_data_verification)
         self.edit_user.back_to_info_view_pushButton.clicked.connect(self.close_widget)
         self.edit_user.card_number_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
@@ -516,6 +534,26 @@ def delete_user(login, card_number):
     send_data = {"auth": False,
                  "login": login,
                  "action": "delete_user",
+                 "user_card_number": card_number
+                 }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+
+    data = sock.recv(10000)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    return data
+
+
+def get_all_user_info(card_number):
+    global user_login
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": False,
+                 "login": user_login,
+                 "action": "get_all_user_info",
                  "user_card_number": card_number
                  }
 

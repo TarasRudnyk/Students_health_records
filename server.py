@@ -51,6 +51,11 @@ while True:
                     result = "Success" if server_answer["success"] else "Failed"
                     print("Result", result)
 
+                elif action == "get_all_user_info":
+                    server_answer = edit_user_info_select_data(received_data["user_card_number"])
+                    result = "Success" if server_answer["success"] else "Failed"
+                    print("Result", result)
+
             else:
                 server_answer = authorize_user(received_data["login"], received_data["password"])
                 result = "Success" if server_answer["success"] else "Failed"
