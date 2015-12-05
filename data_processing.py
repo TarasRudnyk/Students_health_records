@@ -47,7 +47,7 @@ def get_user_diagnoses(login):
     else:
         diagnose_number_tuple = 0
 
-    cur.execute('SELECT diagnose_name, diagnose_date, diagnose_doctor FROM DIAGNOSES WHERE diagnose_number IN {0}'.format(diagnose_number_tuple))
+    cur.execute('SELECT disease_name, diagnose_date, diagnose_doctor FROM DIAGNOSES WHERE diagnose_number IN {0}'.format(diagnose_number_tuple))
     for result_diagnose in cur:
         diagnose_name.append(result_diagnose[0])
         diagnose_date.append(str(result_diagnose[1]))
@@ -162,7 +162,7 @@ def edit_user_info_select_diagnoses(user_card_number):
         user_diagnose_numbers_tuple = 0
 
     # Selecting users diagnoses
-    cur.execute('SELECT diagnose_name FROM DIAGNOSES '
+    cur.execute('SELECT disease_name FROM DIAGNOSES '
                 'WHERE diagnose_number IN {0}'.format(user_diagnose_numbers_tuple))
 
     for result_diagnose in cur:
