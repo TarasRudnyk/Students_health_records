@@ -119,20 +119,23 @@ def edit_user_info_select_data(user_card_number):
     cur = con.cursor()
 
     #user_card_number = '11111111'
-    user_data = {'user_full_name': '',
+    user_data = {'success': True,
+                 'user_full_name': '',
                  'user_group': '',
                  'user_email': '',
                  'user_phone_number': ''}
 
-    # Selecting user data
-    cur.execute('SELECT user_full_name, user_group, user_email, user_phone_number'
+    try:
+        cur.execute('SELECT user_full_name, user_group, user_email, user_phone_number '
                  'FROM CLIENTS WHERE user_card_number =\'{0}\''.format(user_card_number))
 
-    for result_user_data in cur:
-        user_data['user_full_name'] = result_user_data[0]
-        user_data['user_group'] = result_user_data[1]
-        user_data['user_email'] = result_user_data[2]
-        user_data['user_phone_number'] = result_user_data[3]
+        for result_user_data in cur:
+            user_data['user_full_name'] = result_user_data[0]
+            user_data['user_group'] = result_user_data[1]
+            user_data['user_email'] = result_user_data[2]
+            user_data['user_phone_number'] = result_user_data[3]
+    except:
+        user_data["success"] = False
 
     return user_data
 
