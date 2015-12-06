@@ -2,6 +2,7 @@ import sys
 import re
 import socket
 import json
+import datetime
 
 from PyQt5 import QtWidgets
 from PyQt5 import QtCore
@@ -10,7 +11,7 @@ from PyQt5.QtWidgets import QMessageBox
 
 from views import authorization_ui
 from views import add_user_ui
-from ui import admin_edit_user_info
+from views import admin_edit_user_info
 from views import admin_show_user_info
 from views import user_ui
 
@@ -93,6 +94,11 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         except:
             QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
             count = 0
+
+        self.user_info_tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Card number"))
+        self.user_info_tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Full name"))
+        self.user_info_tableWidget.setHorizontalHeaderItem(2, QTableWidgetItem("Group"))
+
         self.user_info_tableWidget.setColumnCount(3)
         self.user_info_tableWidget.setRowCount(count)
         for i in range(count):
@@ -129,6 +135,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
     def editing_user(self, user_card_number):
         try:
             info = get_all_user_info(user_card_number)
+            diagnoses = get_user_diagnoses_for_admin(user_card_number)["diagnoses"]
         except:
             QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
             info = {'success': True,
@@ -136,14 +143,29 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
                     'user_group': '',
                     'user_email': '',
                     'user_phone_number': ''}
-        self.put_user_info(user_card_number, info)
+        self.put_user_info(user_card_number, info, diagnoses)
 
 
-
-    def put_user_info(self, user_card_number, info):
+    def put_user_info(self, user_card_number, info, diagnoses):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
         self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.edit_user.setupUi(self.dialog)
+
+        self.count = len(diagnoses)
+        self.edit_user.tableWidget.setColumnCount(1)
+        self.edit_user.tableWidget.setRowCount(self.count)
+
+        for i in range(self.count):
+            self.edit_user.tableWidget.setItem(i, 0, QTableWidgetItem(str(diagnoses[i])))
+
+        self.edit_user.tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Diagnoses"))
+        self.edit_user.tableWidget.horizontalHeader().setDefaultSectionSize(50)
+        self.edit_user.tableWidget.horizontalHeader().setMinimumSectionSize(38)
+        self.edit_user.tableWidget.horizontalHeader().setStretchLastSection(True)
+        self.edit_user.tableWidget.verticalHeader().setDefaultSectionSize(30)
+        self.edit_user.tableWidget.setSortingEnabled(True)
+        self.edit_user.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+
         self.edit_user.card_number_lineEdit.setEnabled(False)
         self.edit_user.card_number_lineEdit.setText(user_card_number)
         self.edit_user.full_name_lineEdit.setText(info["user_full_name"])
@@ -152,6 +174,8 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.edit_user.phone_number_lineEdit.setText(str(info["user_phone_number"]))
         self.edit_user.confirm_pushButton.clicked.connect(self.edit_user_data_verification)
         self.edit_user.back_to_info_view_pushButton.clicked.connect(self.close_widget)
+        self.edit_user.add_new_button.clicked.connect(self.add_diagnose_row)
+        self.edit_user.save_button.clicked.connect(self.insert_diagnoses)
         self.edit_user.card_number_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
         self.edit_user.full_name_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
         self.edit_user.group_lineEdit.returnPressed.connect(self.edit_user.confirm_pushButton.click)
@@ -161,6 +185,63 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.dialog.show()
         self.dialog.exec()
         self.show()
+
+
+    def insert_diagnoses(self):
+        current_count = self.edit_user.tableWidget.rowCount()
+        card_number = self.edit_user.card_number_lineEdit.text()
+        for i in range(self.count, current_count):
+            try:
+                all_diagnoses_count = get_diagnoses_count()["count"] + 1
+            except:
+                QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+                all_diagnoses_count = 1
+
+            combobox = self.edit_user.tableWidget.cellWidget(i, 0)
+            text = combobox.currentText()
+            date = datetime.datetime.today()
+
+            date = date.strftime("%d-%b-%y")
+            try:
+                add_user_diagnose(all_diagnoses_count, text, date, card_number)
+                self.count += 1
+            except:
+                QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+        self.update_diagnoses_table(card_number)
+
+    def update_diagnoses_table(self, user_card_number):
+        diagnoses = []
+        try:
+            diagnoses = get_user_diagnoses_for_admin(user_card_number)["diagnoses"]
+        except:
+            QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+        self.edit_user.tableWidget.clear()
+
+        self.edit_user.tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Diagnoses"))
+
+        count = len(diagnoses)
+        self.edit_user.tableWidget.setColumnCount(1)
+        self.edit_user.tableWidget.setRowCount(count)
+
+        for i in range(count):
+            self.edit_user.tableWidget.setItem(i, 0, QTableWidgetItem(str(diagnoses[i])))
+
+
+    def add_diagnose_row(self):
+
+        count = self.edit_user.tableWidget.rowCount()
+        self.edit_user.tableWidget.insertRow(count)
+
+        try:
+            diseases = get_all_diseases()['diseases']
+        except:
+            QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+            diseases = []
+
+        combobox = QtWidgets.QComboBox()
+        combobox.addItems(diseases)
+
+        self.edit_user.tableWidget.setCellWidget(count, 0, combobox)
 
     def adding_user(self):
         self.add_user = add_user_ui.Ui_addUserWindow()
@@ -175,6 +256,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
     def close_widget(self):
         self.dialog.destroy()
+        self.update_table()
         self.show()
 
     def edit_user_data_verification(self):
@@ -233,10 +315,10 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         if success:
             try:
                 result = update_user_info(card_number, full_name, group, phone_number, email)
-
-                QMessageBox.information(self, 'Success', "User information has been updated!")
+                if result["success"]:
+                    QMessageBox.information(self, 'Success', "User information has been updated!")
             except:
-                pass
+                    QMessageBox.information(self, 'Failed', "Information wasn't updated. Please try later.")
 
     def add_user_data_verification(self):
         global user_login
@@ -604,6 +686,88 @@ def update_user_info(card_number, full_name, group, phone_number, email):
     data = json.loads(data.decode('utf-8'))
     return data
 
+
+def get_user_diagnoses_for_admin(card_number):
+    global user_login
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": False,
+                 "login": user_login,
+                 "action": "get_user_diagnoses_for_admin",
+                 "user_card_number": card_number
+                 }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+
+    data = sock.recv(10000)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    return data
+
+
+def get_all_diseases():
+    global user_login
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": False,
+                 "login": user_login,
+                 "action": "select_all_diseases",
+                 }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+
+    data = sock.recv(10000)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    return data
+
+
+def get_diagnoses_count():
+    global user_login
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": False,
+                 "login": user_login,
+                 "action": "get_diagnoses_count"
+                 }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+
+    data = sock.recv(10000)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    return data
+
+
+def add_user_diagnose(number, name, date, card_number):
+    global user_login
+    sock = socket.socket()
+    sock.connect(('127.0.0.1', 9090))
+
+    send_data = {"auth": False,
+                 "login": user_login,
+                 "action": "add_user_diagnose",
+                 "card_number": card_number,
+                 "diagnose_data": {
+                     "diagnose_number": number,
+                     "disease_name": name,
+                     "diagnose_date": date,
+                     "diagnose_doctor": user_login
+                     }
+                 }
+
+    sock.sendall(json.dumps(send_data).encode('utf-8'))
+    data = sock.recv(10000)
+    sock.close()
+
+    data = json.loads(data.decode('utf-8'))
+    return data
 
 
 def log_out():

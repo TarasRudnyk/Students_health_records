@@ -63,6 +63,29 @@ while True:
                     result = "Success" if server_answer["success"] else "Failed"
                     print("Result", result)
 
+                elif action == "get_user_diagnoses_for_admin":
+                    server_answer = edit_user_info_select_diagnoses(received_data["user_card_number"])
+                    print("User card number", received_data["user_card_number"])
+                    result = "Success" if server_answer["success"] else "Failed"
+                    print("Result", result)
+
+                elif action == "select_all_diseases":
+                    server_answer = edit_user_select_all_diseases()
+                    result = "Success" if server_answer["success"] else "Failed"
+                    print("Result", result)
+
+                elif action == "get_diagnoses_count":
+                    server_answer = get_diagnose_number()
+                    print("Diagnoses count", server_answer["count"])
+                    result = "Success" if server_answer["success"] else "Failed"
+                    print("Result", result)
+
+                elif action == "add_user_diagnose":
+                    server_answer = edit_user_info_add_diagnose(received_data["diagnose_data"],
+                                                                received_data["card_number"])
+                    result = "Success" if server_answer["success"] else "Failed"
+                    print("Result", result)
+
             else:
                 server_answer = authorize_user(received_data["login"], received_data["password"])
                 result = "Success" if server_answer["success"] else "Failed"

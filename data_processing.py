@@ -144,6 +144,10 @@ def edit_user_info_select_diagnoses(user_card_number):
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
 
+    result = {
+        "success": True
+    }
+
     user_diagnose_numbers = []
     user_diagnose_names = []
 
@@ -162,13 +166,16 @@ def edit_user_info_select_diagnoses(user_card_number):
         user_diagnose_numbers_tuple = 0
 
     # Selecting users diagnoses
-    cur.execute('SELECT disease_name FROM DIAGNOSES '
-                'WHERE diagnose_number IN {0}'.format(user_diagnose_numbers_tuple))
-
+    try:
+        cur.execute('SELECT disease_name FROM DIAGNOSES '
+                    'WHERE diagnose_number IN {0}'.format(user_diagnose_numbers_tuple))
+    except:
+        result["success"] = False
     for result_diagnose in cur:
-        user_diagnose_names.append(result_diagnose)
+        user_diagnose_names.append(result_diagnose[0])
+    result["diagnoses"] = user_diagnose_names
 
-    return user_diagnose_names
+    return result
 
 
 def edit_user_info_update_data(user_edited_data):
@@ -204,36 +211,42 @@ def edit_user_select_all_diseases():
     cur = con.cursor()
     disease_names = []
 
+    result = {
+        "success": True
+    }
+
     cur.execute('SELECT disease_name FROM diseases ')
 
     for result_diseases in cur:
         disease_names.append(result_diseases[0])
 
-    return disease_names
+    result["diseases"] = disease_names
+    return result
 
 
-def edit_user_info_add_diagnose(diagnose_data):
+def edit_user_info_add_diagnose(diagnose_data, card_number):
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
 
     result = {
         "success": True
     }
-    try:
-        cur.execute('INSERT INTO DIAGNOSES (DIAGNOSE_NUMBER, DISEASE_NAME, DIAGNOSE_DATE, DIAGNOSE_DOCTOR, '
-                    'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\')'.format(
-                                                                            diagnose_data['diagnose_number'],
-                                                                            diagnose_data['disease_name'],
-                                                                            diagnose_data['diagnose_date'],
-                                                                            diagnose_data['diagnose_doctor']))
+    # try:
+    print(diagnose_data['diagnose_number'])
+    cur.execute('INSERT INTO DIAGNOSES (DIAGNOSE_NUMBER, DISEASE_NAME, DIAGNOSE_DATE, DIAGNOSE_DOCTOR) '
+                'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\')'.format(
+                                                                        diagnose_data['diagnose_number'],
+                                                                        diagnose_data['disease_name'],
+                                                                        diagnose_data['diagnose_date'],
+                                                                        diagnose_data['diagnose_doctor']))
 
-        cur.execute('INSERT INTO MEDICALCARD (DIAGNOSE_NUMBER) '
-                    'VALUES (\'{0}\')'.format(diagnose_data['diagnose_number']))
+    cur.execute('INSERT INTO MEDICALCARD (DIAGNOSE_NUMBER, USER_CARD_NUMBER) '
+                'VALUES (\'{0}\', \'{1}\')'.format(diagnose_data['diagnose_number'], card_number))
 
-        con.commit()
+    con.commit()
 
-    except:
-        result["success"] = False
+    # except:
+    #     result["success"] = False
 
     return result
 
@@ -251,4 +264,20 @@ def delete_selected_users(user_card_number):
     except:
         result["success"] = False
 
+    return result
+
+
+def get_diagnose_number():
+    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    cur = con.cursor()
+    result = {
+        "success": True
+    }
+    diagnose_number = 1
+
+    cur.execute('SELECT MAX(diagnose_number) FROM DIAGNOSES')
+
+    for result_diagnose_number in cur:
+        diagnose_number = result_diagnose_number[0]
+    result["count"] = diagnose_number
     return result
