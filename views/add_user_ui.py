@@ -28,6 +28,7 @@ class Ui_addUserWindow(object):
         self.card_number_lineEdit.setMaxLength(8)
         self.card_number_lineEdit.setClearButtonEnabled(True)
         self.card_number_lineEdit.setObjectName("card_number_lineEdit")
+        self.card_number_lineEdit.setInputMask("00000000")
         self.full_name_label = QtWidgets.QLabel(addUserWindow)
         self.full_name_label.setGeometry(QtCore.QRect(19, 73, 56, 16))
         self.full_name_label.setObjectName("full_name_label")

@@ -15,7 +15,7 @@ class Ui_Student_health_records(object):
         Student_health_records.setMinimumSize(QtCore.QSize(800, 483))
         Student_health_records.setMaximumSize(QtCore.QSize(800, 483))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("views/icon.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Student_health_records.setWindowIcon(icon)
         self.save_button = QtWidgets.QPushButton(Student_health_records)
         self.save_button.setGeometry(QtCore.QRect(570, 20, 211, 23))
@@ -74,6 +74,7 @@ class Ui_Student_health_records(object):
         self.phone_number_lineEdit.setGeometry(QtCore.QRect(30, 270, 210, 20))
         self.phone_number_lineEdit.setInputMask("")
         self.phone_number_lineEdit.setText("")
+        self.phone_number_lineEdit.setMaxLength(11)
         self.phone_number_lineEdit.setClearButtonEnabled(True)
         self.phone_number_lineEdit.setObjectName("phone_number_lineEdit")
         self.full_name_label = QtWidgets.QLabel(Student_health_records)
@@ -136,7 +137,7 @@ class Ui_Student_health_records(object):
 
     def retranslateUi(self, Student_health_records):
         _translate = QtCore.QCoreApplication.translate
-        Student_health_records.setWindowTitle(_translate("Student_health_records", "Student health records"))
+        Student_health_records.setWindowTitle(_translate("Student_health_records", "Student health records - Edit user info"))
         self.save_button.setText(_translate("Student_health_records", "Save"))
         self.add_new_button.setText(_translate("Student_health_records", "Add new diagnose"))
         self.name_error.setText(_translate("Student_health_records", "<html><head/><body><p><br/></p></body></html>"))
