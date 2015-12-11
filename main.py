@@ -42,20 +42,12 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.About_Student_health_records_action.triggered.connect(about_information)
         self.draw_table()
 
-        """
-        combobox = QtWidgets.QComboBox()
-        combobox.addItem("1")
-        combobox.addItem("2")
-        self.user_info_tableWidget.setCellWidget(0, 1, combobox)
-        self.user_info_tableWidget.setItem(0, 0, QTableWidgetItem("erugi"))
-        """
-
     def draw_table(self):
         try:
             info = get_all_users_info()
             count = len(info["users_card_numbers"])
         except:
-            QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+            QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later!")
             count = 0
 
         self.user_info_tableWidget = QtWidgets.QTableWidget(self.centralwidget)
@@ -107,9 +99,12 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(str(info["users_groups"][i])))
 
     def show_user_info(self):
-        row = self.user_info_tableWidget.currentItem().row()
-        card_number = self.user_info_tableWidget.item(row, 0).text()
-        self.editing_user(card_number)
+        try:
+            row = self.user_info_tableWidget.currentItem().row()
+            card_number = self.user_info_tableWidget.item(row, 0).text()
+            self.editing_user(card_number)
+        except Exception as E:
+            pass
 
     def delete_user(self):
         global user_login
@@ -120,17 +115,22 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             QMessageBox.information(self, 'Failed', "Please select any user!")
             set_row = False
 
+
         if set_row:
             user_name = self.user_info_tableWidget.item(row, 1).text()
             reply = QMessageBox.question(self, 'Message',
                                          "Are you sure to delete user {0}?".format(user_name),
                                          QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
-            if reply == QMessageBox.Yes:
-                user_card_number = self.user_info_tableWidget.item(row, 0).text()
-                if delete_user(user_login, user_card_number)["success"]:
-                    self.user_info_tableWidget.removeRow(row)
-            else:
-                QMessageBox.information(self, 'Canceled', "Deleting canceled!")
+            try:
+                if reply == QMessageBox.Yes:
+                    user_card_number = self.user_info_tableWidget.item(row, 0).text()
+                    if delete_user(user_login, user_card_number)["success"]:
+                        self.user_info_tableWidget.removeRow(row)
+                else:
+                    QMessageBox.information(self, 'Canceled', "Deleting canceled!")
+            except Exception as E:
+                QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+
 
     def editing_user(self, user_card_number):
         try:
@@ -149,7 +149,6 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
         self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.edit_user.setupUi(self.dialog)
-        print(info)
 
         self.count = len(diagnoses)
         self.edit_user.tableWidget.setColumnCount(1)
