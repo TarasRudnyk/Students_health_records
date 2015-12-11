@@ -110,6 +110,7 @@ def add_new_user(add_users_result):
         con.commit()
     except:
         result["success"] = False
+        con.rollback()
 
     return result
 
@@ -202,6 +203,7 @@ def edit_user_info_update_data(user_edited_data):
         con.commit()
     except:
         result["success"] = False
+        con.rollback()
 
     return result
 
@@ -231,22 +233,22 @@ def edit_user_info_add_diagnose(diagnose_data, card_number):
     result = {
         "success": True
     }
-    # try:
-    print(diagnose_data['diagnose_number'])
-    cur.execute('INSERT INTO DIAGNOSES (DIAGNOSE_NUMBER, DISEASE_NAME, DIAGNOSE_DATE, DIAGNOSE_DOCTOR) '
-                'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\')'.format(
-                                                                        diagnose_data['diagnose_number'],
-                                                                        diagnose_data['disease_name'],
-                                                                        diagnose_data['diagnose_date'],
-                                                                        diagnose_data['diagnose_doctor']))
+    try:
+    # print(diagnose_data['diagnose_number'])
+        cur.execute('INSERT INTO DIAGNOSES (DIAGNOSE_NUMBER, DISEASE_NAME, DIAGNOSE_DATE, DIAGNOSE_DOCTOR) '
+                    'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\')'.format(
+                                                                            diagnose_data['diagnose_number'],
+                                                                            diagnose_data['disease_name'],
+                                                                            diagnose_data['diagnose_date'],
+                                                                            diagnose_data['diagnose_doctor']))
 
-    cur.execute('INSERT INTO MEDICALCARD (DIAGNOSE_NUMBER, USER_CARD_NUMBER) '
-                'VALUES (\'{0}\', \'{1}\')'.format(diagnose_data['diagnose_number'], card_number))
+        cur.execute('INSERT INTO MEDICALCARD (DIAGNOSE_NUMBER, USER_CARD_NUMBER) '
+                    'VALUES (\'{0}\', \'{1}\')'.format(diagnose_data['diagnose_number'], card_number))
 
-    con.commit()
-
-    # except:
-    #     result["success"] = False
+        con.commit()
+    except:
+        result["success"] = False
+        con.rollback()
 
     return result
 
@@ -263,6 +265,7 @@ def delete_selected_users(user_card_number):
         con.commit()
     except:
         result["success"] = False
+        con.rollback()
 
     return result
 
