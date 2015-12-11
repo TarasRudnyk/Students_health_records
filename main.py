@@ -145,11 +145,11 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
                     'user_phone_number': ''}
         self.put_user_info(user_card_number, info, diagnoses)
 
-
     def put_user_info(self, user_card_number, info, diagnoses):
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
         self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.edit_user.setupUi(self.dialog)
+        print(info)
 
         self.count = len(diagnoses)
         self.edit_user.tableWidget.setColumnCount(1)
@@ -185,7 +185,6 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.dialog.show()
         self.dialog.exec()
         self.show()
-
 
     def insert_diagnoses(self):
         current_count = self.edit_user.tableWidget.rowCount()
@@ -225,7 +224,6 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
         for i in range(count):
             self.edit_user.tableWidget.setItem(i, 0, QTableWidgetItem(str(diagnoses[i])))
-
 
     def add_diagnose_row(self):
 
@@ -283,6 +281,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
                 success = False
         except:
             pass
+
         if len(full_name[0]) + len(full_name[1]) < 4:
             self.edit_user.name_error.setText("Please enter 5 or more symbols!")
             success = False
@@ -292,6 +291,13 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         if len(full_name[0]) == 0:
             self.edit_user.name_error.setText("This field cannot be empty!")
             success = False
+        try:
+            if len(full_name[2]) > 1:
+                self.edit_user.name_error.setText("Please enter only first and last name!")
+                success = False
+        except:
+            pass
+
 
         if not card_number.isdigit():
             self.edit_user.card_number_error.setText("Please enter only digits!")
@@ -356,12 +362,19 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         if len(full_name[0]) + len(full_name[1]) < 4:
             self.add_user.full_name_error.setText("Please enter 5 or more symbols!")
             success = False
+        # if len(full_name[1]) == 0 or len(full_name[2]) > 0:
         if len(full_name[1]) == 0:
             self.add_user.full_name_error.setText("Please enter first and last name!")
             success = False
         if len(full_name[0]) == 0:
             self.add_user.full_name_error.setText("This field cannot be empty!")
             success = False
+        try:
+            if len(full_name[2]) > 0:
+                self.add_user.full_name_error.setText("Please enter only first and last name!")
+                success = False
+        except:
+           pass
 
         if not re.match("^[a-zA-Z]{2}[0-9]{2}", group):
             self.add_user.group_error.setText("Incorrect group name!")

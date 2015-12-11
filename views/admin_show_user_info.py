@@ -131,7 +131,7 @@ class Ui_AdminShowUsersMenu(object):
         _translate = QtCore.QCoreApplication.translate
         AdminShowUsersMenu.setWindowTitle(_translate("AdminShowUsersMenu", "Students health records User info - Admin"))
         self.add_user_pushButton.setText(_translate("AdminShowUsersMenu", "Add new user"))
-        self.delete_selected_pushButton.setText(_translate("AdminShowUsersMenu", "Delete selected users"))
+        self.delete_selected_pushButton.setText(_translate("AdminShowUsersMenu", "Delete selected user"))
         self.menuFile.setTitle(_translate("AdminShowUsersMenu", "File"))
         self.menuAbout.setTitle(_translate("AdminShowUsersMenu", "Help"))
         self.actionOpen.setText(_translate("AdminShowUsersMenu", "Open"))
@@ -139,7 +139,7 @@ class Ui_AdminShowUsersMenu(object):
         self.actionSave_as.setText(_translate("AdminShowUsersMenu", "Save as..."))
         self.actionLog_out.setText(_translate("AdminShowUsersMenu", "Log out"))
         self.actionAdd_new_user.setText(_translate("AdminShowUsersMenu", "Add new user"))
-        self.Curent_widget_help_action.setText(_translate("AdminShowUsersMenu", "Curent widget help"))
+        self.Curent_widget_help_action.setText(_translate("AdminShowUsersMenu", "Current widget help"))
         self.Student_health_records_help_action.setText(_translate("AdminShowUsersMenu", "Student health records help"))
         self.About_Student_health_records_action.setText(_translate("AdminShowUsersMenu", "About Student health records"))
 
