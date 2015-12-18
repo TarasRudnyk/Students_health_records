@@ -96,6 +96,7 @@ def add_new_user(add_users_result):
     add_users_result["user_full_name"] = add_users_result["user_full_name"][0] + " " + add_users_result["user_full_name"][1]
 
     try:
+        cur.execute('set transaction isolation level serializable')
         cur.execute('INSERT INTO CLIENTS (USER_CARD_NUMBER, USER_LOGIN, USER_PASSWORD, USER_FULL_NAME,'
                     'USER_PHONE_NUMBER, USER_GROUP, USER_EMAIL, USER_ROLE)'
                     'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\', \'{4}\', \'{5}\', \'{6}\', \'{7}\')'.format(
@@ -190,6 +191,7 @@ def edit_user_info_update_data(user_edited_data):
     if user_edited_data["user_phone_number"] == 'None':
         user_edited_data["user_phone_number"] = ""
     try:
+        cur.execute('set transaction isolation level read only')
         cur.execute('UPDATE CLIENTS '
                 'SET user_full_name = \'{0}\','
                 'user_group = \'{1}\','
@@ -235,6 +237,7 @@ def edit_user_info_add_diagnose(diagnose_data, card_number):
     }
     try:
     # print(diagnose_data['diagnose_number'])
+        cur.execute('set transaction isolation level serializable')
         cur.execute('INSERT INTO DIAGNOSES (DIAGNOSE_NUMBER, DISEASE_NAME, DIAGNOSE_DATE, DIAGNOSE_DOCTOR) '
                     'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\')'.format(
                                                                             diagnose_data['diagnose_number'],
@@ -260,6 +263,7 @@ def delete_selected_users(user_card_number):
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
     try:
+        cur.execute('set transaction isolation level serializable')
         cur.execute('DELETE FROM CLIENTS '
                     ' WHERE user_card_number = {0}'.format(user_card_number))
         con.commit()
