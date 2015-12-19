@@ -19,8 +19,8 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/Students_health_records$registration.coverage" NAME="registration Coverage Results" MODIFIED="1447511065924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Students_health_records$authorization_ui.coverage" NAME="authorization_ui Coverage Results" MODIFIED="1447178670861" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Students_health_records$main.coverage" NAME="main Coverage Results" MODIFIED="1450474949219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Students_health_records$server.coverage" NAME="server Coverage Results" MODIFIED="1450474064703" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Students_health_records$main.coverage" NAME="main Coverage Results" MODIFIED="1450523027979" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Students_health_records$server.coverage" NAME="server Coverage Results" MODIFIED="1450523026804" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Students_health_records$authorization.coverage" NAME="authorization Coverage Results" MODIFIED="1447441558006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Students_health_records$data_processing.coverage" NAME="data_processing Coverage Results" MODIFIED="1448654595250" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Students_health_records$app.coverage" NAME="app Coverage Results" MODIFIED="1447880371650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -59,24 +59,28 @@
       <file leaf-file-name="data_processing.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_processing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.61167514">
-              <caret line="196" column="39" selection-start-line="196" selection-start-column="39" selection-end-line="196" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.7671233">
+              <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
               <folding>
-                <marker date="1450474949212" expanded="true" signature="237:293" placeholder="SELECT user_..clients..." />
-                <marker date="1450474949212" expanded="true" signature="942:1005" placeholder="SELECT user_..clients..." />
-                <marker date="1450474949212" expanded="true" signature="1124:1196" placeholder="SELECT diagn..MEDICALCARD..." />
-                <marker date="1450474949212" expanded="true" signature="1559:1654" placeholder="SELECT disea..DIAGNOSES..." />
-                <marker date="1450474949212" expanded="true" signature="2448:2541" placeholder="SELECT user_..clients..." />
-                <marker date="1450474949212" expanded="true" signature="3286:3544" placeholder="INSERT INTO ..." />
-                <marker date="1450474949212" expanded="true" signature="4924:5053" placeholder="SELECT user_..CLIENTS..." />
-                <marker date="1450474949212" expanded="true" signature="5755:5846" placeholder="SELECT diagn..MEDICALCARD..." />
-                <marker date="1450474949212" expanded="true" signature="6313:6399" placeholder="SELECT disea..DIAGNOSES..." />
-                <marker date="1450474949212" expanded="true" signature="7017:7258" placeholder="UPDATE CLIEN..." />
-                <marker date="1450474949212" expanded="true" signature="7992:8025" placeholder="SELECT disea..diseases..." />
-                <marker date="1450474949212" expanded="true" signature="8502:8653" placeholder="INSERT INTO ..." />
-                <marker date="1450474949212" expanded="true" signature="9121:9229" placeholder="INSERT INTO ..." />
-                <marker date="1450474949212" expanded="true" signature="9666:9738" placeholder="DELETE FROM ..." />
-                <marker date="1450474949212" expanded="true" signature="10071:10113" placeholder="SELECT MAX(d..DIAGNOSES..." />
+                <marker date="1450523284295" expanded="true" signature="340:396" placeholder="SELECT user_..clients..." />
+                <marker date="1450523284295" expanded="true" signature="1079:1142" placeholder="SELECT user_..clients..." />
+                <marker date="1450523284295" expanded="true" signature="1261:1333" placeholder="SELECT diagn..MEDICALCARD..." />
+                <marker date="1450523284295" expanded="true" signature="1696:1791" placeholder="SELECT disea..DIAGNOSES..." />
+                <marker date="1450523284295" expanded="true" signature="2619:2712" placeholder="SELECT user_..clients..." />
+                <marker date="1450523284295" expanded="true" signature="3493:3751" placeholder="INSERT INTO ..." />
+                <marker date="1450523284295" expanded="true" signature="5166:5295" placeholder="SELECT user_..CLIENTS..." />
+                <marker date="1450523284295" expanded="true" signature="6031:6122" placeholder="SELECT diagn..MEDICALCARD..." />
+                <marker date="1450523284295" expanded="true" signature="6589:6675" placeholder="SELECT disea..DIAGNOSES..." />
+                <marker date="1450523284295" expanded="true" signature="7329:7570" placeholder="UPDATE CLIEN..." />
+                <marker date="1450523284295" expanded="true" signature="8338:8371" placeholder="SELECT disea..diseases..." />
+                <marker date="1450523284295" expanded="true" signature="8882:9033" placeholder="INSERT INTO ..." />
+                <marker date="1450523284295" expanded="true" signature="9501:9609" placeholder="INSERT INTO ..." />
+                <marker date="1450523284295" expanded="true" signature="10083:10158" placeholder="DELETE FROM ..." />
+                <marker date="1450523284295" expanded="true" signature="10083:10185" placeholder="DELETE FROM ..." />
+                <marker date="1450523284295" expanded="true" signature="10089:10154" placeholder="delete from ..." />
+                <marker date="1450523284295" expanded="true" signature="10206:10278" placeholder="DELETE FROM ..." />
+                <marker date="1450523284295" expanded="true" signature="10207:10278" placeholder="DELETE FROM ..." />
+                <marker date="1450523284295" expanded="true" signature="10645:10687" placeholder="SELECT MAX(d..DIAGNOSES..." />
               </folding>
             </state>
           </provider>
@@ -158,8 +162,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -194,6 +196,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -802,7 +806,13 @@
       <option name="project" value="LOCAL" />
       <updated>1449865240416</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Added isolation levels.">
+      <created>1450475040116</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1450475040116</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView">
@@ -827,7 +837,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31832796" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31270358" sideWeight="0.49389312" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20257966" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20561457" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24961832" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928678" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -854,7 +864,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="new authorization and user forms." />
     <MESSAGE value="Admin show users info." />
     <MESSAGE value="New admin show users info." />
     <MESSAGE value="Form add user." />
@@ -879,7 +888,8 @@
     <MESSAGE value="Fixed admin intuping data(added masks and verification)" />
     <MESSAGE value="Added transactions." />
     <MESSAGE value="Fixed some exceptions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some exceptions." />
+    <MESSAGE value="Added isolation levels." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added isolation levels." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -918,21 +928,25 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="243" column="96" selection-start-line="243" selection-start-column="96" selection-end-line="243" selection-end-column="96" />
           <folding>
-            <marker date="1450474949212" expanded="true" signature="237:293" placeholder="SELECT user_..clients..." />
-            <marker date="1450474949212" expanded="true" signature="942:1005" placeholder="SELECT user_..clients..." />
-            <marker date="1450474949212" expanded="true" signature="1124:1196" placeholder="SELECT diagn..MEDICALCARD..." />
-            <marker date="1450474949212" expanded="true" signature="1559:1654" placeholder="SELECT disea..DIAGNOSES..." />
-            <marker date="1450474949212" expanded="true" signature="2448:2541" placeholder="SELECT user_..clients..." />
-            <marker date="1450474949212" expanded="true" signature="3286:3544" placeholder="INSERT INTO ..." />
-            <marker date="1450474949212" expanded="true" signature="4924:5053" placeholder="SELECT user_..CLIENTS..." />
-            <marker date="1450474949212" expanded="true" signature="5755:5846" placeholder="SELECT diagn..MEDICALCARD..." />
-            <marker date="1450474949212" expanded="true" signature="6313:6399" placeholder="SELECT disea..DIAGNOSES..." />
-            <marker date="1450474949212" expanded="true" signature="7017:7258" placeholder="UPDATE CLIEN..." />
-            <marker date="1450474949212" expanded="true" signature="7992:8025" placeholder="SELECT disea..diseases..." />
-            <marker date="1450474949212" expanded="true" signature="8502:8653" placeholder="INSERT INTO ..." />
-            <marker date="1450474949212" expanded="true" signature="9121:9229" placeholder="INSERT INTO ..." />
-            <marker date="1450474949212" expanded="true" signature="9666:9738" placeholder="DELETE FROM ..." />
-            <marker date="1450474949212" expanded="true" signature="10071:10113" placeholder="SELECT MAX(d..DIAGNOSES..." />
+            <marker date="1450523284295" expanded="true" signature="340:396" placeholder="SELECT user_..clients..." />
+            <marker date="1450523284295" expanded="true" signature="1079:1142" placeholder="SELECT user_..clients..." />
+            <marker date="1450523284295" expanded="true" signature="1261:1333" placeholder="SELECT diagn..MEDICALCARD..." />
+            <marker date="1450523284295" expanded="true" signature="1696:1791" placeholder="SELECT disea..DIAGNOSES..." />
+            <marker date="1450523284295" expanded="true" signature="2619:2712" placeholder="SELECT user_..clients..." />
+            <marker date="1450523284295" expanded="true" signature="3493:3751" placeholder="INSERT INTO ..." />
+            <marker date="1450523284295" expanded="true" signature="5166:5295" placeholder="SELECT user_..CLIENTS..." />
+            <marker date="1450523284295" expanded="true" signature="6031:6122" placeholder="SELECT diagn..MEDICALCARD..." />
+            <marker date="1450523284295" expanded="true" signature="6589:6675" placeholder="SELECT disea..DIAGNOSES..." />
+            <marker date="1450523284295" expanded="true" signature="7329:7570" placeholder="UPDATE CLIEN..." />
+            <marker date="1450523284295" expanded="true" signature="8338:8371" placeholder="SELECT disea..diseases..." />
+            <marker date="1450523284295" expanded="true" signature="8882:9033" placeholder="INSERT INTO ..." />
+            <marker date="1450523284295" expanded="true" signature="9501:9609" placeholder="INSERT INTO ..." />
+            <marker date="1450523284295" expanded="true" signature="10083:10158" placeholder="DELETE FROM ..." />
+            <marker date="1450523284295" expanded="true" signature="10083:10185" placeholder="DELETE FROM ..." />
+            <marker date="1450523284295" expanded="true" signature="10089:10154" placeholder="delete from ..." />
+            <marker date="1450523284295" expanded="true" signature="10206:10278" placeholder="DELETE FROM ..." />
+            <marker date="1450523284295" expanded="true" signature="10207:10278" placeholder="DELETE FROM ..." />
+            <marker date="1450523284295" expanded="true" signature="10645:10687" placeholder="SELECT MAX(d..DIAGNOSES..." />
           </folding>
         </state>
       </provider>
@@ -1296,24 +1310,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_processing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61167514">
-          <caret line="196" column="39" selection-start-line="196" selection-start-column="39" selection-end-line="196" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.7671233">
+          <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
           <folding>
-            <marker date="1450474949212" expanded="true" signature="237:293" placeholder="SELECT user_..clients..." />
-            <marker date="1450474949212" expanded="true" signature="942:1005" placeholder="SELECT user_..clients..." />
-            <marker date="1450474949212" expanded="true" signature="1124:1196" placeholder="SELECT diagn..MEDICALCARD..." />
-            <marker date="1450474949212" expanded="true" signature="1559:1654" placeholder="SELECT disea..DIAGNOSES..." />
-            <marker date="1450474949212" expanded="true" signature="2448:2541" placeholder="SELECT user_..clients..." />
-            <marker date="1450474949212" expanded="true" signature="3286:3544" placeholder="INSERT INTO ..." />
-            <marker date="1450474949212" expanded="true" signature="4924:5053" placeholder="SELECT user_..CLIENTS..." />
-            <marker date="1450474949212" expanded="true" signature="5755:5846" placeholder="SELECT diagn..MEDICALCARD..." />
-            <marker date="1450474949212" expanded="true" signature="6313:6399" placeholder="SELECT disea..DIAGNOSES..." />
-            <marker date="1450474949212" expanded="true" signature="7017:7258" placeholder="UPDATE CLIEN..." />
-            <marker date="1450474949212" expanded="true" signature="7992:8025" placeholder="SELECT disea..diseases..." />
-            <marker date="1450474949212" expanded="true" signature="8502:8653" placeholder="INSERT INTO ..." />
-            <marker date="1450474949212" expanded="true" signature="9121:9229" placeholder="INSERT INTO ..." />
-            <marker date="1450474949212" expanded="true" signature="9666:9738" placeholder="DELETE FROM ..." />
-            <marker date="1450474949212" expanded="true" signature="10071:10113" placeholder="SELECT MAX(d..DIAGNOSES..." />
+            <marker date="1450523284295" expanded="true" signature="340:396" placeholder="SELECT user_..clients..." />
+            <marker date="1450523284295" expanded="true" signature="1079:1142" placeholder="SELECT user_..clients..." />
+            <marker date="1450523284295" expanded="true" signature="1261:1333" placeholder="SELECT diagn..MEDICALCARD..." />
+            <marker date="1450523284295" expanded="true" signature="1696:1791" placeholder="SELECT disea..DIAGNOSES..." />
+            <marker date="1450523284295" expanded="true" signature="2619:2712" placeholder="SELECT user_..clients..." />
+            <marker date="1450523284295" expanded="true" signature="3493:3751" placeholder="INSERT INTO ..." />
+            <marker date="1450523284295" expanded="true" signature="5166:5295" placeholder="SELECT user_..CLIENTS..." />
+            <marker date="1450523284295" expanded="true" signature="6031:6122" placeholder="SELECT diagn..MEDICALCARD..." />
+            <marker date="1450523284295" expanded="true" signature="6589:6675" placeholder="SELECT disea..DIAGNOSES..." />
+            <marker date="1450523284295" expanded="true" signature="7329:7570" placeholder="UPDATE CLIEN..." />
+            <marker date="1450523284295" expanded="true" signature="8338:8371" placeholder="SELECT disea..diseases..." />
+            <marker date="1450523284295" expanded="true" signature="8882:9033" placeholder="INSERT INTO ..." />
+            <marker date="1450523284295" expanded="true" signature="9501:9609" placeholder="INSERT INTO ..." />
+            <marker date="1450523284295" expanded="true" signature="10083:10158" placeholder="DELETE FROM ..." />
+            <marker date="1450523284295" expanded="true" signature="10083:10185" placeholder="DELETE FROM ..." />
+            <marker date="1450523284295" expanded="true" signature="10089:10154" placeholder="delete from ..." />
+            <marker date="1450523284295" expanded="true" signature="10206:10278" placeholder="DELETE FROM ..." />
+            <marker date="1450523284295" expanded="true" signature="10207:10278" placeholder="DELETE FROM ..." />
+            <marker date="1450523284295" expanded="true" signature="10645:10687" placeholder="SELECT MAX(d..DIAGNOSES..." />
           </folding>
         </state>
       </provider>

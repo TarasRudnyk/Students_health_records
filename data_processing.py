@@ -1,9 +1,14 @@
 import cx_Oracle
 
+con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+cur = con.cursor()
+
 
 def authorize_user(login, password):
     authorize_result = {"success": False,
                         "role": 'user'}
+    global con
+    global cur
 
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
@@ -29,8 +34,10 @@ def get_user_diagnoses(login):
     diagnose_doctor = []
     diagnose_number = []
 
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    global con
+    global cur
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
 
     cur.execute('SELECT user_card_number FROM clients WHERE user_login = \'{0}\''.format(login))
     for result_card_number in cur:
@@ -70,8 +77,10 @@ def get_all_users():
     users_full_names = []
     users_groups = []
 
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    global con
+    global cur
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
 
     cur.execute('SELECT user_card_number, user_full_name, user_group FROM clients WHERE user_role != \'admin\'')
     for result in cur:
@@ -91,12 +100,14 @@ def add_new_user(add_users_result):
         "success": True
     }
 
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    global con
+    global cur
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
     add_users_result["user_full_name"] = add_users_result["user_full_name"][0] + " " + add_users_result["user_full_name"][1]
 
     try:
-        cur.execute('set transaction isolation level serializable')
+        # cur.execute('set transaction isolation level serializable')
         cur.execute('INSERT INTO CLIENTS (USER_CARD_NUMBER, USER_LOGIN, USER_PASSWORD, USER_FULL_NAME,'
                     'USER_PHONE_NUMBER, USER_GROUP, USER_EMAIL, USER_ROLE)'
                     'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\', \'{4}\', \'{5}\', \'{6}\', \'{7}\')'.format(
@@ -108,6 +119,7 @@ def add_new_user(add_users_result):
                                                                             add_users_result['user_group'],
                                                                             add_users_result['user_email'],
                                                                             add_users_result['user_role']))
+
         con.commit()
     except:
         result["success"] = False
@@ -117,8 +129,10 @@ def add_new_user(add_users_result):
 
 
 def edit_user_info_select_data(user_card_number):
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    global con
+    global cur
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
 
     #user_card_number = '11111111'
     user_data = {'success': True,
@@ -143,8 +157,10 @@ def edit_user_info_select_data(user_card_number):
 
 
 def edit_user_info_select_diagnoses(user_card_number):
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    global con
+    global cur
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
 
     result = {
         "success": True
@@ -181,8 +197,10 @@ def edit_user_info_select_diagnoses(user_card_number):
 
 
 def edit_user_info_update_data(user_edited_data):
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    global con
+    global cur
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
 
     result = {
         "success": True
@@ -191,7 +209,7 @@ def edit_user_info_update_data(user_edited_data):
     if user_edited_data["user_phone_number"] == 'None':
         user_edited_data["user_phone_number"] = ""
     try:
-        cur.execute('set transaction isolation level read only')
+        # cur.execute('set transaction isolation level read only')
         cur.execute('UPDATE CLIENTS '
                 'SET user_full_name = \'{0}\','
                 'user_group = \'{1}\','
@@ -211,8 +229,10 @@ def edit_user_info_update_data(user_edited_data):
 
 
 def edit_user_select_all_diseases():
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    global con
+    global cur
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
     disease_names = []
 
     result = {
@@ -229,15 +249,17 @@ def edit_user_select_all_diseases():
 
 
 def edit_user_info_add_diagnose(diagnose_data, card_number):
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    global con
+    global cur
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
 
     result = {
         "success": True
     }
     try:
     # print(diagnose_data['diagnose_number'])
-        cur.execute('set transaction isolation level serializable')
+    #   cur.execute('set transaction isolation level serializable')
         cur.execute('INSERT INTO DIAGNOSES (DIAGNOSE_NUMBER, DISEASE_NAME, DIAGNOSE_DATE, DIAGNOSE_DOCTOR) '
                     'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\')'.format(
                                                                             diagnose_data['diagnose_number'],
@@ -257,15 +279,20 @@ def edit_user_info_add_diagnose(diagnose_data, card_number):
 
 
 def delete_selected_users(user_card_number):
+    # global con
+    # global cur
     result = {
         "success": True
     }
+
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
     try:
-        cur.execute('set transaction isolation level serializable')
+        # cur.execute('set transaction isolation level serializable')
+        cur.execute('DELETE FROM MEDICALCARD '
+                    'WHERE user_card_number = {0}'.format(user_card_number))
         cur.execute('DELETE FROM CLIENTS '
-                    ' WHERE user_card_number = {0}'.format(user_card_number))
+                    'WHERE user_card_number = {0}'.format(user_card_number))
         con.commit()
     except:
         result["success"] = False
@@ -275,8 +302,10 @@ def delete_selected_users(user_card_number):
 
 
 def get_diagnose_number():
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    global con
+    global cur
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
     result = {
         "success": True
     }
