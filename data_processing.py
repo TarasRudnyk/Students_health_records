@@ -1,6 +1,24 @@
 import cx_Oracle
 
-con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+
+def get_configuration():
+    with open("config", encoding='utf-8') as config_file:
+        parameters = {}
+        for line in config_file:
+            parameter, value = line.split(": ")
+            parameter = parameter.rstrip()
+            value = value.strip()
+            parameters[parameter] = value
+
+    info = "{}/{}@{}/{}".format(parameters["name"],
+                                parameters["password"],
+                                parameters["server and port"],
+                                parameters["database service"])
+    print("Server started with parameters:", info)
+    return info
+
+info = get_configuration()
+con = cx_Oracle.connect(info)
 cur = con.cursor()
 
 
@@ -10,10 +28,10 @@ def authorize_user(login, password):
     global con
     global cur
 
-    con = cx_Oracle.connect('taras/orcl@localhost/orcl')
-    cur = con.cursor()
+    # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
+    # cur = con.cursor()
 
-    cur.execute('SELECT user_login, user_password, user_role FROM clients')
+    cur.execute('SELECT user_login, user_password, user_role FROM users')
     for result in cur:
         if login == result[0] and password == result[1]:
             user_role = result[2]
@@ -39,7 +57,7 @@ def get_user_diagnoses(login):
     # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     # cur = con.cursor()
 
-    cur.execute('SELECT user_card_number FROM clients WHERE user_login = \'{0}\''.format(login))
+    cur.execute('SELECT user_card_number FROM users WHERE user_login = \'{0}\''.format(login))
     for result_card_number in cur:
         user_card_number = result_card_number[0]
 
@@ -57,7 +75,7 @@ def get_user_diagnoses(login):
     cur.execute('SELECT disease_name, diagnose_date, diagnose_doctor FROM DIAGNOSES WHERE diagnose_number IN {0}'.format(diagnose_number_tuple))
     for result_diagnose in cur:
         diagnose_name.append(result_diagnose[0])
-        diagnose_date.append(str(result_diagnose[1]))
+        diagnose_date.append(str(result_diagnose[1].strftime('%d-%b-%Y')))
         diagnose_doctor.append(result_diagnose[2])
 
         diagnoses_result["diagnose_name"] = diagnose_name
@@ -66,6 +84,7 @@ def get_user_diagnoses(login):
 
     return diagnoses_result
 
+get_user_diagnoses("user")
 
 def get_all_users():
     users_result = {"success": True,
@@ -82,7 +101,7 @@ def get_all_users():
     # con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     # cur = con.cursor()
 
-    cur.execute('SELECT user_card_number, user_full_name, user_group FROM clients WHERE user_role != \'admin\'')
+    cur.execute('SELECT user_card_number, user_full_name, user_group FROM users WHERE user_role != \'admin\'')
     for result in cur:
         users_cards_numbers.append(result[0])
         users_full_names.append(result[1])
@@ -107,8 +126,8 @@ def add_new_user(add_users_result):
     add_users_result["user_full_name"] = add_users_result["user_full_name"][0] + " " + add_users_result["user_full_name"][1]
 
     try:
-        # cur.execute('set transaction isolation level serializable')
-        cur.execute('INSERT INTO CLIENTS (USER_CARD_NUMBER, USER_LOGIN, USER_PASSWORD, USER_FULL_NAME,'
+        cur.execute('set transaction isolation level serializable')
+        cur.execute('INSERT INTO users (USER_CARD_NUMBER, USER_LOGIN, USER_PASSWORD, USER_FULL_NAME,'
                     'USER_PHONE_NUMBER, USER_GROUP, USER_EMAIL, USER_ROLE)'
                     'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\', \'{4}\', \'{5}\', \'{6}\', \'{7}\')'.format(
                                                                             add_users_result['user_card_number'],
@@ -143,7 +162,7 @@ def edit_user_info_select_data(user_card_number):
 
     try:
         cur.execute('SELECT user_full_name, user_group, user_email, user_phone_number '
-                 'FROM CLIENTS WHERE user_card_number =\'{0}\''.format(user_card_number))
+                 'FROM users WHERE user_card_number =\'{0}\''.format(user_card_number))
 
         for result_user_data in cur:
             user_data['user_full_name'] = result_user_data[0]
@@ -209,8 +228,8 @@ def edit_user_info_update_data(user_edited_data):
     if user_edited_data["user_phone_number"] == 'None':
         user_edited_data["user_phone_number"] = ""
     try:
-        # cur.execute('set transaction isolation level read only')
-        cur.execute('UPDATE CLIENTS '
+        cur.execute('set transaction isolation level serializable')
+        cur.execute('UPDATE users '
                 'SET user_full_name = \'{0}\','
                 'user_group = \'{1}\','
                 'user_email = \'{2}\','
@@ -259,7 +278,7 @@ def edit_user_info_add_diagnose(diagnose_data, card_number):
     }
     try:
     # print(diagnose_data['diagnose_number'])
-    #   cur.execute('set transaction isolation level serializable')
+        cur.execute('set transaction isolation level serializable')
         cur.execute('INSERT INTO DIAGNOSES (DIAGNOSE_NUMBER, DISEASE_NAME, DIAGNOSE_DATE, DIAGNOSE_DOCTOR) '
                     'VALUES (\'{0}\',\'{1}\', \'{2}\', \'{3}\')'.format(
                                                                             diagnose_data['diagnose_number'],
@@ -288,10 +307,10 @@ def delete_selected_users(user_card_number):
     con = cx_Oracle.connect('taras/orcl@localhost/orcl')
     cur = con.cursor()
     try:
-        # cur.execute('set transaction isolation level serializable')
+        cur.execute('set transaction isolation level serializable')
         cur.execute('DELETE FROM MEDICALCARD '
                     'WHERE user_card_number = {0}'.format(user_card_number))
-        cur.execute('DELETE FROM CLIENTS '
+        cur.execute('DELETE FROM users '
                     'WHERE user_card_number = {0}'.format(user_card_number))
         con.commit()
     except:
@@ -317,3 +336,5 @@ def get_diagnose_number():
         diagnose_number = result_diagnose_number[0]
     result["count"] = diagnose_number
     return result
+
+

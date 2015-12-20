@@ -15,10 +15,12 @@ from views import admin_edit_user_info
 from views import admin_show_user_info
 from views import user_ui
 
+user_login = ""
 
 class Authorization(QtWidgets.QMainWindow, authorization_ui.Ui_AuthorizationWindow):
 
     def __init__(self):
+        global user_login
         super().__init__()
         self.setupUi(self)
         self.show_pass_button.clicked.connect(self.show_hide_password)
@@ -37,6 +39,8 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.setWindowTitle("Students health records User info - " + user_login)
+
         self.actionLog_out.triggered.connect(log_out)
         self.add_user_pushButton.clicked.connect(self.adding_user)
         self.About_Student_health_records_action.triggered.connect(about_information)
@@ -146,10 +150,10 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.put_user_info(user_card_number, info, diagnoses)
 
     def put_user_info(self, user_card_number, info, diagnoses):
+        global user_login
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
         self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.edit_user.setupUi(self.dialog)
-
         self.count = len(diagnoses)
         self.edit_user.tableWidget.setColumnCount(1)
         self.edit_user.tableWidget.setRowCount(self.count)
@@ -425,6 +429,8 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
+        self.setWindowTitle("Students health records User info - " + user_login)
+
         self.actionLog_out.triggered.connect(log_out)
         self.About_Student_health_records_action.triggered.connect(about_information)
         self.draw_table()
@@ -488,7 +494,6 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
 
 app = QtWidgets.QApplication(sys.argv)
 form = Authorization()
-user_login = ""
 
 
 def show_auth():
