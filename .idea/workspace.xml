@@ -540,12 +540,6 @@
       <option name="number" value="Default" />
       <updated>1447174844425</updated>
     </task>
-    <task id="LOCAL-00004" summary="Added new forms: user_ui, admin_ui, add_user_ui.">
-      <created>1447451927601</created>
-      <option name="number" value="00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1447451927601</updated>
-    </task>
     <task id="LOCAL-00005" summary="Added function that check if label is empty">
       <created>1447493940856</created>
       <option name="number" value="00005" />
@@ -834,7 +828,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450722518921</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="bla bla bla">
+      <created>1450722543204</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1450722543204</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TodoView">
@@ -848,7 +848,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32952693" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
