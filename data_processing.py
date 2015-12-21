@@ -81,7 +81,6 @@ def get_user_diagnoses(login):
         diagnose_doctor.append(result_diagnose[2])
         diagnose_time.append(result_diagnose[3])
 
-
         diagnoses_result["diagnose_name"] = diagnose_name
         diagnoses_result["diagnose_date"] = diagnose_date
         diagnoses_result["diagnose_doctor"] = diagnose_doctor

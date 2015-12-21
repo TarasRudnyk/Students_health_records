@@ -155,14 +155,15 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.edit_user.setupUi(self.dialog)
         self.count = len(diagnoses)
-        self.edit_user.tableWidget.setColumnCount(1)
+        self.edit_user.tableWidget.setColumnCount(2)
         self.edit_user.tableWidget.setRowCount(self.count)
 
         for i in range(self.count):
             self.edit_user.tableWidget.setItem(i, 0, QTableWidgetItem(str(diagnoses[i])))
 
-        self.edit_user.tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Diagnoses"))
-        self.edit_user.tableWidget.horizontalHeader().setDefaultSectionSize(50)
+        self.edit_user.tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Diagnose"))
+        self.edit_user.tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Date"))
+        self.edit_user.tableWidget.horizontalHeader().setDefaultSectionSize(250)
         self.edit_user.tableWidget.horizontalHeader().setMinimumSectionSize(38)
         self.edit_user.tableWidget.horizontalHeader().setStretchLastSection(True)
         self.edit_user.tableWidget.verticalHeader().setDefaultSectionSize(30)
@@ -204,8 +205,11 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             date = datetime.datetime.today()
 
             date = date.strftime("%d-%b-%y")
+            time = datetime.datetime.now().time()
+            time = "{}:{}:{}".format(time.hour, time.minute, time.second)
             try:
-                add_user_diagnose(all_diagnoses_count, text, date, card_number)
+                add_user_diagnose(all_diagnoses_count, text, date, card_number, time)
+                print(time)
                 self.count += 1
             except:
                 QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
@@ -219,7 +223,8 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
             QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
         self.edit_user.tableWidget.clear()
 
-        self.edit_user.tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Diagnoses"))
+        self.edit_user.tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Diagnose"))
+        self.edit_user.tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Date"))
 
         count = len(diagnoses)
         self.edit_user.tableWidget.setColumnCount(1)
@@ -472,7 +477,8 @@ class User(QtWidgets.QMainWindow, user_ui.Ui_Student_health_records):
         self.user_info_tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Doctor"))
         self.user_info_tableWidget.setHorizontalHeaderItem(2, QTableWidgetItem("Diagnose"))
         for i in range(count):
-            self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(diagnoses["diagnose_date"][i]))
+            self.user_info_tableWidget.setItem(i, 0, QTableWidgetItem(diagnoses["diagnose_date"][i] + "\n" +
+                                                                      diagnoses["diagnose_time"][i]))
             self.user_info_tableWidget.setItem(i, 1, QTableWidgetItem(diagnoses["diagnose_doctor"][i]))
             self.user_info_tableWidget.setItem(i, 2, QTableWidgetItem(diagnoses["diagnose_name"][i]))
 
@@ -762,7 +768,7 @@ def get_diagnoses_count():
     return data
 
 
-def add_user_diagnose(number, name, date, card_number):
+def add_user_diagnose(number, name, date, card_number, time):
     global user_login
     sock = socket.socket()
     sock.connect(('127.0.0.1', 9090))
@@ -775,7 +781,8 @@ def add_user_diagnose(number, name, date, card_number):
                      "diagnose_number": number,
                      "disease_name": name,
                      "diagnose_date": date,
-                     "diagnose_doctor": user_login
+                     "diagnose_doctor": user_login,
+                     "diagnose_time": time
                      }
                  }
 
