@@ -540,12 +540,6 @@
       <option name="number" value="Default" />
       <updated>1447174844425</updated>
     </task>
-    <task id="LOCAL-00003" summary="Uploded project">
-      <created>1447399328251</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1447399328251</updated>
-    </task>
     <task id="LOCAL-00004" summary="Added new forms: user_ui, admin_ui, add_user_ui.">
       <created>1447451927601</created>
       <option name="number" value="00004" />
@@ -834,7 +828,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450722485570</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="bla bla bla">
+      <created>1450722518921</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1450722518921</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TodoView">
