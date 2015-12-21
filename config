@@ -1,4 +1,4 @@
-name: taras
-password: orcl
-server and port: localhost
-database service: orcl
+name: userdbis15
+password: userdbis15
+server and port: 77.47.134.131:1521
+database service: xe
