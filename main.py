@@ -195,6 +195,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.show()
 
     def insert_diagnoses(self):
+        success = True
         current_count = self.edit_user.tableWidget.rowCount()
         card_number = self.edit_user.card_number_lineEdit.text()
         for i in range(self.count, current_count):
@@ -212,6 +213,10 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
                 self.count += 1
             except:
                 QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
+                success = False
+        if success:
+            QMessageBox.information(self, 'Success', "Diagnose(s) was added.")
+
         self.update_diagnoses_table(card_number)
 
     def update_diagnoses_table(self, user_card_number):
