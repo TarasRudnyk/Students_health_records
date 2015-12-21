@@ -540,12 +540,6 @@
       <option name="number" value="Default" />
       <updated>1447174844425</updated>
     </task>
-    <task id="LOCAL-00005" summary="Added function that check if label is empty">
-      <created>1447493940856</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1447493940856</updated>
-    </task>
     <task id="LOCAL-00006" summary="Added function that check if label is empty">
       <created>1447494233134</created>
       <option name="number" value="00006" />
@@ -834,7 +828,13 @@
       <option name="project" value="LOCAL" />
       <updated>1450722543204</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="bla bla bla">
+      <created>1450722695817</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1450722695817</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TodoView">
