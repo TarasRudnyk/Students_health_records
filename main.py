@@ -139,7 +139,10 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
     def editing_user(self, user_card_number):
         try:
             info = get_all_user_info(user_card_number)
-            diagnoses = get_user_diagnoses_for_admin(user_card_number)["diagnoses"]
+            data = get_user_diagnoses_for_admin(user_card_number)
+            diagnoses = data["diagnoses"]
+            dates = data["dates"]
+            times = data["times"]
         except:
             QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
             info = {'success': True,
@@ -147,9 +150,9 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
                     'user_group': '',
                     'user_email': '',
                     'user_phone_number': ''}
-        self.put_user_info(user_card_number, info, diagnoses)
+        self.put_user_info(user_card_number, info, diagnoses, dates, times)
 
-    def put_user_info(self, user_card_number, info, diagnoses):
+    def put_user_info(self, user_card_number, info, diagnoses, dates, times):
         global user_login
         self.edit_user = admin_edit_user_info.Ui_Student_health_records()
         self.dialog = QtWidgets.QDialog(None, QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
@@ -160,6 +163,7 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
         for i in range(self.count):
             self.edit_user.tableWidget.setItem(i, 0, QTableWidgetItem(str(diagnoses[i])))
+            self.edit_user.tableWidget.setItem(i, 1, QTableWidgetItem(str(dates[i] + " " + times[i])))
 
         self.edit_user.tableWidget.setHorizontalHeaderItem(0, QTableWidgetItem("Diagnose"))
         self.edit_user.tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Date"))
@@ -202,14 +206,9 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
 
             combobox = self.edit_user.tableWidget.cellWidget(i, 0)
             text = combobox.currentText()
-            date = datetime.datetime.today()
-
-            date = date.strftime("%d-%b-%y")
-            time = datetime.datetime.now().time()
-            time = "{}:{}:{}".format(time.hour, time.minute, time.second)
+            date, time = self.edit_user.tableWidget.item(i, 1).text().split(" ")
             try:
                 add_user_diagnose(all_diagnoses_count, text, date, card_number, time)
-                print(time)
                 self.count += 1
             except:
                 QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
@@ -218,7 +217,11 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
     def update_diagnoses_table(self, user_card_number):
         diagnoses = []
         try:
-            diagnoses = get_user_diagnoses_for_admin(user_card_number)["diagnoses"]
+            data = get_user_diagnoses_for_admin(user_card_number)
+            diagnoses = data["diagnoses"]
+            dates = data["dates"]
+            times = data["times"]
+
         except:
             QMessageBox.information(self, 'Failed', "There is some problem with server.\nPlease try later.")
         self.edit_user.tableWidget.clear()
@@ -227,11 +230,12 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         self.edit_user.tableWidget.setHorizontalHeaderItem(1, QTableWidgetItem("Date"))
 
         count = len(diagnoses)
-        self.edit_user.tableWidget.setColumnCount(1)
+        self.edit_user.tableWidget.setColumnCount(2)
         self.edit_user.tableWidget.setRowCount(count)
 
         for i in range(count):
             self.edit_user.tableWidget.setItem(i, 0, QTableWidgetItem(str(diagnoses[i])))
+            self.edit_user.tableWidget.setItem(i, 1, QTableWidgetItem(str(dates[i] + " " + times[i])))
 
     def add_diagnose_row(self):
 
@@ -247,7 +251,14 @@ class Admin(QtWidgets.QMainWindow, admin_show_user_info.Ui_AdminShowUsersMenu):
         combobox = QtWidgets.QComboBox()
         combobox.addItems(diseases)
 
+        time = datetime.datetime.now().time()
+        time = "{}:{}:{}".format(time.hour, time.minute, time.second)
+        date = datetime.datetime.today()
+
+        date = date.strftime("%d-%b-%Y")
+
         self.edit_user.tableWidget.setCellWidget(count, 0, combobox)
+        self.edit_user.tableWidget.setItem(count, 1, QTableWidgetItem(date + " " + time))
 
     def adding_user(self):
         self.add_user = add_user_ui.Ui_addUserWindow()
@@ -789,7 +800,6 @@ def add_user_diagnose(number, name, date, card_number, time):
     sock.sendall(json.dumps(send_data).encode('utf-8'))
     data = sock.recv(10000)
     sock.close()
-
     data = json.loads(data.decode('utf-8'))
     return data
 

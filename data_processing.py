@@ -207,10 +207,12 @@ def edit_user_info_select_diagnoses(user_card_number):
         result["success"] = False
     for result_diagnose in cur:
         user_diagnose_names.append(result_diagnose[0])
-        user_diagnose_dates.append(result_diagnose[1])
-        user_diagnose_time.append(result_diagnose[2])
+        user_diagnose_dates.append(str(result_diagnose[1].strftime('%d-%b-%Y')))
+        user_diagnose_time.append(str(result_diagnose[2]))
 
     result["diagnoses"] = user_diagnose_names
+    result["dates"] = user_diagnose_dates
+    result["times"] = user_diagnose_time
 
     return result
 
