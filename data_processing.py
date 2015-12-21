@@ -46,10 +46,12 @@ def get_user_diagnoses(login):
     diagnoses_result = {"success": True,
                         "diagnose_name": '',
                         "diagnose_date": '',
-                        "diagnose_doctor": ''}
+                        "diagnose_doctor": '',
+                        "diagnose_time": ''}
 
     diagnose_name = []
     diagnose_date = []
+    diagnose_time = []
     diagnose_doctor = []
     diagnose_number = []
 
@@ -72,15 +74,18 @@ def get_user_diagnoses(login):
     else:
         diagnose_number_tuple = 0
 
-    cur.execute('SELECT disease_name, diagnose_date, diagnose_doctor FROM DIAGNOSES WHERE diagnose_number IN {0}'.format(diagnose_number_tuple))
+    cur.execute('SELECT disease_name, diagnose_date, diagnose_doctor, diagnose_time FROM DIAGNOSES WHERE diagnose_number IN {0}'.format(diagnose_number_tuple))
     for result_diagnose in cur:
         diagnose_name.append(result_diagnose[0])
         diagnose_date.append(str(result_diagnose[1].strftime('%d-%b-%Y')))
         diagnose_doctor.append(result_diagnose[2])
+        diagnose_time.append(result_diagnose[3])
+
 
         diagnoses_result["diagnose_name"] = diagnose_name
         diagnoses_result["diagnose_date"] = diagnose_date
         diagnoses_result["diagnose_doctor"] = diagnose_doctor
+        diagnoses_result["diagnose_time"] = diagnose_time
 
     return diagnoses_result
 
