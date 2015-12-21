@@ -183,6 +183,8 @@ def edit_user_info_select_diagnoses(user_card_number):
 
     user_diagnose_numbers = []
     user_diagnose_names = []
+    user_diagnose_dates = []
+    user_diagnose_time = []
 
     # Selecting diagnose_numbers to get all users diagnoses
     cur.execute('SELECT diagnose_number FROM MEDICALCARD'
@@ -200,12 +202,15 @@ def edit_user_info_select_diagnoses(user_card_number):
 
     # Selecting users diagnoses
     try:
-        cur.execute('SELECT disease_name FROM DIAGNOSES '
+        cur.execute('SELECT disease_name, diagnose_date, diagnose_time FROM DIAGNOSES '
                     'WHERE diagnose_number IN {0}'.format(user_diagnose_numbers_tuple))
     except:
         result["success"] = False
     for result_diagnose in cur:
         user_diagnose_names.append(result_diagnose[0])
+        user_diagnose_dates.append(result_diagnose[1])
+        user_diagnose_time.append(result_diagnose[2])
+
     result["diagnoses"] = user_diagnose_names
 
     return result
